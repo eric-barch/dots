@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "supabase/tap"
+
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Configurable static site generator
@@ -21,6 +22,7 @@ brew "ripgrep"
 brew "tmux"
 # Internet file retriever
 brew "wget"
+
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Memory training application
@@ -99,6 +101,7 @@ cask "vlc"
 cask "zoom"
 # Desktop client for the Zulip team chat platform
 cask "zulip"
+
 vscode "akamud.vscode-theme-onelight"
 vscode "be5invis.vscode-custom-css"
 vscode "bradlc.vscode-tailwindcss"
