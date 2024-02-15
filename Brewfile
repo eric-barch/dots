@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "supabase/tap"
-
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Configurable static site generator
@@ -22,9 +21,10 @@ brew "ripgrep"
 brew "tmux"
 # Internet file retriever
 brew "wget"
-
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Memory training application
 cask "anki"
 # Chromium based browser
@@ -32,7 +32,7 @@ cask "arc"
 # Electronics prototyping platform
 cask "arduino-ide"
 # Integrated CAD, CAM, CAE, and PCB software
-cask "autodesk-fusion360"
+cask "autodesk-fusion"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Browser for SQLite databases
@@ -41,7 +41,7 @@ cask "db-browser-for-sqlite"
 cask "discord"
 # Drivers for DisplayLink docks, adapters and monitors
 cask "displaylink"
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask "docker"
 # Collaborative team software
 cask "figma"
@@ -71,7 +71,7 @@ cask "microsoft-word"
 cask "mkvtoolnix"
 # VPN client
 cask "mullvadvpn"
-# App to write, plan, collaborate, and get organized
+# App to write, plan, collaborate, and get organised
 cask "notion"
 # G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 cask "prusaslicer"
@@ -101,7 +101,6 @@ cask "vlc"
 cask "zoom"
 # Desktop client for the Zulip team chat platform
 cask "zulip"
-
 vscode "akamud.vscode-theme-onelight"
 vscode "be5invis.vscode-custom-css"
 vscode "bradlc.vscode-tailwindcss"
