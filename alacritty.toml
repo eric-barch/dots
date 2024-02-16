@@ -17,3 +17,6 @@ padding = { x = 12, y = 12 }
 normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
 size = 12.0
 
+# Set keybindings
+[keyboard]
+bindings = [{ key = "f", mods = "Control", action = "ToggleFullScreen" }]
