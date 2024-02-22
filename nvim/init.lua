@@ -86,7 +86,7 @@ require('lazy').setup({
     },
   },
 
-  -- Shows pending keybinds.
+  -- Shows pending keybinds
   {
     'folke/which-key.nvim',
     opts = {}
@@ -260,6 +260,15 @@ vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Additional settings for markdown editing
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.wo.wrap = true
+        vim.wo.linebreak = true
+    end,
+})
 
 -- Save undo history
 vim.o.undofile = true
