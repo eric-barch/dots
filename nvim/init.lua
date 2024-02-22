@@ -261,13 +261,13 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 
--- Additional settings for markdown editing
+-- Additional settings for markdown
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        vim.wo.wrap = true
-        vim.wo.linebreak = true
-    end,
+  pattern = "markdown",
+  callback = function()
+    -- Break lines on word boundaries
+    vim.wo.linebreak = true
+  end,
 })
 
 -- Save undo history
