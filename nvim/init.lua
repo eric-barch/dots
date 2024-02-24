@@ -74,7 +74,7 @@ require('lazy').setup({
           return 'make install_jsregexp'
         end)(),
       },
-      
+
       'saadparwaiz1/cmp_luasnip',
 
       -- Adds LSP completion capabilities
@@ -213,14 +213,14 @@ require('lazy').setup({
     opts = {}
   },
 
-  -- Fuzzy Finder (files, lsp, etc)
+  -- Fuzzy finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
 
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Fuzzy finder algorithm which requires local dependencies to be built.
       -- Only load if `make` is available. Make sure you have the system
       -- requirements installed.
       {
@@ -554,8 +554,8 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = {},
+  html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
     Lua = {
@@ -643,6 +643,11 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+-- Disable autocomplete for Markdown files.
+cmp.setup.filetype('markdown', {
+  sources = {}
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
