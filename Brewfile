@@ -1,4 +1,6 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
 tap "homebrew/services"
 tap "supabase/tap"
 # Open source programming language to build simple/reliable/efficient software
@@ -73,6 +75,10 @@ cask "mkvtoolnix"
 cask "mullvadvpn"
 # App to write, plan, collaborate, and get organised
 cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Administration and development platform for PostgreSQL
+cask "pgadmin4"
 # G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 cask "prusaslicer"
 # Peer to peer Bitorrent client
