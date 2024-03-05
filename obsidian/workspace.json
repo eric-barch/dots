@@ -4,18 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "f8b25123c95ac4d5",
+        "id": "e555a0f37411af4f",
         "type": "tabs",
         "children": [
           {
-            "id": "7ef0dba52fe2a54d",
+            "id": "3a33654200777a8b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "cooking/recipes/chicken-cacciatore-with-red-peppers-tomato-and-onion.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bd470ac62eab2b3a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "data-structures-and-algorithms/array/sliding-window.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -65,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 274.5
+    "width": 257.5
   },
   "right": {
     "id": "97d712b47e5073ac",
@@ -81,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "data-structures-and-algorithms/array/sliding-window.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "data-structures-and-algorithms/array/sliding-window.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "data-structures-and-algorithms/array/sliding-window.md"
+              }
             }
           }
         ]
@@ -138,8 +159,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7ef0dba52fe2a54d",
+  "active": "bd470ac62eab2b3a",
   "lastOpenFiles": [
+    "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms/array/sliding-window.md",
+    "data-structures-and-algorithms/array/sliding-window.md",
+    "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms/array",
+    "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms",
+    "Users/ericbarch/Documents/education/informal",
+    "Users/ericbarch/Documents/education",
+    "Users/ericbarch/Documents",
+    "Users/ericbarch",
+    "Users",
+    "cooking/recipes/chicken-cacciatore-with-red-peppers-tomato-and-onion.md",
+    "cooking/recipes/eggs-and-avocado-on-sourdough-toast.md",
+    "~/Documents/application-documents/Obsidian/vault/cooking/recipes/chicken-cacciatore-with-red-peppers-tomato-and-onion.md",
+    "cooking/weekly-meal-plans/2024.03.03.md",
+    "~/Documents/application-documents/Obsidian/vault/cooking/recipes/eggs-and-avocado-on-sourdough-toast.md",
+    "north-star.md",
+    "~/Documents/application-documents/Obsidian/vault/cooking/recipes",
+    "~/Documents/application-documents/Obsidian/vault/cooking/recipes.md",
+    "~/Documents/application-documents/Obsidian/vault/cooking",
+    "~/Documents/application-documents/Obsidian/vault",
+    "checkins/2024.02.29.md",
+    "checkins/2024.02.26.md",
+    "checkins/2024.02.23.md",
+    "checkins/2024.02.22-end-of-day.md",
+    "2024-02-26.md",
     "Welcome.md"
   ]
 }

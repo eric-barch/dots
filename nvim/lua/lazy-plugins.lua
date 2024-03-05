@@ -56,6 +56,13 @@ require('lazy').setup({
     },
   },
 
+  {
+    -- Autoclose brackets, quotes, etc.
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+  },
+
   -- Show pending keybinds
   { 'folke/which-key.nvim', opts = {} },
 
