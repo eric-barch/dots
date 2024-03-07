@@ -56,53 +56,53 @@ require('lazy').setup({
     },
   },
 
-	{
+  {
     -- Autoformat
-		"stevearc/conform.nvim",
+    'stevearc/conform.nvim',
     -- Recommended config for conform.nvim with LazyVim
-	  -- See https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#lazy-loading-with-lazynvim
-		event = { "BufWritePre" },
-		cmd = { "ConformInfo" },
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				mode = "",
-				desc = "Format buffer",
-			},
-		},
-		-- Everything in opts is passed to setup()
-		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
-				typescript = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
-			},
-			-- Set up format-on-save
-			format_on_save = { timeout_ms = 500, lsp_fallback = true },
-			-- Customize formatters
-			formatters = {
-				shfmt = {
-					prepend_args = { "-i", "2" },
-				},
-			},
-		},
-		init = function()
-			-- This is the the place to set formatexpr, for potential future use.
-			vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-		end,
-	},
+    -- See https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#lazy-loading-with-lazynvim
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
+    keys = {
+      {
+        '<leader>f',
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end,
+        mode = '',
+        desc = 'Format buffer',
+      },
+    },
+    -- Everything in opts is passed to setup()
+    opts = {
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        python = { 'isort', 'black' },
+        javascript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
+      },
+      -- Set up format-on-save
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      -- Customize formatters
+      formatters = {
+        shfmt = {
+          prepend_args = { '-i', '2' },
+        },
+      },
+    },
+    init = function()
+      -- This is the the place to set formatexpr, for potential future use.
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
 
   {
     -- Autoclose brackets, quotes, etc.
     'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
+    event = 'InsertEnter',
+    config = true,
   },
 
   -- Show pending keybinds
@@ -185,20 +185,20 @@ require('lazy').setup({
 
   {
     -- Catppuccin color theme
-    "catppuccin/nvim",
+    'catppuccin/nvim',
     priority = 1000,
-    name = "catppuccin",
+    name = 'catppuccin',
     lazy = false,
     config = function()
       require('catppuccin').setup {
-        flavour = "mocha", -- latte, frappe, macchiato, mocha
+        flavour = 'mocha', -- latte, frappe, macchiato, mocha
         dim_inactive = {
           enabled = true,
-          percentage = 0.2
-        }
+          percentage = 0.2,
+        },
       }
       require('catppuccin').load()
-    end
+    end,
   },
 
   {
@@ -231,7 +231,7 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
-        -- Fuzzy finder algorithm 
+        -- Fuzzy finder algorithm
         -- Requires local dependencies to be built
         -- Only load if `make` is available
         'nvim-telescope/telescope-fzf-native.nvim',

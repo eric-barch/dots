@@ -3,8 +3,11 @@
 -- Set highlight on search
 vim.o.hlsearch = false
 
--- Make line numbers default
+-- Line numbers
 vim.wo.number = true
+
+-- Relative line numbers
+vim.wo.relativenumber = true
 
 -- Sync clipboard between OS and Neovim.
 vim.o.clipboard = 'unnamedplus'
