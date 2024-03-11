@@ -9,11 +9,20 @@ vim.wo.number = true
 -- Relative line numbers
 vim.wo.relativenumber = true
 
--- Sync clipboard between OS and Neovim.
+-- Sync clipboard between OS and Neovim
 vim.o.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Handle line wrapping in Markdown files
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+  end,
+})
 
 -- Save undo history
 vim.o.undofile = true
