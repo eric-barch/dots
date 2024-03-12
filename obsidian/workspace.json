@@ -4,34 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "9f6c6732eeff471f",
+        "id": "250075146f708ac0",
         "type": "tabs",
         "children": [
           {
-            "id": "ad2705f83cc79784",
+            "id": "d19509b4dcd31d25",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "checkins/2024.03.05.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "a34edc5bee7141de",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "449da94892316109",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "checkins/2024.03.06.md",
+                "file": "checkins/2024.03.11.md",
                 "mode": "source",
                 "source": false
               }
@@ -87,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5,
-    "collapsed": true
+    "width": 268.5
   },
   "right": {
     "id": "97d712b47e5073ac",
@@ -104,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "checkins/2024.03.06.md",
+                "file": "checkins/2024.03.11.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "checkins/2024.03.06.md",
+                "file": "checkins/2024.03.11.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "checkins/2024.03.06.md"
+                "file": "checkins/2024.03.11.md"
               }
             }
           }
@@ -165,11 +146,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "449da94892316109",
+  "active": "d19509b4dcd31d25",
   "lastOpenFiles": [
-    "checkins/2024.03.05.md",
-    "checkins/2024.03.06.md",
     "Untitled.md",
+    "checkins/2024.03.11.md",
+    "grampa/grampa.md",
+    "grampa/notes.md",
+    "grampa",
+    "north-star.md",
+    "courses-i-want-to-take-to-become-a-better-developer.md",
+    "checkins/2024.03.06.md",
+    "checkins/2024.03.05.md",
     "checkins/2024.03.04.md",
     "cooking/weekly-meal-plans/2024.03.03.md",
     "cooking/recipes/chicken-cacciatore-with-red-peppers-tomato-and-onion.md",
@@ -187,11 +174,9 @@
     "Users",
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes/chicken-cacciatore-with-red-peppers-tomato-and-onion.md",
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes/eggs-and-avocado-on-sourdough-toast.md",
-    "north-star.md",
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes",
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes.md",
     "~/Documents/application-documents/Obsidian/vault/cooking",
-    "~/Documents/application-documents/Obsidian/vault",
     "checkins/2024.02.26.md",
     "checkins/2024.02.23.md",
     "checkins/2024.02.22-end-of-day.md",

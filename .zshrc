@@ -100,4 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Initialize Homebrew environment
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Automatically start tmux if not already in a tmux session
+if [ -z "$TMUX" ]; then
+  exec tmux
+fi
