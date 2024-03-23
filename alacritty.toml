@@ -3,6 +3,10 @@ import = [
   "~/.config/alacritty/catppuccin-mocha.toml",
 ]
 
+# Set shell
+[shell]
+program="/bin/zsh"
+
 # Set true color
 [env]
 TERM = "xterm-256color"

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "checkins/2024.03.11.md",
+                "file": "checkins/2024.03.20.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "checkins/2024.03.11.md",
+                "file": "checkins/2024.03.20.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "checkins/2024.03.11.md",
+                "file": "checkins/2024.03.20.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "checkins/2024.03.11.md"
+                "file": "checkins/2024.03.20.md"
               }
             }
           }
@@ -148,6 +148,10 @@
   },
   "active": "d19509b4dcd31d25",
   "lastOpenFiles": [
+    "checkins/2024.03.13.md",
+    "checkins/2024.03.20.md",
+    "data-structures-and-algorithms/array/sliding-window.md",
+    "checkins/2024.03..md",
     "Untitled.md",
     "checkins/2024.03.11.md",
     "grampa/grampa.md",
@@ -163,7 +167,6 @@
     "cooking/recipes/pressure-cooker-chunky-beef-and-bean-chili.md",
     "cooking/recipes/eggs-and-avocado-on-sourdough-toast.md",
     "checkins/2024.02.29.md",
-    "data-structures-and-algorithms/array/sliding-window.md",
     "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms/array/sliding-window.md",
     "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms/array",
     "Users/ericbarch/Documents/education/informal/data-structures-and-algorithms",
@@ -180,7 +183,6 @@
     "checkins/2024.02.26.md",
     "checkins/2024.02.23.md",
     "checkins/2024.02.22-end-of-day.md",
-    "2024-02-26.md",
-    "Welcome.md"
+    "2024-02-26.md"
   ]
 }

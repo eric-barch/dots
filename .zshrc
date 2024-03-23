@@ -102,8 +102,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Initialize Homebrew environment
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Automatically start tmux if not already in a tmux session
-if [ -z "$TMUX" ]; then
-  exec tmux
-fi
