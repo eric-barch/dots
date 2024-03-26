@@ -1,0 +1,1 @@
+/Users/ericbarch/.p10k.zsh
