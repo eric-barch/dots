@@ -11,7 +11,6 @@ export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 # Map zsh to Oh My Zsh.
 export ZSH="$HOME/.dotfiles/zsh/oh-my-zsh"
 
-
 # Set p10k theme.
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
