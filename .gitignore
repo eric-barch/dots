@@ -1,1 +1,6 @@
 .DS_Store
+
+# tpm is the only tmux plugin required for initial setup.
+# tpm can install all others with <prefix> I
+tmux/plugins/*
+!tmux/plugins/tmux/
