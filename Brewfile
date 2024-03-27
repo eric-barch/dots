@@ -1,10 +1,12 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "supabase/tap"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Open-source video transcoder available for Linux, Mac, and Windows
+brew "handbrake"
 # Configurable static site generator
 brew "hugo"
 # Network authentication protocol
@@ -49,8 +51,8 @@ cask "docker"
 cask "figma"
 # Web browser
 cask "google-chrome"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
+# Open-source video transcoder
+cask "handbrake"
 # Electronics design automation suite
 cask "kicad"
 # Interface for reading and syncing eBooks
@@ -110,6 +112,7 @@ cask "zulip"
 vscode "akamud.vscode-theme-onelight"
 vscode "be5invis.vscode-custom-css"
 vscode "bradlc.vscode-tailwindcss"
+vscode "catppuccin.catppuccin-vsc"
 vscode "dbaeumer.vscode-eslint"
 vscode "dotjoshjohnson.xml"
 vscode "dracula-theme.theme-dracula"
