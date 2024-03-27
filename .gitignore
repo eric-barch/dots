@@ -1,6 +1,13 @@
 .DS_Store
 
-# tpm is the only tmux plugin required for initial setup.
-# tpm can install all others with <prefix> I
+# Ignore all tmux plugins, as they can be installed using tpm (<prefix> I to
+# install). tpm is included as a git submodule, so it will not be gitignored.
 tmux/plugins/*
-!tmux/plugins/tmux/
+
+# Ignore everything in the zsh directory (history, sessions, etc.)
+zsh/*
+
+# But don't ignore these specific files and directory
+!zsh/.p10k.zsh
+!zsh/.zshrc
+!zsh/oh-my-zsh/
