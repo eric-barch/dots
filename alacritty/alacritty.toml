@@ -1,6 +1,6 @@
 # Import Catppuccin Mocha Theme
 import = [
-  "~/.config/alacritty/catppuccin-mocha.toml",
+  "~/.dotfiles/alacritty/catppuccin/catppuccin-mocha.toml",
 ]
 
 # Set shell
