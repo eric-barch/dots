@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "checkins/2024.03.20.md",
+                "file": "checkins/2024.03.27.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "checkins/2024.03.20.md",
+                "file": "checkins/2024.03.27.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "checkins/2024.03.20.md",
+                "file": "checkins/2024.03.27.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "checkins/2024.03.20.md"
+                "file": "checkins/2024.03.27.md"
               }
             }
           }
@@ -148,17 +148,20 @@
   },
   "active": "d19509b4dcd31d25",
   "lastOpenFiles": [
-    "checkins/2024.03.13.md",
+    "checkins/2024.03.26.md",
+    "checkins/2024.03.27.md",
+    "courses-i-want-to-take-to-become-a-better-developer.md",
     "checkins/2024.03.20.md",
+    "Untitled.md",
+    "Untitled 1.md",
+    "checkins/2024.03.13.md",
     "data-structures-and-algorithms/array/sliding-window.md",
     "checkins/2024.03..md",
-    "Untitled.md",
     "checkins/2024.03.11.md",
     "grampa/grampa.md",
     "grampa/notes.md",
     "grampa",
     "north-star.md",
-    "courses-i-want-to-take-to-become-a-better-developer.md",
     "checkins/2024.03.06.md",
     "checkins/2024.03.05.md",
     "checkins/2024.03.04.md",
@@ -180,9 +183,6 @@
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes",
     "~/Documents/application-documents/Obsidian/vault/cooking/recipes.md",
     "~/Documents/application-documents/Obsidian/vault/cooking",
-    "checkins/2024.02.26.md",
-    "checkins/2024.02.23.md",
-    "checkins/2024.02.22-end-of-day.md",
-    "2024-02-26.md"
+    "checkins/2024.02.26.md"
   ]
 }
