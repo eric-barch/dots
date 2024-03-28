@@ -5,11 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Update $PATH.
+# Set environment variables.
 export PATH=$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
-
-# Map zsh to Oh My Zsh.
-export ZSH="$HOME/.dotfiles/zsh/oh-my-zsh"
+export XDG_CONFIG_HOME="$HOME/.config"
+export ZSH="$XDG_CONFIG_HOME/zsh/oh-my-zsh"
+export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/.gitconfig"
 
 # Set p10k theme.
 ZSH_THEME="powerlevel10k/powerlevel10k"

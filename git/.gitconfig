@@ -1,5 +1,5 @@
 [user]
   name = Eric Barch
   email = eric.michael.barch@gmail.com
-[credential]
-	helper = libsecret
+[core]
+	excludesfile = /Users/ericbarch/.config/git/.gitignore_global
