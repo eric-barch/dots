@@ -60,13 +60,7 @@ require('mason-lspconfig').setup()
 
 -- Enable language servers
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -75,6 +69,8 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  prismals = {},
+  tsserver = {},
 }
 
 -- Set up neovim lua configuration
