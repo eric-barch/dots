@@ -7,7 +7,11 @@ tmux/plugins/*
 # Ignore everything in the zsh directory (history, sessions, etc.)
 zsh/*
 
-# But don't ignore these specific files and directory
+# Except for these
 !zsh/.p10k.zsh
 !zsh/.zshrc
 !zsh/oh-my-zsh/
+
+# Ignore these files and directories in the obsidian directory
+obsidian/workspace.json
+obsidian/plugins/*
