@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "supabase/tap"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Open source programming language to build simple/reliable/efficient software
