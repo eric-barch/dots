@@ -83,8 +83,6 @@ cask "notion"
 cask "obsidian"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
-# G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
-cask "prusaslicer"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Companion app for Flipper Zero devices
