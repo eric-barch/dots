@@ -1,8 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "supabase/tap"
-# Pack, ship and run any application as a lightweight container
-brew "docker"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Open source programming language to build simple/reliable/efficient software
@@ -41,6 +39,8 @@ cask "arduino-ide"
 cask "autodesk-fusion"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# Opensource IDE for exploring and testing api's
+cask "bruno"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
 # Voice and text chat software
