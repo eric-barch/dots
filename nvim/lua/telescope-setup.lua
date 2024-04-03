@@ -1,12 +1,30 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+
+local actions = require 'telescope.actions'
+
+-- Custom function to delete a buffer from Telescope's buffer picker
+local delete_buffer_action = function(prompt_bufnr)
+  actions.delete_buffer(prompt_bufnr)
+end
+
 require('telescope').setup {
   defaults = {
     mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+      i = {},
+    },
+  },
+  pickers = {
+    buffers = {
+      mappings = {
+        n = {
+          ['x'] = delete_buffer_action,
+        },
       },
+    },
+    planets = {
+      show_pluto = true,
+      show_moon = true,
     },
   },
 }
@@ -54,7 +72,6 @@ vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
@@ -67,6 +84,7 @@ local function telescope_live_grep_open_files()
     prompt_title = 'Live Grep in Open Files',
   }
 end
+
 vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
 vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
