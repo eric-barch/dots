@@ -1,13 +1,6 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
 
-local actions = require 'telescope.actions'
-
--- Custom function to delete a buffer from Telescope's buffer picker
-local delete_buffer_action = function(prompt_bufnr)
-  actions.delete_buffer(prompt_bufnr)
-end
-
 require('telescope').setup {
   defaults = {
     mappings = {
@@ -23,7 +16,9 @@ require('telescope').setup {
     buffers = {
       mappings = {
         n = {
-          ['x'] = delete_buffer_action,
+          ['x'] = function(prompt_bufnr)
+            require('telescope.actions').delete_buffer(prompt_bufnr)
+          end,
         },
       },
     },
