@@ -14,6 +14,11 @@ require('telescope').setup {
       i = {},
     },
   },
+  extensions = {
+    file_browser = {
+      hijack_netrw = true,
+    },
+  },
   pickers = {
     buffers = {
       mappings = {
@@ -29,8 +34,11 @@ require('telescope').setup {
   },
 }
 
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+-- Enable telescope fzf native
+require('telescope').load_extension 'fzf'
+
+-- Enable file browser
+require('telescope').load_extension 'file_browser'
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path

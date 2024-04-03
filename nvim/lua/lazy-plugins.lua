@@ -107,7 +107,7 @@ require('lazy').setup({
   },
 
   -- Show pending keybinds
-  { 'folke/which-key.nvim', opts = {} },
+  'folke/which-key.nvim',
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -242,6 +242,12 @@ require('lazy').setup({
         end,
       },
     },
+  },
+
+  {
+    -- Telescope-based file browser
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   },
 
   {
