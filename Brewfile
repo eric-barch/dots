@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "supabase/tap"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg"
 # Open source programming language to build simple/reliable/efficient software
