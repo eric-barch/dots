@@ -183,10 +183,6 @@ require('lazy').setup({
     config = function()
       require('catppuccin').setup {
         flavour = 'mocha', -- latte, frappe, macchiato, mocha
-        dim_inactive = {
-          enabled = true,
-          percentage = 0.2,
-        },
       }
       require('catppuccin').load()
     end,
