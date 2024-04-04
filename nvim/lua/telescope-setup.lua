@@ -7,6 +7,7 @@ require('telescope').setup {
     layout_config = {
       horizontal = {
         prompt_position = 'top',
+        preview_width = 0.5,
       },
     },
     sorting_strategy = 'ascending',
