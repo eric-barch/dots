@@ -79,12 +79,12 @@ end
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>/', function()
+vim.keymap.set('n', '<leader>/b', function()
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
-end, { desc = 'Fuzzily [/] search current buffer' })
+end, { desc = 'Fuzzily [/] search current [b]uffer' })
 
 vim.keymap.set('n', '<leader>/f', function()
   require('telescope.builtin').live_grep {
