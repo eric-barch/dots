@@ -59,20 +59,10 @@ require('lazy').setup({
   {
     -- Autoformat
     'stevearc/conform.nvim',
-    -- Recommended config for conform.nvim with LazyVim
+    -- Based on recommended config for conform.nvim with LazyVim
     -- See https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#lazy-loading-with-lazynvim
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = 'Format buffer',
-      },
-    },
     -- Everything in opts is passed to setup()
     opts = {
       formatters_by_ft = {
