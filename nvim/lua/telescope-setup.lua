@@ -17,6 +17,7 @@ require('telescope').setup {
       cwd_to_path = true,
       grouped = true,
       hijack_netrw = true,
+      hidden = true,
     },
   },
   pickers = {
