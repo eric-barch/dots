@@ -13,6 +13,8 @@ brew "handbrake"
 brew "hugo"
 # Network authentication protocol
 brew "krb5"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Platform built on V8 to build network applications
