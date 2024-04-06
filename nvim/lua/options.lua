@@ -12,8 +12,8 @@ vim.wo.relativenumber = true
 -- Sync clipboard between OS and Neovim
 vim.o.clipboard = 'unnamedplus'
 
--- Enable break indent
-vim.o.breakindent = true
+-- Disable line wrapping globally
+vim.wo.wrap = false
 
 -- Handle line wrapping in Markdown files
 vim.api.nvim_create_autocmd('FileType', {
@@ -41,7 +41,7 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
+-- Enable 24-bit color schemes
 vim.o.termguicolors = true
 
 -- vim: ts=2 sts=2 sw=2 et
