@@ -18,6 +18,7 @@ require('telescope').setup {
       grouped = true,
       hijack_netrw = true,
       hidden = true,
+      respect_gitignore = false,
     },
   },
   pickers = {
