@@ -69,6 +69,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         html = { { 'prettierd', 'prettier' } },
+        css = { { 'prettierd', 'prettier' } },
         javascript = { { 'prettierd', 'prettier' } },
         javascriptreact = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
