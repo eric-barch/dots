@@ -1,0 +1,21 @@
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+*.orig
+
+# dSYM
+*.dSYM
+
+# CMake
+cmake-build-*/
+
+# Python - venv
+venv/
+__pycache__
+
+# Node - npm modules
+npm_modules/
+
+# XCode
+*.xcuserstate
