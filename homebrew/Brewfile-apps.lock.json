@@ -1,0 +1,114 @@
+{
+  "entries": {
+    "cask": {
+      "1password": {
+        "version": "8.10.28",
+        "options": {
+          "full_name": "1password"
+        }
+      },
+      "alacritty": {
+        "version": "0.13.2",
+        "options": {
+          "full_name": "alacritty"
+        }
+      },
+      "anki": {
+        "version": "24.04.1",
+        "options": {
+          "full_name": "anki"
+        }
+      },
+      "arc": {
+        "version": "1.38.0,48670",
+        "options": {
+          "full_name": "arc"
+        }
+      },
+      "bruno": {
+        "version": "1.13.0",
+        "options": {
+          "full_name": "bruno"
+        }
+      },
+      "displaylink": {
+        "version": "1.10.1,2024-03",
+        "options": {
+          "full_name": "displaylink"
+        }
+      },
+      "docker": {
+        "version": "4.29.0,145265",
+        "options": {
+          "full_name": "docker"
+        }
+      },
+      "firefox": {
+        "version": "124.0.2",
+        "options": {
+          "full_name": "firefox"
+        }
+      },
+      "google-chrome": {
+        "version": "123.0.6312.124",
+        "options": {
+          "full_name": "google-chrome"
+        }
+      },
+      "hammerspoon": {
+        "version": "0.9.100",
+        "options": {
+          "full_name": "hammerspoon"
+        }
+      },
+      "kindle": {
+        "version": "1.40.65626",
+        "options": {
+          "full_name": "kindle"
+        }
+      },
+      "obsidian": {
+        "version": "1.5.12",
+        "options": {
+          "full_name": "obsidian"
+        }
+      },
+      "pgadmin4": {
+        "version": "8.5",
+        "options": {
+          "full_name": "pgadmin4"
+        }
+      },
+      "raycast": {
+        "version": "1.71.3",
+        "options": {
+          "full_name": "raycast"
+        }
+      },
+      "sublime-text": {
+        "version": "4169",
+        "options": {
+          "full_name": "sublime-text"
+        }
+      },
+      "xcodes": {
+        "version": "2.1.2b26",
+        "options": {
+          "full_name": "xcodes"
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.2.17",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.3.0.0.1.1708646388",
+        "Xcode": "15.1",
+        "macOS": "14.3.1"
+      }
+    }
+  }
+}
