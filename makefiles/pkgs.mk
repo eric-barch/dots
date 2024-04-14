@@ -20,6 +20,12 @@ pkgs_core: $(BREW_BIN)
 	$(MAKE) pkgs_antidote
 	$(BREW_BIN) bundle --file=homebrew/Brewfile-core
 
+ANTIDOTE := $(HOME)/.antidote
+.PHONY: pkgs_antidote
+pkgs_antidote: $(ANTIDOTE)
+$(ANTIDOTE): 
+	git clone --depth=1 https://github.com/mattmc3/antidote.git $(HOME)/.antidote
+
 .PHONY: pkgs_apps
 pkgs_apps: $(BREW_BIN)
 	$(BREW_BIN) bundle --file=homebrew/Brewfile-apps
