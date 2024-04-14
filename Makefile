@@ -1,7 +1,7 @@
 include makefiles/pkgs.mk
 include makefiles/stow.mk
 
-# Check and set XDG_CONFIG_HOME if not already defined
+# Check XDG_CONFIG_HOME and set if not defined
 XDG_CONFIG_HOME ?= $(HOME)/.config
 
 export XDG_CONFIG_HOME
