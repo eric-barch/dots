@@ -45,3 +45,7 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Set up fzf key bindings and fuzzy completion
+# https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
+eval "$(fzf --zsh)"

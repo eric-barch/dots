@@ -9,7 +9,7 @@ ifeq ($(ARCH),arm)
 endif
 
 .PHONY: pkgs_all
-pkgs_all: pkgs_core pkgs_apps pkgs_fzf
+pkgs_all: pkgs_core pkgs_apps
 
 $(BREW_BIN):
 	[ -f $(BREW_BIN) ] || \
@@ -25,11 +25,7 @@ ANTIDOTE := $(XDG_CONFIG_HOME)/antidote
 pkgs_antidote: $(ANTIDOTE)
 $(ANTIDOTE): 
 	git clone --depth=1 https://github.com/mattmc3/antidote.git $(XDG_CONFIG_HOME)/antidote
+
 .PHONY: pkgs_apps
 pkgs_apps: $(BREW_BIN)
 	$(BREW_BIN) bundle --file=homebrew/Brewfile-apps
-
-.PHONY: pkgs_fzf
-pkgs_fzf: $(BREW_BIN)
-	# Brew-specific extra steps
-	[ -f $(HOME)/.fzf.zsh ] || ($(BREW_PREFIX)/opt/fzf/install; rm ~/.fzf.bash)
