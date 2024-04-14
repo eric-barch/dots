@@ -1,0 +1,22 @@
+# Import Catppuccin Mocha Theme
+import = [
+  "~/.dotfiles/alacritty/catppuccin/catppuccin-mocha.toml",
+]
+
+# Set shell
+[shell]
+program="/bin/zsh"
+
+# Set true color
+[env]
+TERM = "xterm-256color"
+
+# Set window padding
+[window]
+startup_mode = "Maximized"
+padding = { x = 8, y = 8 }
+
+# Font settings
+[font]
+normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
+size = 12.0
