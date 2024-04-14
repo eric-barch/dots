@@ -1,6 +1,10 @@
-# Import Catppuccin Mocha Theme
-import = [
-  "~/.dotfiles/alacritty/catppuccin/catppuccin-mocha.toml",
+# Set theme
+import=[
+  # Uncomment desired flavor
+  # "~/.config/alacritty/catppuccin/catppuccin-latte.toml"
+  # "~/.config/alacritty/catppuccin/catppuccin-frappe.toml"
+  # "~/.config/alacritty/catppuccin/catppuccin-macchiato.toml"
+  "~/.config/alacritty/catppuccin/catppuccin-mocha.toml"
 ]
 
 # Set shell
