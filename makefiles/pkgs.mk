@@ -8,8 +8,8 @@ ifeq ($(ARCH),arm)
 	BREW_BIN := /opt/homebrew/bin/brew
 endif
 
-.PHONY: pkgs_all
-pkgs_all: pkgs_core pkgs_apps
+.PHONY: pkgs
+pkgs: pkgs_core pkgs_apps
 
 $(BREW_BIN):
 	[ -f $(BREW_BIN) ] || \
