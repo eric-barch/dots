@@ -1,5 +1,5 @@
 include makefiles/pkgs.mk
-include makefiles/stow.mk
+include makefiles/link.mk
 
 # Check XDG_CONFIG_HOME and set if not defined
 XDG_CONFIG_HOME ?= $(HOME)/.config
