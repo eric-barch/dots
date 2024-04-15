@@ -6,6 +6,7 @@ export TERM="xterm-256color"
 
 # Environment configs
 export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/gitconfig"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Environment paths
