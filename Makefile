@@ -6,6 +6,11 @@ XDG_CONFIG_HOME ?= $(HOME)/.config
 
 export XDG_CONFIG_HOME
 
-setup:
+# Initialize git submodules
+submodules:
+	git submodule update --init
+
+# Install packages and symlink to XDG_CONFIG_HOME
+setup: submodules
 	$(MAKE) pkgs
 	$(MAKE) link
