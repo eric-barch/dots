@@ -12,6 +12,7 @@ alias lg="lazygit"
 alias nv="nvim"
 
 # tmux
+alias tl="tmux ls"
 alias tn="tmux new"
 alias ta="tmux attach"
 alias td="tmux detach"
