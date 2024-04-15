@@ -5,8 +5,8 @@ export PAGER=less
 export TERM="xterm-256color"
 
 # Environment configs
+export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/gitconfig"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-export GIT_CONFIG_GLOBAL="$XDG_CONFIG_HOME/git/.gitconfig"
 
 # Environment paths
 path=(
