@@ -15,8 +15,8 @@ require('lazy').setup({
   require 'plugins/telescope',
   require 'plugins/lspconfig',
   require 'plugins/conform',
-  -- Customized up to here.
   require 'plugins/treesitter',
+  -- Customized up to here.
   require 'plugins/cmp',
   require 'plugins/todo-comments',
   require 'plugins/mini',
