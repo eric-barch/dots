@@ -17,8 +17,8 @@ require('lazy').setup({
   require 'plugins/conform',
   require 'plugins/treesitter',
   require 'plugins/cmp',
-  -- Customized up to here.
   require 'plugins/todo-comments',
+  -- Customized up to here.
   require 'plugins/mini',
 
   -- TODO: Check out these plugins:
