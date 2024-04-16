@@ -22,9 +22,9 @@ require('lazy').setup({
   require 'plugins/mini',
 
   -- TODO: Check out these plugins:
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
+  -- require 'plugins.debug',
+  -- require 'plugins.indent_line',
+  -- require 'plugins.lint',
 }, {
   ui = {
     -- If using a Nerd Font, set icons to an empty table. Otherwise define a
