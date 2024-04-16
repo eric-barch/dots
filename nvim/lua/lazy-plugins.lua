@@ -16,8 +16,8 @@ require('lazy').setup({
   require 'plugins/lspconfig',
   require 'plugins/conform',
   require 'plugins/treesitter',
-  -- Customized up to here.
   require 'plugins/cmp',
+  -- Customized up to here.
   require 'plugins/todo-comments',
   require 'plugins/mini',
 
