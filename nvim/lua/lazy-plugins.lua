@@ -1,12 +1,9 @@
 -- [[ Configure and install plugins ]]
 -- Check plugin status: `:Lazy`
 -- Update plugins: `:Lazy update`
-
 require('lazy').setup({
-  -- <leader>gc comments visual selection
-  { 'numToStr/Comment.nvim', opts = {} },
-
   require 'plugins/vim-sleuth',
+  require 'plugins/comment',
   require 'plugins/catppuccin',
   require 'plugins/tokyonight',
   require 'plugins/gitsigns',
