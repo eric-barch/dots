@@ -9,9 +9,6 @@ require('lazy').setup({
   -- <leader>gc comments visual selection
   { 'numToStr/Comment.nvim', opts = {} },
 
-  -- NOTE: Using `require 'path/name'` will include a plugin definition from
-  -- file lua/path/name.lua
-
   require 'plugins/catppuccin',
   require 'plugins/gitsigns',
   require 'plugins/which-key',
@@ -24,16 +21,14 @@ require('lazy').setup({
   require 'plugins/mini',
   require 'plugins/treesitter',
 
-  --  Here are some example plugins that I've included in the Kickstart repository.
-  --  Uncomment any of the lines below to enable them (you will need to restart nvim).
-  --
+  -- TODO: Check out these plugins:
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
 }, {
   ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+    -- If using a Nerd Font, set icons to an empty table. Otherwise define a
+    -- unicode icons table.
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
