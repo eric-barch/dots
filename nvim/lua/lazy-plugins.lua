@@ -16,8 +16,8 @@ require('lazy').setup({
   require 'plugins/gitsigns',
   require 'plugins/which-key',
   require 'plugins/telescope',
-  -- Have customized up to here
   require 'plugins/lspconfig',
+  -- Customized up to here.
   require 'plugins/conform',
   require 'plugins/cmp',
   require 'plugins/todo-comments',
