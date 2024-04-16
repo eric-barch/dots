@@ -3,12 +3,10 @@
 -- Update plugins: `:Lazy update`
 
 require('lazy').setup({
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
-
   -- <leader>gc comments visual selection
   { 'numToStr/Comment.nvim', opts = {} },
 
+  require 'plugins/vim-sleuth',
   require 'plugins/catppuccin',
   require 'plugins/tokyonight',
   require 'plugins/gitsigns',
