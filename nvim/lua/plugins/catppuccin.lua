@@ -1,11 +1,21 @@
+-- Catppuccin colorscheme
+-- See `:help catppuccin` and
+-- https://github.com/catppuccin/nvim?tab=readme-ov-file#configuration
 return {
   {
     'catppuccin/nvim',
     priority = 1000,
-    init = function()
+    lazy = false,
+    config = function()
+      local catppuccin = require 'catppuccin'
+      catppuccin.setup {
+        styles = {
+          comments = {},
+        },
+      }
       vim.cmd.colorscheme 'catppuccin-mocha'
-      vim.cmd.hi 'Comment gui=none'
     end,
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et
