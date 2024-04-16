@@ -12,13 +12,14 @@ require('lazy').setup({
   -- NOTE: Using `require 'path/name'` will include a plugin definition from
   -- file lua/path/name.lua
 
+  require 'plugins/catppuccin',
   require 'plugins/gitsigns',
   require 'plugins/which-key',
   require 'plugins/telescope',
+  -- Have customized up to here
   require 'plugins/lspconfig',
   require 'plugins/conform',
   require 'plugins/cmp',
-  require 'plugins/tokyonight',
   require 'plugins/todo-comments',
   require 'plugins/mini',
   require 'plugins/treesitter',
