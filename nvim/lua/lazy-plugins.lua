@@ -10,6 +10,7 @@ require('lazy').setup({
   { 'numToStr/Comment.nvim', opts = {} },
 
   require 'plugins/catppuccin',
+  require 'plugins/tokyonight',
   require 'plugins/gitsigns',
   require 'plugins/which-key',
   require 'plugins/telescope',
