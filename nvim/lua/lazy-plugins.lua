@@ -14,12 +14,12 @@ require('lazy').setup({
   require 'plugins/which-key',
   require 'plugins/telescope',
   require 'plugins/lspconfig',
-  -- Customized up to here.
   require 'plugins/conform',
+  -- Customized up to here.
+  require 'plugins/treesitter',
   require 'plugins/cmp',
   require 'plugins/todo-comments',
   require 'plugins/mini',
-  require 'plugins/treesitter',
 
   -- TODO: Check out these plugins:
   -- require 'kickstart.plugins.debug',

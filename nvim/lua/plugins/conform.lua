@@ -1,23 +1,24 @@
+-- Autoformat
+-- See `:help conform`
 return {
-  { -- Autoformat
+  {
     'stevearc/conform.nvim',
     lazy = false,
     keys = {
       {
         '<leader>f',
         function()
-          require('conform').format { async = true, lsp_fallback = true }
+          require('conform').format { async = true, lsp_fallback = false }
         end,
         mode = '',
-        desc = '[F]ormat buffer',
+        desc = '[f]ormat buffer',
       },
     },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't
-        -- have a well standardized coding style. You can add additional
-        -- languages here or re-enable it for the disabled ones.
+        -- Disable "format_on_save lsp_fallback" for languages that don't have a
+        -- commonly accepted style.
         local disable_filetypes = { c = true, cpp = true }
         return {
           timeout_ms = 500,
@@ -25,15 +26,19 @@ return {
         }
       end,
       formatters_by_ft = {
+        -- A list runs multiple formatters sequentially.
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
-        --
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        python = { 'isort', 'black' },
+        -- A sub-list runs the first available formatter.
+        html = { { 'prettierd', 'prettier' } },
+        css = { { 'prettierd', 'prettier' } },
+        javascript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
       },
     },
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et
