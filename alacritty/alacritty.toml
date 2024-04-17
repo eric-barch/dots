@@ -1,10 +1,13 @@
 # Set theme
-import=[
-  # Uncomment desired flavor
-  # "~/.config/alacritty/catppuccin/catppuccin-latte.toml"
-  # "~/.config/alacritty/catppuccin/catppuccin-frappe.toml"
-  # "~/.config/alacritty/catppuccin/catppuccin-macchiato.toml"
-  "~/.config/alacritty/catppuccin/catppuccin-mocha.toml"
+import = [
+  # Tokyo night
+  # "~/.config/alacritty/themes/themes/tokyo-night.toml"
+
+  # Catppuccin light
+  # "~/.config/alacritty/themes/themes/catppuccin_latte.toml"
+
+  # Catpuccin dark
+  "~/.config/alacritty/themes/themes/catppuccin_mocha.toml"
 ]
 
 # Set shell
