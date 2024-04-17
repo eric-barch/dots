@@ -2,7 +2,7 @@
   "entries": {
     "cask": {
       "1password": {
-        "version": "8.10.28",
+        "version": "8.10.30",
         "options": {
           "full_name": "1password"
         }
@@ -26,7 +26,7 @@
         }
       },
       "bruno": {
-        "version": "1.13.0",
+        "version": "1.13.1",
         "options": {
           "full_name": "bruno"
         }
@@ -44,13 +44,13 @@
         }
       },
       "firefox": {
-        "version": "124.0.2",
+        "version": "125.0.1",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "123.0.6312.124",
+        "version": "124.0.6367.62",
         "options": {
           "full_name": "google-chrome"
         }
@@ -80,7 +80,7 @@
         }
       },
       "raycast": {
-        "version": "1.71.3",
+        "version": "1.71.4",
         "options": {
           "full_name": "raycast"
         }
