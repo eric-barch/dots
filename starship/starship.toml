@@ -23,32 +23,32 @@ Macos = ""
 [os]
 disabled = false
 format = "[ $symbol ]($style)"
-style = "fg:0 bg:7"
+style = "fg:16 bg:7"
 
 [directory]
 format = "[   $path ]($style)"
-style = "fg:0 bg:4"
+style = "fg:16 bg:4"
 
 [git_branch]
 always_show_remote = true
 format = "[  $branch(  $remote_branch) ]($style)"
-style = "fg:0 bg:3"
+style = "fg:16 bg:3"
 
 [git_status]
 format = '([$all_status$ahead_behind ]($style))'
-style = "fg:0 bg:3"
+style = "fg:16 bg:3"
 
 [git_metrics]
 disabled = false
 format = "([+$added ]($added_style))([-$deleted ]($deleted_style))"
-added_style = "fg:0 bg:3"
-deleted_style = "fg:0 bg:3"
+added_style = "fg:16 bg:3"
+deleted_style = "fg:16 bg:3"
 
 [character]
 format = "$symbol"
-success_symbol = "[](fg:3 bg:2)[ Insert ](fg:0 bg:2)[](fg:2)"
-error_symbol = "[](fg:3 bg:9)[ Insert ](fg:0 bg:9)[](fg:9)"
-vimcmd_symbol = "[](fg:3 bg:2)[ Normal ](fg:0 bg:2)[](fg:2)"
-vimcmd_replace_one_symbol = "[](fg:3 bg:2)[ Replace One ](fg:0 bg:2)[](fg:2)"
-vimcmd_replace_symbol = "[](fg:3 bg:2)[ Replace ](fg:0 bg:2)[](fg:2)"
-vimcmd_visual_symbol = "[](fg:3 bg:2)[ Visual ](fg:0 bg:2)[](fg:2)"
+success_symbol = "[](fg:3 bg:2)[ Insert ](fg:16 bg:2)[](fg:2)"
+error_symbol = "[](fg:3 bg:9)[ Insert ](fg:16 bg:9)[](fg:9)"
+vimcmd_symbol = "[](fg:3 bg:2)[ Normal ](fg:16 bg:2)[](fg:2)"
+vimcmd_replace_one_symbol = "[](fg:3 bg:2)[ Replace One ](fg:16 bg:2)[](fg:2)"
+vimcmd_replace_symbol = "[](fg:3 bg:2)[ Replace ](fg:16 bg:2)[](fg:2)"
+vimcmd_visual_symbol = "[](fg:3 bg:2)[ Visual ](fg:16 bg:2)[](fg:2)"
