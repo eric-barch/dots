@@ -1,3 +1,6 @@
+# clear
+alias c="clear"
+
 # ls
 alias l="ls -FoG"
 alias ll="ls -FoGa"
