@@ -19,6 +19,18 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Set last pane width to 80 on vertical split.
+vim.keymap.set('n', '<C-w>v', function()
+  vim.cmd 'vsplit'
+  vim.cmd 'vertical resize 80'
+  vim.cmd 'wincmd l'
+end, {
+  -- Prevent keymap from propagating.
+  noremap = true,
+  -- Suppress output in command line.
+  silent = true,
+})
+
 -- Keybinds to make split navigation easier.
 -- See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to left split' })
