@@ -1,4 +1,4 @@
--- LSP
+-- LSP.
 -- See `:help lsp` and `:help lsp-vs-treesitter`.
 return {
   {

@@ -1,4 +1,4 @@
--- Collection of small, independent plugins
+-- Collection of small, independent plugins.
 -- See `:help mini.nvim`.
 return {
   {

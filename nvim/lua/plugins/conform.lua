@@ -1,5 +1,5 @@
--- Autoformat
--- See `:help conform`
+-- Autoformat.
+-- See `:help conform`.
 return {
   {
     'stevearc/conform.nvim',

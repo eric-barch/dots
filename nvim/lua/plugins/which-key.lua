@@ -1,5 +1,5 @@
--- Show pending keybindings
--- See `:help which-key`
+-- Show pending keybindings.
+-- See `:help which-key`.
 return {
   {
     'folke/which-key.nvim',

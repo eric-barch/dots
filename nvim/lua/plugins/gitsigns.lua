@@ -1,5 +1,5 @@
--- Add git signs to the gutter
--- See `:help gitsigns`
+-- Add git signs to the gutter.
+-- See `:help gitsigns`.
 return {
   {
     'lewis6991/gitsigns.nvim',

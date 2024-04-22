@@ -1,5 +1,5 @@
--- Toggle comments
--- See `:help comment-nvim`
+-- Toggle comments.
+-- See `:help comment-nvim`.
 return {
   {
     'numToStr/Comment.nvim',

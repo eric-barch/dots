@@ -1,5 +1,5 @@
--- Highlight, edit, and navigate code
--- See `:help treesitter` and `:help lsp-vs-treesitter`
+-- Highlight, edit, and navigate code.
+-- See `:help treesitter` and `:help lsp-vs-treesitter`.
 return {
   {
     'nvim-treesitter/nvim-treesitter',
