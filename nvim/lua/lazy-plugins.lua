@@ -15,6 +15,7 @@ require('lazy').setup({
   require 'plugins/cmp',
   require 'plugins/todo-comments',
   require 'plugins/mini',
+  require 'plugins/vim-tmux-navigator',
 
   -- TODO: Check out these plugins:
   -- require 'plugins.debug',
