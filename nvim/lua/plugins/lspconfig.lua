@@ -71,6 +71,7 @@ return {
       -- Define servers table.
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs.
+        astro = {},
         html = {},
         lua_ls = {
           -- cmd = {...},
