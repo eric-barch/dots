@@ -26,7 +26,7 @@ return {
         }
       end,
       formatters_by_ft = {
-        astro = { { 'prettier' } },
+        astro = { { 'prettierd', 'prettier' } },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         html = { { 'prettierd', 'prettier' } },
