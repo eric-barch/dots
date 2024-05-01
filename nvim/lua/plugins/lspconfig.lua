@@ -88,6 +88,7 @@ return {
           },
         },
         prismals = {},
+        tailwindcss = { filetypes = { 'css' } },
         -- NOTE: Try https://github.com/pmizio/typescript-tools.nvim
         tsserver = {
           filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
