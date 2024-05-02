@@ -11,9 +11,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Environment paths
 path=(
-  $HOME/bin
+  $HOME/.local/bin
   /opt/homebrew/bin
-  /usr/local/bin
   $path
 )
 
