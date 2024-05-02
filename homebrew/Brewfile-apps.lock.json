@@ -20,13 +20,13 @@
         }
       },
       "arc": {
-        "version": "1.38.0,48670",
+        "version": "1.40.1,49250",
         "options": {
           "full_name": "arc"
         }
       },
       "bruno": {
-        "version": "1.13.1",
+        "version": "1.16.1",
         "options": {
           "full_name": "bruno"
         }
@@ -44,13 +44,13 @@
         }
       },
       "firefox": {
-        "version": "125.0.1",
+        "version": "125.0.3",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "124.0.6367.62",
+        "version": "124.0.6367.119",
         "options": {
           "full_name": "google-chrome"
         }
@@ -74,13 +74,13 @@
         }
       },
       "pgadmin4": {
-        "version": "8.5",
+        "version": "8.6",
         "options": {
           "full_name": "pgadmin4"
         }
       },
       "raycast": {
-        "version": "1.71.4",
+        "version": "1.72.1",
         "options": {
           "full_name": "raycast"
         }
@@ -102,12 +102,12 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.18",
+        "HOMEBREW_VERSION": "4.2.20",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.1",
-        "macOS": "14.3.1"
+        "macOS": "14.4.1"
       }
     }
   }
