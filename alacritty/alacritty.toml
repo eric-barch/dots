@@ -1,29 +1,25 @@
-# Set theme
+# Set theme.
 import = [
-  # Tokyo night
-  # "~/.config/alacritty/themes/themes/tokyo-night.toml"
-
-  # Catppuccin light
-  # "~/.config/alacritty/themes/themes/catppuccin_latte.toml"
-
-  # Catpuccin dark
   "~/.config/alacritty/themes/themes/catppuccin_mocha.toml"
 ]
 
-# Set shell
+# Set live config reload to true.
+live_config_reload = true
+
+# Set shell.
 [shell]
 program="/bin/zsh"
 
-# Set true color
+# Set true color.
 [env]
 TERM = "xterm-256color"
 
-# Set window padding
+# Set window padding.
 [window]
 startup_mode = "Maximized"
 padding = { x = 8, y = 8 }
 
-# Font settings
+# Font settings.
 [font]
 normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
 size = 12.0
