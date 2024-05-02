@@ -13,7 +13,6 @@ return {
           comments = {},
         },
       }
-      vim.cmd.colorscheme 'catppuccin-mocha'
     end,
   },
 }

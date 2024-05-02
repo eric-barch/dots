@@ -1,0 +1,47 @@
+#!/bin/zsh
+# Set theme for alacritty, tmux, and nvim.
+
+# Capture theme argument.
+THEME="$1"
+
+# Set config filepaths.
+ALACRITTY_CONFIG="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
+NVIM_CONFIG="$XDG_CONFIG_HOME/nvim/lua/commands.lua"
+
+# Resolve symlinks.
+ALACRITTY_CONFIG=$(readlink -f "$ALACRITTY_CONFIG" || echo "$ALACRITTY_CONFIG")
+TMUX_CONFIG=$(readlink -f "$TMUX_CONFIG" || echo "$TMUX_CONFIG")
+NVIM_CONFIG=$(readlink -f "$NVIM_CONFIG" || echo "$NVIM_CONFIG")
+
+# Set application-specific theme names.
+case $THEME in
+  catppuccin-mocha)
+    ALACRITTY_THEME="catppuccin_mocha"
+    TMUX_THEME="mocha"
+    NVIM_THEME="catppuccin-mocha"
+    ;;
+  catppuccin-latte)
+    ALACRITTY_THEME="catppuccin_latte"
+    TMUX_THEME="latte"
+    NVIM_THEME="catppuccin-latte"
+    ;;
+  *)
+    echo "Invalid theme specified. Use one of the following: catppuccin-mocha, catppuccin-latte."
+    exit 1
+    ;;
+esac
+
+# Swap out theme lines in config files.
+sed -i "" "/^[^#]*theme/s|.*|  \"~/.config/alacritty/themes/themes/${ALACRITTY_THEME}.toml\"|" "$ALACRITTY_CONFIG"
+sed -i "" "/^[^#]*catppuccin_flavour/s|.*|set -g @catppuccin_flavour '${TMUX_THEME}'|" "$TMUX_CONFIG"
+sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '${NVIM_THEME}'|" "$NVIM_CONFIG"
+
+# Send colorscheme command to open (n)vim tmux panes.
+# TODO: Implement this using RPC (see `:h clientserver`).
+tmux list-panes -a -F '#{pane_id} #{pane_current_command}' |
+grep vim |
+cut -d ' ' -f 1 |
+xargs -I PANE tmux send-keys -t PANE 'C-[' ":colorscheme ${NVIM_THEME}" 'C-m'
+
+tmux source-file "$TMUX_CONFIG"
