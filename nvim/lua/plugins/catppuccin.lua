@@ -4,15 +4,10 @@
 return {
   {
     'catppuccin/nvim',
-    priority = 1000,
     lazy = false,
     config = function()
       local catppuccin = require 'catppuccin'
-      catppuccin.setup {
-        styles = {
-          comments = {},
-        },
-      }
+      catppuccin.setup {}
     end,
   },
 }

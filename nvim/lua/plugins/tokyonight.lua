@@ -7,8 +7,6 @@ return {
     lazy = false,
     config = function()
       local tokyonight = require 'tokyonight'
-      -- TODO: Turn off highlights:
-      -- https://github.com/folke/tokyonight.nvim/tree/main?tab=readme-ov-file#-overriding-colors--highlight-groups
       tokyonight.setup {}
     end,
   },
