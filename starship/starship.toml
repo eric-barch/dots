@@ -1,5 +1,5 @@
 add_newline = true	# Add line between prompts		
-command_timeout = 300	# Timeout for Starship commands
+command_timeout = 1000	# Timeout for Starship commands
 scan_timeout = 30	# Timeout for Starship file scan
 
 format = """\
