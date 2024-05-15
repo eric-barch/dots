@@ -37,11 +37,14 @@ sed -i "" "/^[^#]*theme/s|.*|  \"~/.config/alacritty/themes/themes/${ALACRITTY_T
 sed -i "" "/^[^#]*catppuccin_flavour/s|.*|set -g @catppuccin_flavour '${TMUX_THEME}'|" "$TMUX_CONFIG"
 sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '${NVIM_THEME}'|" "$NVIM_CONFIG"
 
-# Send colorscheme command to open (n)vim tmux panes.
-# TODO: Implement this using RPC (see `:h clientserver`).
-tmux list-panes -a -F '#{pane_id} #{pane_current_command}' |
-grep vim |
-cut -d ' ' -f 1 |
-xargs -I PANE tmux send-keys -t PANE 'C-[' ":colorscheme ${NVIM_THEME}" 'C-m'
+if tmux has-session &>/dev/null; then
+  # Send colorscheme command to open (n)vim tmux panes.
+  # TODO: Implement this using RPC (see `:h clientserver`).
+  tmux list-panes -a -F '#{pane_id} #{pane_current_command}' |
+  grep vim |
+  cut -d ' ' -f 1 |
+  xargs -I PANE tmux send-keys -t PANE 'C-[' ":colorscheme ${NVIM_THEME}" 'C-m'
 
-tmux source-file "$TMUX_CONFIG"
+  # Source tmux config.
+  tmux source-file "$TMUX_CONFIG"
+fi
