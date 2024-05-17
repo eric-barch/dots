@@ -88,6 +88,7 @@ return {
           },
         },
         prismals = {},
+        svelte = { filetypes = { 'svelte' } },
         tailwindcss = { filetypes = { 'css' } },
         -- NOTE: Try https://github.com/pmizio/typescript-tools.nvim
         tsserver = {
