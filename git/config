@@ -1,9 +1,13 @@
-[user]
-  name = Eric Barch
-  email = eric.michael.barch@gmail.com
+[core]
+  excludesfile = ~/.config/git/gitignore
+  editor = nvim
+
+[diff]
+  tool = nvimdiff
 
 [init]
   defaultBranch = main
 
-[core]
-  excludesfile = ~/.config/git/gitignore
+[user]
+  name = Eric Barch
+  email = eric.michael.barch@gmail.com
