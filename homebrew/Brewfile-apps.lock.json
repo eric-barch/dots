@@ -2,7 +2,7 @@
   "entries": {
     "cask": {
       "1password": {
-        "version": "8.10.30",
+        "version": "8.10.32",
         "options": {
           "full_name": "1password"
         }
@@ -20,13 +20,13 @@
         }
       },
       "arc": {
-        "version": "1.40.1,49250",
+        "version": "1.43.0,50018",
         "options": {
           "full_name": "arc"
         }
       },
       "bruno": {
-        "version": "1.16.1",
+        "version": "1.17.0",
         "options": {
           "full_name": "bruno"
         }
@@ -38,19 +38,19 @@
         }
       },
       "docker": {
-        "version": "4.29.0,145265",
+        "version": "4.30.0,149282",
         "options": {
           "full_name": "docker"
         }
       },
       "firefox": {
-        "version": "125.0.3",
+        "version": "126.0",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "124.0.6367.119",
+        "version": "125.0.6422.61",
         "options": {
           "full_name": "google-chrome"
         }
@@ -80,7 +80,7 @@
         }
       },
       "raycast": {
-        "version": "1.72.1",
+        "version": "1.74.1",
         "options": {
           "full_name": "raycast"
         }
@@ -102,11 +102,11 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.20",
+        "HOMEBREW_VERSION": "4.3.1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
-        "Xcode": "15.1",
+        "Xcode": "15.4",
         "macOS": "14.4.1"
       }
     }
