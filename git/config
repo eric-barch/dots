@@ -39,6 +39,9 @@
 [init]
   defaultBranch = main
 
+[merge]
+  tool = nvimdiff2
+
 [user]
   name = Eric Barch
   email = eric.michael.barch@gmail.com
