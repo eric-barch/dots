@@ -1,5 +1,0 @@
-[user]
-  name = Eric Barch
-  email = eric.michael.barch@gmail.com
-[core]
-	excludesfile = /Users/ericbarch/.config/git/.gitignore_global
