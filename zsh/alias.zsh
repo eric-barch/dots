@@ -1,6 +1,9 @@
 # clear
 alias c="clear"
 
+# esp idf
+alias esp_env=". $HOME/esp/esp-idf/export.sh"
+
 # ls
 alias l="ls -FoG"
 alias ll="ls -FoGa"
