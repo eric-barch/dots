@@ -35,29 +35,6 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
   silent = true,
 })
 
--- Set last pane width to 80 on vertical split.
-vim.keymap.set('n', '<C-w>v', function()
-  -- Check if line numbers are enabled and get their width.
-  local num_width = vim.wo.number and vim.wo.numberwidth or 0
-  -- Assumes signcolumn is either 'yes' or 'no/auto'.
-  local sign_width = vim.wo.signcolumn == 'yes' and 2 or 0
-  -- Get the width of the fold column.
-  local fold_width = tonumber(vim.wo.foldcolumn)
-
-  local column_width = num_width + sign_width + fold_width
-  local target_text_width = 80
-
-  vim.cmd 'vsplit'
-  vim.cmd('vertical resize ' .. (column_width + target_text_width))
-  vim.cmd 'wincmd l'
-end, {
-  desc = 'Split window [v]ertically',
-  -- Prevent keymap from propagating.
-  noremap = true,
-  -- Suppress output in command line.
-  silent = true,
-})
-
 -- Keybinds to make split navigation easier.
 -- See `:help wincmd` for a list of all window commands.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
