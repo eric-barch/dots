@@ -1,10 +1,6 @@
 [alias]
   co = checkout
 
-  f = fetch
-  p = pull
-  pu = push
-
   a = add
 
   c = commit
@@ -15,9 +11,11 @@
   s = status
   ss = status -s
   sh = show
-  l = log
+
+  l = log --graph
+  la = log --graph --all
   lp = log --patch
-  l1 = log --oneline
+  ll = log --oneline
 
   b = branch
 
