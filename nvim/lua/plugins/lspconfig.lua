@@ -1,5 +1,6 @@
 -- LSP.
 -- See `:help lsp` and `:help lsp-vs-treesitter`.
+
 return {
   {
     -- Configs for the nvim LSP client.
@@ -72,23 +73,19 @@ return {
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs.
         astro = {},
+        clangd = {},
         html = {},
         lua_ls = {
-          -- cmd = {...},
-          -- filetypes = {...},
-          -- capabilities = {...},
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- Toggle below to ignore lua_ls's noisy `missing-fields` warnings.
-              -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
         prismals = {},
-        svelte = { filetypes = { 'svelte' } },
+        svelte = {},
         tailwindcss = { filetypes = { 'css' } },
         -- NOTE: Try https://github.com/pmizio/typescript-tools.nvim
         tsserver = {
@@ -101,11 +98,6 @@ return {
       require('mason').setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
-
-      vim.list_extend(ensure_installed, {
-        -- Formats Lua.
-        'stylua',
-      })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
