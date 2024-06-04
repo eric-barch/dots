@@ -1,13 +1,16 @@
 -- Show pending keybindings.
 -- See `:help which-key`.
+
 return {
   {
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Loads which-key before all UI elements
-    config = function() -- Runs AFTER which-key has loaded
+    -- Load WhichKey before all UI elements.
+    event = 'VimEnter',
+    -- Runs AFTER WhichKey has loaded.
+    config = function()
       require('which-key').setup()
 
-      -- Document existing key chains
+      -- Register prefixes.
       require('which-key').register {
         ['<leader>b'] = { name = '[b]rowse', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[c]ode', _ = 'which_key_ignore' },

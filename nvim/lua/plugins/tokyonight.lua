@@ -1,6 +1,6 @@
 -- Tokyonight colorscheme.
--- See `:help tokyonight` and
--- `https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#%EF%B8%8F-configuration`.
+-- See `:help tokyonight`.
+
 return {
   {
     'folke/tokyonight.nvim',

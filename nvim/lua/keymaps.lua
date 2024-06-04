@@ -20,12 +20,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
 })
 
 -- Exit builtin terminal. Default is <C-\><C-n>.
--- NOTE: This won't work in all terminal emulators/tmux/etc.
+-- NOTE: May not work in all terminal emulators, tmux, etc.
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
   desc = 'Exit terminal mode',
 })
 
--- Improve wrapped line navigation.
+-- Wrapped line navigation.
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
   expr = true,
   silent = true,
@@ -35,8 +35,8 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
   silent = true,
 })
 
--- Keybinds to make split navigation easier.
--- See `:help wincmd` for a list of all window commands.
+-- Split navigation.
+-- See `:help wincmd`.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
   desc = 'Move focus to left split',
 })
@@ -49,9 +49,6 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', {
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
   desc = 'Move focus to upper split',
 })
-
--- Basic Autocommands.
--- See `:help lua-guide-autocommands`.
 
 -- Highlight on yank.
 -- See `:help vim.highlight.on_yank()`.

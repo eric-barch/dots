@@ -1,5 +1,6 @@
 -- Fuzzy finder.
 -- See `:help telescope`.
+
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -26,8 +27,8 @@ return {
       },
     },
     config = function()
-      -- [[ Configure Telescope ]]
-      -- See `:help telescope.setup()`
+      -- Configure Telescope.
+      -- See `:help telescope.setup()`.
       require('telescope').setup {
         defaults = {
           layout_strategy = 'horizontal',
@@ -71,12 +72,12 @@ return {
         },
       }
 
-      -- Enable Telescope extensions if they are installed
+      -- Enable Telescope extensions if they are installed.
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'file_browser')
 
-      -- See `:help telescope.builtin`
+      -- See `:help telescope.builtin`.
       local builtin = require 'telescope.builtin'
 
       vim.keymap.set('n', '<leader>/', function()

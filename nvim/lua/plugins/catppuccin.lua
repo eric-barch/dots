@@ -1,6 +1,6 @@
 -- Catppuccin colorscheme.
--- See `:help catppuccin` and
--- `https://github.com/catppuccin/nvim?tab=readme-ov-file#configuration`.
+-- See `:help catppuccin`.
+
 return {
   {
     'catppuccin/nvim',

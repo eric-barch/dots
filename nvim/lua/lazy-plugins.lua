@@ -1,7 +1,8 @@
--- [[ Configure and install plugins ]]
+-- Configure and install plugins.
 -- Check plugin status: `:Lazy`
 -- Update plugins: `:Lazy update`
-require('lazy').setup({
+
+require('lazy').setup {
   require 'plugins/vim-sleuth',
   require 'plugins/comment',
   require 'plugins/catppuccin',
@@ -21,26 +22,6 @@ require('lazy').setup({
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',
   -- require 'plugins.lint',
-}, {
-  ui = {
-    -- If using a Nerd Font, set icons to an empty table. Otherwise define a
-    -- unicode icons table.
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
-})
+}
 
 -- vim: ts=2 sts=2 sw=2 et

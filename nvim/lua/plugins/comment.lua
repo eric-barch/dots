@@ -1,5 +1,6 @@
 -- Toggle comments.
 -- See `:help comment-nvim`.
+
 return {
   {
     'numToStr/Comment.nvim',

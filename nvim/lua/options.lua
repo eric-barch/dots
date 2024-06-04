@@ -36,26 +36,26 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default.
 vim.opt.signcolumn = 'yes'
 
--- Decrease update time.
+-- Decrease update time (writes swap file and fires CursorHold).
 vim.opt.updatetime = 250
 
--- Decrease mapped sequence wait time. Displays which-key popup sooner.
+-- Display which-key popup sooner.
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened.
+-- Focus new pane on split.
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
+-- Identify whitespace characters.
 -- See `:help 'list'`.
 -- and `:help 'listchars'`.
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- Preview substitutions live as you type.
+-- Preview substitutions.
 vim.opt.inccommand = 'split'
 
--- Minimum number of screen lines to keep above and below the cursor.
+-- Minimum number of lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
 -- Enable 24-bit colorschemes.

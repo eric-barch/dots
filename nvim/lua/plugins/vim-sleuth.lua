@@ -1,5 +1,6 @@
 -- Automatically detect tabstop and shiftwidth.
 -- See `:help sleuth`.
+
 return {
   {
     'tpope/vim-sleuth',
