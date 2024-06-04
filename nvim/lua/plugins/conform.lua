@@ -16,17 +16,15 @@ return {
     },
     opts = {
       notify_on_error = true,
-      format_on_save = function(bufnr)
-        -- Disable "format_on_save lsp_fallback" for languages that don't have a
-        -- commonly accepted style.
-        local disable_filetypes = { c = true, cpp = true }
+      format_on_save = function()
         return {
           timeout_ms = 500,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
       formatters_by_ft = {
         astro = { { 'prettierd', 'prettier' } },
+        c = { 'clang-format' },
+        cpp = { 'clang-format' },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         html = { { 'prettierd', 'prettier' } },
