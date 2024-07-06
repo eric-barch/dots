@@ -1,54 +1,108 @@
-add_newline = true	# Add line between prompts		
-command_timeout = 1000	# Timeout for Starship commands
-scan_timeout = 30	# Timeout for Starship file scan
+add_newline = false
 
-format = """\
-╭─\
+format = """
+[](fg:8)\
 $os\
-[](fg:7 bg:4)\
+$username\
+[](fg:8 bg:1)\
 $directory\
-[](fg:4 bg:3)\
+[](fg:1 bg:2)\
 $git_branch\
 $git_status\
 $git_metrics\
-$character\
+[](fg:2 bg:3)\
+$c\
+$cmake\
+$lua\
+$nodejs\
+[](fg:3 bg:4)\
+$docker_context\
+[](fg:4 bg:5)\
+$time\
+[ ](fg:5)\
 $line_break\
-╰─ \
+$character\
 """
-
-[os.symbols]
-Linux = ""
-Macos = ""
 
 [os]
 disabled = false
-format = "[ $symbol ]($style)"
-style = "fg:16 bg:7"
+style = "fg:16 bg:8"
+
+[os.symbols]
+Windows = "󰍲"
+Macos = ""
+Linux = "󰌽"
+Arch = "󰣇"
+
+[username]
+show_always = true
+style_user = "fg:16 bg:8"
+format = "[ $user ]($style)"
 
 [directory]
-format = "[   $path ]($style)"
-style = "fg:16 bg:4"
+style = "fg:16 bg:1"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
 
 [git_branch]
 always_show_remote = true
-format = "[  $branch(  $remote_branch) ]($style)"
-style = "fg:16 bg:3"
+style = "fg:16 bg:2"
+format = "[  $branch  $remote_branch ]($style)"
 
 [git_status]
-format = '([$all_status$ahead_behind ]($style))'
-style = "fg:16 bg:3"
+style = "fg:16 bg:2"
+format = "[$all_status$ahead_behind ]($style)"
 
 [git_metrics]
 disabled = false
-format = "([+$added ]($added_style))([-$deleted ]($deleted_style))"
-added_style = "fg:16 bg:3"
-deleted_style = "fg:16 bg:3"
+added_style = "fg:16 bg:2"
+deleted_style = "fg:16 bg:2"
+format = "[+$added ]($added_style)[-$deleted ]($deleted_style)"
+
+[c]
+symbol = ""
+style = "fg:16 bg:3"
+format = "[ $symbol $version ]($style)"
+
+[cmake]
+symbol = "󰔷"
+style = "fg:16 bg:3"
+format = "[ $symbol $version ]($style)"
+
+[lua]
+symbol = ""
+style = "fg:16 bg:3"
+format = "[ $symbol $version ]($style)"
+
+[nodejs]
+symbol = ""
+style = "fg:16 bg:3"
+format = "[ $symbol $version ]($style)"
+
+[docker_context]
+symbol = ""
+style = "fg:16 bg:4"
+format = "[ $symbol $context ]($style)"
+
+[time]
+disabled = false
+time_format = "%T"
+style = "fg:16 bg:5"
+format = "[  $time ]($style)"
+
+[line_break]
+disabled = false
 
 [character]
-format = "$symbol"
-success_symbol = "[](fg:3 bg:2)[ Insert ](fg:16 bg:2)[](fg:2)"
-error_symbol = "[](fg:3 bg:9)[ Insert ](fg:16 bg:9)[](fg:9)"
-vimcmd_symbol = "[](fg:3 bg:2)[ Normal ](fg:16 bg:2)[](fg:2)"
-vimcmd_replace_one_symbol = "[](fg:3 bg:2)[ Replace One ](fg:16 bg:2)[](fg:2)"
-vimcmd_replace_symbol = "[](fg:3 bg:2)[ Replace ](fg:16 bg:2)[](fg:2)"
-vimcmd_visual_symbol = "[](fg:3 bg:2)[ Visual ](fg:16 bg:2)[](fg:2)"
+disabled = false
+success_symbol = "[ ](fg:2)"
+error_symbol = "[ ](fg:1)"
+vimcmd_symbol = "[ N](bold fg:2)"
