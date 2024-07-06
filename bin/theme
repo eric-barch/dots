@@ -6,34 +6,39 @@ THEME="$1"
 
 # Set config filepaths.
 ALACRITTY_CONFIG="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+WEZTERM_CONFIG="$XDG_CONFIG_HOME/wezterm/wezterm.lua"
 TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 NVIM_CONFIG="$XDG_CONFIG_HOME/nvim/lua/commands.lua"
 
 # Resolve symlinks.
 ALACRITTY_CONFIG=$(readlink -f "$ALACRITTY_CONFIG" || echo "$ALACRITTY_CONFIG")
+WEZTERM_CONFIG=$(readlink -f "$WEZTERM_CONFIG" || echo "$WEZTERM_CONFIG")
 TMUX_CONFIG=$(readlink -f "$TMUX_CONFIG" || echo "$TMUX_CONFIG")
 NVIM_CONFIG=$(readlink -f "$NVIM_CONFIG" || echo "$NVIM_CONFIG")
 
 # Set application-specific theme names.
 case $THEME in
-  catppuccin-mocha)
-    ALACRITTY_THEME="catppuccin_mocha"
-    TMUX_THEME="mocha"
-    NVIM_THEME="catppuccin-mocha"
-    ;;
-  catppuccin-latte)
+  light)
     ALACRITTY_THEME="catppuccin_latte"
+    WEZTERM_THEME="onedarkpro_onelight"
     TMUX_THEME="latte"
     NVIM_THEME="catppuccin-latte"
     ;;
+  dark)
+    ALACRITTY_THEME="catppuccin_mocha"
+    WEZTERM_THEME="onedarkpro_onedark"
+    TMUX_THEME="mocha"
+    NVIM_THEME="catppuccin-mocha"
+    ;;
   *)
-    echo "Invalid theme specified. Use one of the following: catppuccin-mocha, catppuccin-latte."
+    echo "Invalid theme specified. Use one of the following: light, dark"
     exit 1
     ;;
 esac
 
 # Swap out theme lines in config files.
 sed -i "" "/^[^#]*theme/s|.*|  \"~/.config/alacritty/themes/themes/${ALACRITTY_THEME}.toml\"|" "$ALACRITTY_CONFIG"
+sed -i "" "/^[^#]*config.color_scheme/s|.*|config.color_scheme = \"${WEZTERM_THEME}\"|" "$WEZTERM_CONFIG"
 sed -i "" "/^[^#]*catppuccin_flavour/s|.*|set -g @catppuccin_flavour '${TMUX_THEME}'|" "$TMUX_CONFIG"
 sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '${NVIM_THEME}'|" "$NVIM_CONFIG"
 
