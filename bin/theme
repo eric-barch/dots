@@ -20,13 +20,13 @@ NVIM_CONFIG=$(readlink -f "$NVIM_CONFIG" || echo "$NVIM_CONFIG")
 case $THEME in
   light)
     ALACRITTY_THEME="catppuccin_latte"
-    WEZTERM_THEME="onedarkpro_onelight"
+    WEZTERM_THEME="onelight"
     TMUX_THEME="latte"
     NVIM_THEME="catppuccin-latte"
     ;;
   dark)
     ALACRITTY_THEME="catppuccin_mocha"
-    WEZTERM_THEME="onedarkpro_onedark"
+    WEZTERM_THEME="onedark"
     TMUX_THEME="mocha"
     NVIM_THEME="catppuccin-mocha"
     ;;
