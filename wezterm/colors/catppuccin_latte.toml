@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+  '#5c5f77',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#acb0be'
+]
+background = '#eff1f5'
+brights = [
+  '#6c6f85',
+  '#d20f39',
+  '#40a02b',
+  '#df8e1d',
+  '#1e66f5',
+  '#ea76cb',
+  '#179299',
+  '#bcc0cc'
+]
+cursor_bg = '#4c4f69'
+cursor_fg = '#4c4f69'
+foreground = '#4c4f69'
+selection_bg = '#4c4f69'
+selection_fg = '#4c4f69'
+
+[colors.indexed]
+
+[metadata]
+name = 'catppuccin_latte'
+origin_url = 'https://github.com/Gogh-Co/Gogh/blob/master/themes/Catppuccin%20Latte.yml'

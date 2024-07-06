@@ -29,5 +29,5 @@ selection_fg = '#6a6a6a'
 [colors.indexed]
 
 [metadata]
-name = 'onedarkpro_onelight'
+name = 'onelight'
 origin_url = 'https://github.com/olimorris/onedarkpro.nvim'

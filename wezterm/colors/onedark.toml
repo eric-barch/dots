@@ -29,5 +29,5 @@ selection_fg = '#abb2bf'
 [colors.indexed]
 
 [metadata]
-name = 'onedarkpro_onedark'
+name = 'onedark'
 origin_url = 'https://github.com/olimorris/onedarkpro.nvim'
