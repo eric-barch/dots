@@ -1,6 +1,6 @@
 # dots
 
-My (rewrite of my) dotfiles.
+My dotfiles.
 
 ## Setup
 
