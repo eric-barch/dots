@@ -1,0 +1,5 @@
+# Ignore everything in plugins.
+plugins/*
+
+# Un-ignore tpm submodule.
+!plugins/tpm/
