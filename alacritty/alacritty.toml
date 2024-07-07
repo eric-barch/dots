@@ -1,10 +1,10 @@
-# Set theme.
-import = [
-  "~/.config/alacritty/themes/themes/catppuccin_mocha.toml"
-]
-
 # Set live config reload to true.
 live_config_reload = true
+
+# Set theme.
+import = [
+  "~/.config/alacritty/colors/catppuccin-mocha.toml"
+]
 
 # Set shell.
 [shell]
@@ -16,10 +16,17 @@ TERM = "xterm-256color"
 
 # Set window padding.
 [window]
+decorations = "Buttonless"
 startup_mode = "Maximized"
-padding = { x = 8, y = 8 }
+padding = { x = 2, y = 2 }
+option_as_alt = "Both"
 
 # Font settings.
 [font]
 normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
-size = 12.0
+size = 14.0
+
+[keyboard]
+bindings = [
+  { key = "F", mods = "Control", action = "ToggleFullscreen" }
+]
