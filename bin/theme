@@ -46,7 +46,7 @@ WEZTERM_CONFIG=$(readlink -f "$WEZTERM_CONFIG" || echo "$WEZTERM_CONFIG")
 NVIM_CONFIG=$(readlink -f "$NVIM_CONFIG" || echo "$NVIM_CONFIG")
 
 # Swap out theme lines in config files.
-sed -i "" "/^[^#]*theme/s|.*|  \"~/.config/alacritty/colors/$THEME.toml\"|" "$ALACRITTY_CONFIG"
+sed -i "" "/^[^#]*colors/s|.*|  \"~/.config/alacritty/colors/$THEME.toml\"|" "$ALACRITTY_CONFIG"
 sed -i "" "/^[^#]*config.color_scheme/s|.*|config.color_scheme = \"$THEME\"|" "$WEZTERM_CONFIG"
 sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '$NVIM_THEME'|" "$NVIM_CONFIG"
 
