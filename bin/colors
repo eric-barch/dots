@@ -1,8 +1,8 @@
 #!/bin/zsh
 # Print terminal colors.
 
-# Capture argument.
-COLOR_RANGE="$1"
+# Capture argument or set default to 15.
+COLOR_RANGE="${1:-15}"
 
 # Check if the argument is a valid number between 0 and 255.
 if ! [[ "$COLOR_RANGE" =~ ^[0-9]+$ ]] || [ "$COLOR_RANGE" -lt 0 ] || [ "$COLOR_RANGE" -gt 255 ]; then
@@ -16,12 +16,13 @@ print_colors() {
   local cols=$2
 
   for i in $(seq 0 $range); do
-    printf "\e[48;5;%sm\e[30m%3d\e[0m " $i $i
-    if (( (i + 1) % cols == 0 )); then
-      echo
+    printf "\e[48;5;%sm\e[39m%3d\e[0m" $i $i
+    if (( (i + 1) % cols != 0 && i != range )); then
+      printf " "
+    elif (( (i + 1) % cols == 0)); then
+      printf "\n"
     fi
   done
-  echo
 }
 
 # Determine the number of columns based on the range.
