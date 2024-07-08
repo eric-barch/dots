@@ -7,6 +7,7 @@ require('lazy').setup {
   require 'plugins/comment',
   require 'plugins/catppuccin',
   require 'plugins/tokyonight',
+  require 'plugins/onedarkpro',
   require 'plugins/gitsigns',
   require 'plugins/which-key',
   require 'plugins/telescope',
