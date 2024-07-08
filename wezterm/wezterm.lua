@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = {}
 
-config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "onedark_vivid"
 config.cursor_blink_rate = 0
 config.enable_tab_bar = false
 config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Regular" })
