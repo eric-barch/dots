@@ -3,23 +3,23 @@
 -- Update plugins: `:Lazy update`
 
 require('lazy').setup {
-  require 'plugins/vim-sleuth',
-  require 'plugins/comment',
+  require 'plugins/vim-tmux-navigator',
+  require 'plugins/onedarkpro',
   require 'plugins/catppuccin',
   require 'plugins/tokyonight',
-  require 'plugins/onedarkpro',
-  require 'plugins/gitsigns',
-  require 'plugins/which-key',
   require 'plugins/telescope',
   require 'plugins/lspconfig',
-  require 'plugins/conform',
+  require 'plugins/which-key',
   require 'plugins/treesitter',
-  require 'plugins/cmp',
+  require 'plugins/gitsigns',
+  require 'plugins/vim-sleuth',
+  require 'plugins/conform',
+  require 'plugins/comment',
   require 'plugins/todo-comments',
+  require 'plugins/cmp',
   require 'plugins/mini',
-  require 'plugins/vim-tmux-navigator',
 
-  -- TODO: Check out these plugins:
+  -- TODO: Check out these plugins from kickstart.nvim:
   -- require 'plugins.debug',
   -- require 'plugins.indent_line',
   -- require 'plugins.lint',
