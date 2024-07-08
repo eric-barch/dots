@@ -18,6 +18,7 @@ require('lazy').setup {
   require 'plugins/todo-comments',
   require 'plugins/cmp',
   require 'plugins/mini',
+  require 'plugins/codecompanion',
 
   -- TODO: Check out these plugins from kickstart.nvim:
   -- require 'plugins.debug',
