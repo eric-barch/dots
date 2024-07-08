@@ -10,30 +10,18 @@ VALID_THEMES=(
   "catppuccin-latte" 
   "onedark" 
   "onelight"
+  "onedark_dark"
+  "onedark_vivid"
 )
 
-# Nvim theme name formats vary. Map THEME to correct nvim theme.
-case $THEME in
-  catppuccin-mocha)
-    NVIM_THEME="catppuccin-mocha"
-    ;;
-  catppuccin-latte)
-    NVIM_THEME="catppuccin-latte"
-    ;;
-  onedark)
-    NVIM_THEME="onedark"
-    ;;
-  onelight)
-    NVIM_THEME="onelight"
-    ;;
-  *)
-    echo "Invalid theme specified: $THEME. Use one of the following:"
-    for theme in "${VALID_THEMES[@]}"; do
-      echo "  - $theme"
-    done
-    exit 1
-    ;;
-esac
+# Check if THEME is in the list of valid themes.
+if [[ ! " ${VALID_THEMES[@]} " =~ " ${THEME} " ]]; then
+  echo "Invalid theme specified: $THEME. Use one of the following:"
+  for theme in "${VALID_THEMES[@]}"; do
+    echo "  - $theme"
+  done
+  exit 1
+fi
 
 # Set config filepaths.
 ALACRITTY_CONFIG="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
@@ -48,7 +36,7 @@ NVIM_CONFIG=$(readlink -f "$NVIM_CONFIG" || echo "$NVIM_CONFIG")
 # Swap out theme lines in config files.
 sed -i "" "/^[^#]*colors/s|.*|  \"~/.config/alacritty/colors/$THEME.toml\"|" "$ALACRITTY_CONFIG"
 sed -i "" "/^[^#]*config.color_scheme/s|.*|config.color_scheme = \"$THEME\"|" "$WEZTERM_CONFIG"
-sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '$NVIM_THEME'|" "$NVIM_CONFIG"
+sed -i "" "/^[^#]*vim.cmd.colorscheme/s|.*|vim.cmd.colorscheme '$THEME'|" "$NVIM_CONFIG"
 
 if tmux has-session &>/dev/null; then
   # Send colorscheme command to open (n)vim tmux panes.
@@ -56,7 +44,7 @@ if tmux has-session &>/dev/null; then
   tmux list-panes -a -F '#{pane_id} #{pane_current_command}' |
   grep vim |
   cut -d ' ' -f 1 |
-  xargs -I PANE tmux send-keys -t PANE 'C-[' ":colorscheme $NVIM_THEME" 'C-m'
+  xargs -I PANE tmux send-keys -t PANE 'C-[' ":colorscheme $THEME" 'C-m'
 
   # Source tmux config.
   tmux source-file "$TMUX_CONFIG"
