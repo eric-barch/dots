@@ -3,7 +3,7 @@ live_config_reload = true
 
 # Set theme.
 import = [
-  "~/.config/alacritty/colors/catppuccin-mocha.toml"
+  "~/.config/alacritty/colors/onedark_vivid.toml"
 ]
 
 # Set shell.
