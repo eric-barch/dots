@@ -13,6 +13,7 @@ require('lazy').setup {
   require 'plugins/treesitter',
   require 'plugins/gitsigns',
   require 'plugins/vim-sleuth',
+  require 'plugins/autopairs',
   require 'plugins/conform',
   require 'plugins/comment',
   require 'plugins/todo-comments',
