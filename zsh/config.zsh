@@ -11,7 +11,6 @@ export XDG_CACHE_HOME="${XDG_CACHE_HOME:=$HOME/.cache}"
 export BIN_HOME="${BIN_HOME:=$HOME/.local/bin}"
 export ZDOTDIR="${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"
 export IDF_TOOLS_PATH="${IDF_TOOLS_PATH:=$XDG_DATA_HOME/espressif}"
-export STARSHIP_CONFIG="${STARSHIP_CONFIG:=$XDG_CONFIG_HOME/starship/starship.toml}"
 
 # Environment paths
 path=(
@@ -34,3 +33,7 @@ export KEYTIMEOUT=1 # Snappier <ESC>
 # Set up fzf key bindings and fuzzy completion
 # https://github.com/junegunn/fzf?tab=readme-ov-file#setting-up-shell-integration
 eval "$(fzf --zsh)"
+
+# Load Node Version Manager
+# https://formulae.brew.sh/formula/nvm
+. /opt/homebrew/opt/nvm/nvm.sh

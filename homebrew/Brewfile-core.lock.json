@@ -1170,6 +1170,19 @@
               "url": "https://ghcr.io/v2/homebrew/core/oh-my-posh/blobs/sha256:7a0f320e2b70d618b0ac23b87bb00af7c0ff2b5b6305e12eed154f1b20d014c8",
               "sha256": "7a0f320e2b70d618b0ac23b87bb00af7c0ff2b5b6305e12eed154f1b20d014c8"
             }
+          }
+        }
+      },
+      "nvm": {
+        "version": "0.39.7",
+        "bottle": {
+          "rebuild": 1,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "all": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/nvm/blobs/sha256:ac42824b16b90c713ea4ecb1df6c6d6da242ea1e691f0e37b38e4b77d5cb3dae",
+              "sha256": "ac42824b16b90c713ea4ecb1df6c6d6da242ea1e691f0e37b38e4b77d5cb3dae"
             }
           }
         }
