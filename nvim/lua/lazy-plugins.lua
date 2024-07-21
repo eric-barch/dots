@@ -20,11 +20,11 @@ require('lazy').setup {
   require 'plugins/cmp',
   require 'plugins/mini',
   require 'plugins/codecompanion',
+  require 'plugins/dap',
 
   -- TODO: Check out these plugins from kickstart.nvim:
-  -- require 'plugins.debug',
-  -- require 'plugins.indent_line',
-  -- require 'plugins.lint',
+  -- require 'plugins/indent_line',
+  -- require 'plugins/lint',
 }
 
 -- vim: ts=2 sts=2 sw=2 et
