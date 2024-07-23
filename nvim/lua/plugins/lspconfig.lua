@@ -3,7 +3,8 @@
 
 return {
   {
-    -- Configs for the nvim LSP client.
+    -- User-contributed convenience configs for nvim LSP client.
+    -- See `:help lspconfig`.
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Language server manager.
@@ -73,7 +74,12 @@ return {
       local servers = {
         -- See `:help lspconfig-all` for a list of all the pre-configured LSPs.
         astro = {},
-        clangd = {},
+        clangd = {
+          cmd = {
+            -- ESP-IDF-compliant clangdd binary.
+            string.format('%s/espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd', os.getenv 'XDG_DATA_HOME'),
+          },
+        },
         html = {},
         lua_ls = {
           settings = {

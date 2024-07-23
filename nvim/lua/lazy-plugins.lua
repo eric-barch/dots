@@ -3,10 +3,10 @@
 -- Update plugins: `:Lazy update`
 
 require('lazy').setup {
-  require 'plugins/vim-tmux-navigator',
   require 'plugins/onedarkpro',
   require 'plugins/catppuccin',
   require 'plugins/tokyonight',
+  require 'plugins/vim-tmux-navigator',
   require 'plugins/telescope',
   require 'plugins/lspconfig',
   require 'plugins/which-key',
