@@ -36,6 +36,12 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default.
 vim.opt.signcolumn = 'yes'
 
+-- Set folds by indent (which should be set by autoformatter).
+vim.opt.foldmethod = 'indent'
+
+-- Expand all folds.
+vim.opt.foldlevel = 99
+
 -- Decrease update time (writes swap file and fires CursorHold).
 vim.opt.updatetime = 250
 
