@@ -28,9 +28,7 @@ final_space = true
     template = '{{ .Path }}'
 
     [blocks.segments.properties]
-      style = 'agnoster_short'
-      folder_icon = '...'
-      max_depth = 2
+      style = 'full'
 
   [[blocks.segments]]
     type = 'git'
