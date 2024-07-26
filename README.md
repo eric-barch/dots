@@ -30,3 +30,4 @@ I ususally discover the need for a new feature when I'm in the middle of some ot
 - Move filepath from bottom to top of pane.
 - Delete nvim powerline or at least remove useless crap.
 - LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
+- Keymap that jumps to next line with an LSP error
