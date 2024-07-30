@@ -16,7 +16,7 @@ I ususally discover the need for a new feature when I'm in the middle of some ot
 
 ### New Applications
 
-- Set up a tiling window manager, probably [Yabai](https://github.com/koekeishiya/yabai).
+- Set up a tiling window manager, maybe [Yabai](https://github.com/koekeishiya/yabai).
 - Set up [Raycast](https://www.raycast.com/).
 - Set up [Hammerspoon](https://github.com/Hammerspoon/hammerspoon).
 
@@ -31,3 +31,4 @@ I ususally discover the need for a new feature when I'm in the middle of some ot
 - Delete nvim powerline or at least remove useless crap.
 - LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
 - Keymap that jumps to next line with an LSP error
+- Explore replacing telescope with fzf lua
