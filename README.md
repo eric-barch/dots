@@ -32,3 +32,8 @@ I ususally discover the need for a new feature when I'm in the middle of some ot
 - LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
 - Keymap that jumps to next line with an LSP error
 - Explore replacing telescope with fzf lua
+- Make directional keys NOT repeat so I actually start using other methods to jump around page
+
+### Tmux
+
+- Character-wise visual mode selection seems to be unavailable... not sure when I broke that.
