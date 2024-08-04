@@ -16,15 +16,30 @@ return {
       -- sr)'  - [s]urround [r]eplace [)] ['].
       require('mini.surround').setup()
 
-      -- Simple, easy statusline.
-      -- TODO: Try other statusline plugins.
       local statusline = require 'mini.statusline'
+      statusline.setup {
+        content = {
+          active = function()
+            local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
+            local filename = statusline.section_filename { trunc_width = 140 }
+            local search = statusline.section_searchcount { trunc_width = 75 }
+            local location = statusline.section_location()
 
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+            return statusline.combine_groups {
+              { hl = mode_hl, strings = { mode } },
+              '%<', -- Mark truncate point
+              { hl = 'statuslineFilename', strings = { filename } },
+              '%=', -- End left alignment
+              { hl = mode_hl, strings = { search, location } },
+            }
+          end,
+          inactive = function()
+            return statusline.section_filename { trunc_width = 140 }
+          end,
+        },
+        use_icons = vim.g.have_nerd_font,
+      }
 
-      -- Configure statusline by overriding default section behavior,
-      -- e.g. set the section for cursor location to LINE:COLUMN.
-      -- More: https://github.com/echasnovski/mini.nvim
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function()
         return '%2l:%-2v'

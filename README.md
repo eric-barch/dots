@@ -24,12 +24,10 @@ I always come up with new feature ideas in the middle of some other project. I w
 
 - Customize [CodeCompanion](https://github.com/olimorris/codecompanion.nvim) prompts.
 - Learn to switch between CodeCompanion models and default to Claude or Ollama instead of GPT.
-- Make folds persistent and mark visually in sign column.
-- Implement keymap to minimize pane width to widest row.
+- Persist folds and mark visually in sign column.
+- Keymap to minimize pane width to widest row.
     - Implement keymap to do this for all open panes.
-- Move filepath from bottom to top of pane.
-- Delete nvim powerline or at least remove useless crap.
 - LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
 - Keymap that jumps to next line with an LSP error.
-- Explore replacing telescope with fzf lua.
+- Consider replacing telescope with fzf lua.
 - Make directional keys NOT repeat so I actually start using other methods to jump around buffer.
