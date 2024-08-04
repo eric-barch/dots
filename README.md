@@ -12,13 +12,13 @@ make setup
 
 ## TODO
 
-I ususally discover the need for a new feature when I'm in the middle of some other project. Instead of derailing my workflow by implementing it immediately, I write it down here so I can come back to it during dedicated dotfiles time.
+I always come up with new feature ideas in the middle of some other project. I write them down here so I can come back and implement it during dedicated dotfiles time.
 
 ### New Applications
 
-- Set up a tiling window manager, maybe [Yabai](https://github.com/koekeishiya/yabai).
-- Set up [Raycast](https://www.raycast.com/).
-- Set up [Hammerspoon](https://github.com/Hammerspoon/hammerspoon).
+- A tiling window manager, maybe [Yabai](https://github.com/koekeishiya/yabai)
+- [Raycast](https://www.raycast.com/)
+- [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
 ### Neovim
 
@@ -30,10 +30,6 @@ I ususally discover the need for a new feature when I'm in the middle of some ot
 - Move filepath from bottom to top of pane.
 - Delete nvim powerline or at least remove useless crap.
 - LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
-- Keymap that jumps to next line with an LSP error
-- Explore replacing telescope with fzf lua
-- Make directional keys NOT repeat so I actually start using other methods to jump around page
-
-### Tmux
-
-- Character-wise visual mode selection seems to be unavailable... not sure when I broke that.
+- Keymap that jumps to next line with an LSP error.
+- Explore replacing telescope with fzf lua.
+- Make directional keys NOT repeat so I actually start using other methods to jump around buffer.
