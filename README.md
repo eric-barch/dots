@@ -17,7 +17,6 @@ I always come up with new feature ideas in the middle of some other project. I w
 ### New Applications
 
 - A tiling window manager, maybe [Yabai](https://github.com/koekeishiya/yabai)
-- [Raycast](https://www.raycast.com/)
 - [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
 
 ### Neovim
@@ -35,3 +34,7 @@ I always come up with new feature ideas in the middle of some other project. I w
 ### Tmux
 
 - Consider adding session name to statusline.
+
+### Raycast
+
+- Raycast doesn't seem to support getting its config from a dotfile, which is super annoying if true. Currently when I'm setting up a new machine, I have to go in and manually import my `.rayconfig` file. Figure out the least hacky way to automate this during the setup process.
