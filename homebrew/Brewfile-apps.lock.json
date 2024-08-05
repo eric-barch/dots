@@ -20,13 +20,13 @@
         }
       },
       "arc": {
-        "version": "1.52.0,51895",
+        "version": "1.54.0,52220",
         "options": {
           "full_name": "arc"
         }
       },
       "bruno": {
-        "version": "1.21.0",
+        "version": "1.23.1",
         "options": {
           "full_name": "bruno"
         }
@@ -38,19 +38,19 @@
         }
       },
       "docker": {
-        "version": "4.31.0,153195",
+        "version": "4.33.0,160616",
         "options": {
           "full_name": "docker"
         }
       },
       "firefox": {
-        "version": "128.0",
+        "version": "128.0.3",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "126.0.6478.183",
+        "version": "127.0.6533.89",
         "options": {
           "full_name": "google-chrome"
         }
@@ -74,13 +74,13 @@
         }
       },
       "pgadmin4": {
-        "version": "8.9",
+        "version": "8.10",
         "options": {
           "full_name": "pgadmin4"
         }
       },
       "raycast": {
-        "version": "1.79.1",
+        "version": "1.80.0",
         "options": {
           "full_name": "raycast"
         }
@@ -116,25 +116,25 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.179,1720463250",
+        "version": "1.2024.206,1722395003",
         "options": {
           "full_name": "chatgpt"
         }
       },
       "db-browser-for-sqlite": {
-        "version": "3.12.2",
+        "version": "3.13.0",
         "options": {
           "full_name": "db-browser-for-sqlite"
         }
       },
       "discord": {
-        "version": "0.0.311",
+        "version": "0.0.313",
         "options": {
           "full_name": "discord"
         }
       },
       "figma": {
-        "version": "124.1.16",
+        "version": "124.2.9",
         "options": {
           "full_name": "figma"
         }
@@ -146,7 +146,7 @@
         }
       },
       "lunar": {
-        "version": "6.8.0",
+        "version": "6.8.1",
         "options": {
           "full_name": "lunar"
         }
@@ -164,13 +164,13 @@
         }
       },
       "mullvadvpn": {
-        "version": "2024.3",
+        "version": "2024.4",
         "options": {
           "full_name": "mullvadvpn"
         }
       },
       "notion": {
-        "version": "3.10.0",
+        "version": "3.11.1",
         "options": {
           "full_name": "notion"
         }
@@ -194,13 +194,13 @@
         }
       },
       "rectangle": {
-        "version": "0.80",
+        "version": "0.81",
         "options": {
           "full_name": "rectangle"
         }
       },
       "spotify": {
-        "version": "1.2.42.290,242057a2,1353",
+        "version": "1.2.43.420,c7b23f70,2569",
         "options": {
           "full_name": "spotify"
         }
@@ -212,13 +212,13 @@
         }
       },
       "ultimaker-cura": {
-        "version": "5.7.2,5.7.2-RC2",
+        "version": "5.8.0,5.8.0",
         "options": {
           "full_name": "ultimaker-cura"
         }
       },
       "visual-studio-code": {
-        "version": "1.91.1",
+        "version": "1.92.0",
         "options": {
           "full_name": "visual-studio-code"
         }
@@ -230,7 +230,7 @@
         }
       },
       "zoom": {
-        "version": "6.1.1.36333",
+        "version": "6.1.6.37851",
         "options": {
           "full_name": "zoom"
         }
@@ -246,7 +246,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.10",
+        "HOMEBREW_VERSION": "4.3.12",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
