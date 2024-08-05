@@ -27,7 +27,11 @@ I always come up with new feature ideas in the middle of some other project. I w
 - Persist folds and mark visually in sign column.
 - Keymap to minimize pane width to widest row.
     - Implement keymap to do this for all open panes.
-- LSP warnings/errors and other virtual text should wrap instead of overflowing pane.
-- Keymap that jumps to next line with an LSP error.
+- Keymap that jumps to next line with LSP feedback.
 - Consider replacing telescope with fzf lua.
-- Make directional keys NOT repeat so I actually start using other methods to jump around buffer.
+- Angle statusline mode and location indicators to match style of tmux.
+- Statusline background should be the same color as buffer background (currently darker).
+
+### Tmux
+
+- Consider adding session name to statusline.
