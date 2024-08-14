@@ -16,8 +16,8 @@ I always come up with new feature ideas in the middle of some other project. I w
 
 ### New Applications
 
-- A tiling window manager, maybe [Yabai](https://github.com/koekeishiya/yabai)
 - [Hammerspoon](https://github.com/Hammerspoon/hammerspoon)
+- [AeroSpace](https://github.com/nikitabobko/AeroSpace)
 
 ### Neovim
 
