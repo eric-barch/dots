@@ -2,7 +2,7 @@
   "entries": {
     "cask": {
       "1password": {
-        "version": "8.10.36",
+        "version": "8.10.40",
         "options": {
           "full_name": "1password"
         }
@@ -20,13 +20,13 @@
         }
       },
       "arc": {
-        "version": "1.54.0,52220",
+        "version": "1.55.0,52417",
         "options": {
           "full_name": "arc"
         }
       },
       "bruno": {
-        "version": "1.23.1",
+        "version": "1.24.0",
         "options": {
           "full_name": "bruno"
         }
@@ -44,19 +44,19 @@
         }
       },
       "firefox": {
-        "version": "128.0.3",
+        "version": "129.0.1",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "127.0.6533.89",
+        "version": "127.0.6533.120",
         "options": {
           "full_name": "google-chrome"
         }
       },
       "hammerspoon": {
-        "version": "0.9.100",
+        "version": "1.0.0",
         "options": {
           "full_name": "hammerspoon"
         }
@@ -86,7 +86,7 @@
         }
       },
       "sublime-text": {
-        "version": "4169",
+        "version": "4180",
         "options": {
           "full_name": "sublime-text"
         }
@@ -116,7 +116,7 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.206,1722395003",
+        "version": "1.2024.219,1723258889",
         "options": {
           "full_name": "chatgpt"
         }
@@ -128,7 +128,7 @@
         }
       },
       "discord": {
-        "version": "0.0.313",
+        "version": "0.0.315",
         "options": {
           "full_name": "discord"
         }
@@ -140,7 +140,7 @@
         }
       },
       "handbrake": {
-        "version": "1.8.1",
+        "version": "1.8.2",
         "options": {
           "full_name": "handbrake"
         }
@@ -170,7 +170,7 @@
         }
       },
       "notion": {
-        "version": "3.11.1",
+        "version": "3.12.2",
         "options": {
           "full_name": "notion"
         }
@@ -218,7 +218,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.92.0",
+        "version": "1.92.1",
         "options": {
           "full_name": "visual-studio-code"
         }
@@ -246,7 +246,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.12",
+        "HOMEBREW_VERSION": "4.3.15",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
