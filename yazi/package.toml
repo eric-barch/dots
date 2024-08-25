@@ -1,0 +1,2 @@
+[plugin]
+deps = [{ use = "yazi-rs/plugins:no-status", rev = "b659791" }]
