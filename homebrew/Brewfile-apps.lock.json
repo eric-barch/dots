@@ -20,7 +20,7 @@
         }
       },
       "arc": {
-        "version": "1.55.0,52417",
+        "version": "1.57.1,52939",
         "options": {
           "full_name": "arc"
         }
@@ -44,13 +44,13 @@
         }
       },
       "firefox": {
-        "version": "129.0.1",
+        "version": "129.0.2",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "127.0.6533.120",
+        "version": "128.0.6613.85",
         "options": {
           "full_name": "google-chrome"
         }
@@ -74,13 +74,13 @@
         }
       },
       "pgadmin4": {
-        "version": "8.10",
+        "version": "8.11",
         "options": {
           "full_name": "pgadmin4"
         }
       },
       "raycast": {
-        "version": "1.80.0",
+        "version": "1.81.2",
         "options": {
           "full_name": "raycast"
         }
@@ -116,7 +116,7 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.219,1723258889",
+        "version": "1.2024.227,1724272947",
         "options": {
           "full_name": "chatgpt"
         }
@@ -128,13 +128,13 @@
         }
       },
       "discord": {
-        "version": "0.0.315",
+        "version": "0.0.316",
         "options": {
           "full_name": "discord"
         }
       },
       "figma": {
-        "version": "124.2.9",
+        "version": "124.3.2",
         "options": {
           "full_name": "figma"
         }
@@ -170,13 +170,13 @@
         }
       },
       "notion": {
-        "version": "3.12.2",
+        "version": "3.13.0",
         "options": {
           "full_name": "notion"
         }
       },
       "qbittorrent": {
-        "version": "4.6.5",
+        "version": "4.6.6",
         "options": {
           "full_name": "qbittorrent"
         }
@@ -200,7 +200,7 @@
         }
       },
       "spotify": {
-        "version": "1.2.43.420,c7b23f70,2569",
+        "version": "1.2.44.405,81fd6352,3712",
         "options": {
           "full_name": "spotify"
         }
@@ -218,7 +218,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.92.1",
+        "version": "1.92.2",
         "options": {
           "full_name": "visual-studio-code"
         }
@@ -230,15 +230,51 @@
         }
       },
       "zoom": {
-        "version": "6.1.6.37851",
+        "version": "6.1.10.38818",
         "options": {
           "full_name": "zoom"
         }
       },
       "zulip": {
-        "version": "5.11.0",
+        "version": "5.11.1",
         "options": {
           "full_name": "zulip"
+        }
+      },
+      "aerospace": {
+        "version": "0.14.2-Beta",
+        "options": {
+          "full_name": "aerospace"
+        }
+      },
+      "cursor": {
+        "version": "0.39.6,240819ih4ta2fye",
+        "options": {
+          "full_name": "cursor"
+        }
+      },
+      "font-symbols-only-nerd-font": {
+        "version": "3.2.1",
+        "options": {
+          "full_name": "font-symbols-only-nerd-font"
+        }
+      },
+      "gather": {
+        "version": "1.11.11",
+        "options": {
+          "full_name": "gather"
+        }
+      },
+      "github": {
+        "version": "3.4.3-2170ce9b",
+        "options": {
+          "full_name": "github"
+        }
+      },
+      "slack": {
+        "version": "4.39.95",
+        "options": {
+          "full_name": "slack"
         }
       }
     }
@@ -246,12 +282,12 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.15",
+        "HOMEBREW_VERSION": "4.3.17",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.4",
-        "macOS": "14.5"
+        "macOS": "14.6.1"
       }
     }
   }
