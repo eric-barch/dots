@@ -13,7 +13,7 @@ fi
 # Function to print colors.
 print_colors() {
   local range=$1
-  local cols=$2
+  local cols=8
 
   for i in $(seq 0 $range); do
     printf "\e[48;5;%sm\e[39m%3d\e[0m" $i $i
@@ -25,12 +25,5 @@ print_colors() {
   done
 }
 
-# Determine the number of columns based on the range.
-if [ "$COLOR_RANGE" -lt 16 ]; then
-  COLUMNS=8
-else
-  COLUMNS=16
-fi
-
 # Print the colors.
-print_colors $COLOR_RANGE $COLUMNS
+print_colors $COLOR_RANGE
