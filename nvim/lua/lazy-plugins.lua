@@ -3,9 +3,7 @@
 -- Update plugins: `:Lazy update`
 
 require('lazy').setup {
-  require 'plugins/onedarkpro',
-  require 'plugins/catppuccin',
-  require 'plugins/tokyonight',
+  require 'plugins/base16',
   require 'plugins/vim-tmux-navigator',
   require 'plugins/telescope',
   require 'plugins/lspconfig',
