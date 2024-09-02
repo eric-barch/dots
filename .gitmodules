@@ -2,5 +2,5 @@
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "base16/schemes"]
-	path = base16/schemes
+	path = theme/schemes
 	url = https://github.com/tinted-theming/schemes.git
