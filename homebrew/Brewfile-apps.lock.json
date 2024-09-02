@@ -20,7 +20,7 @@
         }
       },
       "arc": {
-        "version": "1.57.1,52939",
+        "version": "1.58.1,53264",
         "options": {
           "full_name": "arc"
         }
@@ -38,7 +38,7 @@
         }
       },
       "docker": {
-        "version": "4.33.0,160616",
+        "version": "4.34.0,165256",
         "options": {
           "full_name": "docker"
         }
@@ -50,7 +50,7 @@
         }
       },
       "google-chrome": {
-        "version": "128.0.6613.85",
+        "version": "128.0.6613.120",
         "options": {
           "full_name": "google-chrome"
         }
@@ -116,7 +116,7 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.227,1724272947",
+        "version": "1.2024.233,1724439245",
         "options": {
           "full_name": "chatgpt"
         }
@@ -128,7 +128,7 @@
         }
       },
       "discord": {
-        "version": "0.0.316",
+        "version": "0.0.317",
         "options": {
           "full_name": "discord"
         }
@@ -170,7 +170,7 @@
         }
       },
       "notion": {
-        "version": "3.13.0",
+        "version": "3.13.1",
         "options": {
           "full_name": "notion"
         }
@@ -212,7 +212,7 @@
         }
       },
       "ultimaker-cura": {
-        "version": "5.8.0,5.8.0",
+        "version": "5.8.1,5.8.1",
         "options": {
           "full_name": "ultimaker-cura"
         }
@@ -230,7 +230,7 @@
         }
       },
       "zoom": {
-        "version": "6.1.10.38818",
+        "version": "6.1.11.39163",
         "options": {
           "full_name": "zoom"
         }
@@ -248,7 +248,7 @@
         }
       },
       "cursor": {
-        "version": "0.39.6,240819ih4ta2fye",
+        "version": "0.40.3,240829epqamqp7h",
         "options": {
           "full_name": "cursor"
         }
@@ -272,9 +272,33 @@
         }
       },
       "slack": {
-        "version": "4.39.95",
+        "version": "4.40.120",
         "options": {
           "full_name": "slack"
+        }
+      },
+      "microsoft-auto-update": {
+        "version": "4.74.24081116",
+        "options": {
+          "full_name": "microsoft-auto-update"
+        }
+      },
+      "microsoft-excel": {
+        "version": "16.88.24081116",
+        "options": {
+          "full_name": "microsoft-excel"
+        }
+      },
+      "microsoft-teams": {
+        "version": "24215.1002.3039.5089",
+        "options": {
+          "full_name": "microsoft-teams"
+        }
+      },
+      "microsoft-word": {
+        "version": "16.88.24081116",
+        "options": {
+          "full_name": "microsoft-word"
         }
       }
     }
@@ -282,7 +306,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.17",
+        "HOMEBREW_VERSION": "4.3.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
