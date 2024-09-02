@@ -1,11 +1,6 @@
 # Set live config reload to true.
 live_config_reload = true
 
-# Set theme.
-import = [
-  "~/.config/alacritty/colors/onedark_vivid.toml"
-]
-
 # Set shell.
 [shell]
 program="/bin/zsh"
