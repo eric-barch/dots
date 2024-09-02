@@ -2,7 +2,7 @@
 # Print terminal colors.
 
 # Capture argument or set default to 15.
-COLOR_RANGE="${1:-15}"
+COLOR_RANGE="${1:-21}"
 
 # Check if the argument is a valid number between 0 and 255.
 if ! [[ "$COLOR_RANGE" =~ ^[0-9]+$ ]] || [ "$COLOR_RANGE" -lt 0 ] || [ "$COLOR_RANGE" -gt 255 ]; then
@@ -23,6 +23,11 @@ print_colors() {
       printf "\n"
     fi
   done
+
+  # If the last printed one did not end the line, add a newline
+  if (( (range + 1) % cols != 0 )); then
+    printf "\n"
+  fi
 }
 
 # Print the colors.
