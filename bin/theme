@@ -1,35 +1,31 @@
 #!/bin/zsh
-THEME="$1"
 
-VALID_THEMES=(
-  "catppuccin-mocha" 
-  "catppuccin-latte" 
-  "onedark" 
-  "onelight"
-  "onedark_dark"
-  "onedark_vivid"
-)
-
-if [[ ! " ${VALID_THEMES[@]} " =~ " ${THEME} " ]]; then
-  echo "Invalid theme specified: $THEME. Use one of the following:"
-  for theme in "${VALID_THEMES[@]}"; do
-    echo "  - $theme"
-  done
+if [ -z "$1" ]; then
+  echo "Usage: $0 <theme-name>"
   exit 1
 fi
 
-ALACRITTY_CONFIG="$XDG_CONFIG_HOME/alacritty/alacritty.toml"
-WEZTERM_CONFIG="$XDG_CONFIG_HOME/wezterm/wezterm.lua"
+THEME_NAME=$1
 
-# Resolve symlinks.
-ALACRITTY_CONFIG=$(readlink -f "$ALACRITTY_CONFIG" || echo "$ALACRITTY_CONFIG")
-WEZTERM_CONFIG=$(readlink -f "$WEZTERM_CONFIG" || echo "$WEZTERM_CONFIG")
+THEME_CONFIG_PATH="$XDG_CONFIG_HOME/theme"
 
-# Swap out theme lines in config files.
-sed -i "" "/^[^#]*colors/s|.*|  \"~/.config/alacritty/colors/$THEME.toml\"|" "$ALACRITTY_CONFIG"
-sed -i "" "/^[^#]*config.color_scheme/s|.*|config.color_scheme = \"$THEME\"|" "$WEZTERM_CONFIG"
+SCHEME_PATH="$THEME_CONFIG_PATH/schemes/base16/${THEME_NAME}.yaml"
+BUILDER_PATH="$THEME_CONFIG_PATH/builder.lua"
+TEMPLATE_PATH="$THEME_CONFIG_PATH/templates/shell.mustache"
+OUTPUT_PATH="$ZDOTDIR/theme.zsh"
 
-# Re-source tmux.
-if tmux has-session &>/dev/null; then
-  tmux source-file "$TMUX_CONFIG"
+ZSHRC_PATH="$ZDOTDIR/.zshrc"
+
+if [ ! -f "$SCHEME_PATH" ]; then
+  echo "Error: Theme file '$SCHEME_PATH' not found."
+  exit 1
+fi
+
+cat "$SCHEME_PATH" | lua "$BUILDER_PATH" -t "$TEMPLATE_PATH" > "$OUTPUT_PATH"
+
+if [ $? -eq 0 ]; then
+  source "$ZSHRC_PATH"
+else
+  echo "Error generating theme."
+  exit 1
 fi
