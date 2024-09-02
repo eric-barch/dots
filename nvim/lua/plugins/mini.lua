@@ -44,6 +44,12 @@ return {
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      require('mini.hipatterns').setup {
+        highlighters = {
+          hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
+        },
+      }
     end,
   },
 }
