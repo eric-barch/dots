@@ -21,7 +21,7 @@ export ZDOTDIR="${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"
 
 # Base16 theme
 # https://github.com/chriskempson/base16-shell
-export BASE16_THEME="gruvbox-dark-hard"
+export BASE16_THEME="gruvbox-material-dark-hard"
 
 # Specify ESP-IDF install location
 # https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/tools/idf-tools.html#tools-installation-directory
