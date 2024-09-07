@@ -1,34 +1,27 @@
-#!/bin/zsh
-# Print terminal colors.
+#!/bin/sh
+# Print terminal colors
 
-# Capture argument or set default to 15.
+# Capture argument, else use default of 21 to display Base21 colors
 COLOR_RANGE="${1:-21}"
 
-# Check if the argument is a valid number between 0 and 255.
+# Number of columns in output
+COLS=8
+
 if ! [[ "$COLOR_RANGE" =~ ^[0-9]+$ ]] || [ "$COLOR_RANGE" -lt 0 ] || [ "$COLOR_RANGE" -gt 255 ]; then
   echo "Invalid argument. Provide a number between 0 and 255."
   exit 1
 fi
 
-# Function to print colors.
-print_colors() {
-  local range=$1
-  local cols=8
-
-  for i in $(seq 0 $range); do
-    printf "\e[48;5;%sm\e[39m%3d\e[0m" $i $i
-    if (( (i + 1) % cols != 0 && i != range )); then
-      printf " "
-    elif (( (i + 1) % cols == 0)); then
-      printf "\n"
-    fi
-  done
-
-  # If the last printed one did not end the line, add a newline
-  if (( (range + 1) % cols != 0 )); then
+for i in $(seq 0 $COLOR_RANGE); do
+  printf "\e[48;5;%sm\e[39m%3d\e[0m" $i $i
+  if (( (i + 1) % $COLS != 0 && i != $COLOR_RANGE )); then
+    printf " "
+  elif (( (i + 1) % $COLS == 0)); then
     printf "\n"
   fi
-}
+done
 
-# Print the colors.
-print_colors $COLOR_RANGE
+# If the last printed color did not end the line, add a newline
+if (( (range + 1) % $COLS != 0 )); then
+  printf "\n"
+fi
