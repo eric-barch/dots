@@ -57,7 +57,7 @@ local function get_tags(data)
 	local tags = {}
 
 	tags["scheme-name"] = data["name"]
-	tags["scheme-slug"] = string.gsub(string.lower(data["name"]), " ", "-")
+	tags["scheme-slug"] = string.gsub(string.gsub(string.lower(data["name"]), " ", "-"), "[^%w%-]", "")
 	tags["scheme-author"] = data["author"]
 
 	local bases = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B", "0C", "0D", "0E", "0F" }
