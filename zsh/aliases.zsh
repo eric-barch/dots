@@ -19,3 +19,6 @@ alias nv="nvim"
 alias tl="tmux ls"
 alias tn="tmux new"
 alias ta="tmux attach"
+
+# yazi
+alias y="yazi"
