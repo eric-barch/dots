@@ -20,7 +20,7 @@
         }
       },
       "arc": {
-        "version": "1.59.0,53388",
+        "version": "1.60.0,53678",
         "options": {
           "full_name": "arc"
         }
@@ -38,7 +38,7 @@
         }
       },
       "docker": {
-        "version": "4.34.0,165256",
+        "version": "4.34.2,167172",
         "options": {
           "full_name": "docker"
         }
@@ -50,7 +50,7 @@
         }
       },
       "google-chrome": {
-        "version": "128.0.6613.120",
+        "version": "128.0.6613.138",
         "options": {
           "full_name": "google-chrome"
         }
@@ -80,7 +80,7 @@
         }
       },
       "raycast": {
-        "version": "1.82.3",
+        "version": "1.82.5",
         "options": {
           "full_name": "raycast"
         }
@@ -116,7 +116,7 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.240,1725405916",
+        "version": "1.2024.247,1725665409",
         "options": {
           "full_name": "chatgpt"
         }
@@ -128,7 +128,7 @@
         }
       },
       "discord": {
-        "version": "0.0.318",
+        "version": "0.0.319",
         "options": {
           "full_name": "discord"
         }
@@ -146,7 +146,7 @@
         }
       },
       "lunar": {
-        "version": "6.8.1",
+        "version": "6.8.2",
         "options": {
           "full_name": "lunar"
         }
@@ -170,7 +170,7 @@
         }
       },
       "notion": {
-        "version": "3.14.0",
+        "version": "3.14.1",
         "options": {
           "full_name": "notion"
         }
@@ -218,7 +218,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.93.0",
+        "version": "1.93.1",
         "options": {
           "full_name": "visual-studio-code"
         }
@@ -266,37 +266,37 @@
         }
       },
       "github": {
-        "version": "3.4.4-c2aeb59b",
+        "version": "3.4.5-0b64c23c",
         "options": {
           "full_name": "github"
         }
       },
       "slack": {
-        "version": "4.40.126",
+        "version": "4.40.128",
         "options": {
           "full_name": "slack"
         }
       },
       "microsoft-auto-update": {
-        "version": "4.74.24081116",
+        "version": "4.75.24090815",
         "options": {
           "full_name": "microsoft-auto-update"
         }
       },
       "microsoft-excel": {
-        "version": "16.88.24081116",
+        "version": "16.89.24090815",
         "options": {
           "full_name": "microsoft-excel"
         }
       },
       "microsoft-teams": {
-        "version": "24215.1002.3039.5089",
+        "version": "24231.507.3099.9636",
         "options": {
           "full_name": "microsoft-teams"
         }
       },
       "microsoft-word": {
-        "version": "16.88.24081116",
+        "version": "16.89.24090815",
         "options": {
           "full_name": "microsoft-word"
         }
@@ -306,7 +306,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.19",
+        "HOMEBREW_VERSION": "4.3.21",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
