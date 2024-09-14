@@ -1,11 +1,11 @@
 # Updates $BASE16_THEME environment variable
 function theme() {
-  DEFAULT_UPDATE=false
+  UPDATE_DEFAULT=false
 
   while getopts "d" opt; do
     case $opt in
       d)
-        DEFAULT_UPDATE=true
+        UPDATE_DEFAULT=true
         ;;
       \?)
         echo "Usage: $0 [-d] <theme-name>"
@@ -47,7 +47,7 @@ function theme() {
   . "$THEME_SCRIPT"
   rm -f "$THEME_SCRIPT"
 
-  if [ "$DEFAULT_UPDATE" = true ]; then
+  if [ "$UPDATE_DEFAULT" = true ]; then
     ZSH_ENV_PATH=$(readlink -f "$XDG_CONFIG_HOME/zsh/env.zsh" || echo "$XDG_CONFIG_HOME/zsh/env.zsh")
     sed -i "" "/export BASE16_THEME/s|.*|export BASE16_THEME=\"${SCHEME_SLUG}\"|" "$ZSH_ENV_PATH"
     echo "Default theme updated to '${SCHEME_SLUG}'."
