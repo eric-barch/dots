@@ -19,12 +19,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostic [q]uickfix list',
 })
 
--- Exit builtin terminal. Default is <C-\><C-n>.
--- NOTE: May not work in all terminal emulators, tmux, etc.
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
-  desc = 'Exit terminal mode',
-})
-
 -- Wrapped line navigation.
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
   expr = true,
