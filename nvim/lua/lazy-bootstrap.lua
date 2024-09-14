@@ -1,5 +1,5 @@
--- Install `lazy.nvim` plugin manager.
--- See `:help lazy.nvim`.
+-- Install `lazy.nvim` plugin manager
+-- See `:help lazy.nvim`
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 

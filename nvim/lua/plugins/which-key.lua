@@ -1,12 +1,12 @@
--- Show pending keybindings.
--- See `:help which-key`.
+-- Show pending keybindings
+-- See `:help which-key`
 
 return {
   {
     'folke/which-key.nvim',
-    -- Load WhichKey before all UI elements.
+    -- Load WhichKey before all UI elements
     event = 'VimEnter',
-    -- Runs AFTER WhichKey has loaded.
+    -- Runs AFTER WhichKey has loaded
     config = function()
       require('which-key').setup()
     end,
