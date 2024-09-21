@@ -2,6 +2,7 @@
 
 require 'globals'
 require 'opts'
+require 'autocmds'
 require 'keymaps'
 require 'lazy-bootstrap'
 require 'lazy-plugins'
