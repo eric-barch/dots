@@ -1,4 +1,4 @@
--- Setting options
+-- Options
 -- See `:help vim.opt`
 
 -- Line number settings
@@ -51,7 +51,7 @@ vim.opt.inccommand = 'split'
 -- Minimum number of lines to keep above and below the cursor
 vim.opt.scrolloff = 10
 
--- Enable 24-bit colorschemes
-vim.opt.termguicolors = true
+-- Disable 24-bit color so Base16 uses terminal palette
+vim.opt.termguicolors = false
 
 -- vim: ts=2 sts=2 sw=2 et
