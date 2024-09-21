@@ -1,7 +1,7 @@
 -- Config entrypoint
 
-require 'options'
 require 'globals'
+require 'opts'
 require 'keymaps'
 require 'lazy-bootstrap'
 require 'lazy-plugins'
