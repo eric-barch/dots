@@ -1,6 +1,5 @@
--- Configure and install plugins.
--- Check plugin status: `:Lazy`
--- Update plugins: `:Lazy update`
+-- Install plugins
+-- See `:help lazy.nvim`
 
 require('lazy').setup {
   require 'plugins/base16',
