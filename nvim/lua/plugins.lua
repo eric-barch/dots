@@ -2,22 +2,21 @@
 -- See `:help lazy.nvim`
 
 require('lazy').setup {
-  require 'plugins/base16',
-  require 'plugins/vim-tmux-navigator',
-  require 'plugins/telescope',
-  require 'plugins/lspconfig',
-  require 'plugins/which-key',
-  require 'plugins/treesitter',
-  require 'plugins/gitsigns',
-  require 'plugins/vim-sleuth',
   require 'plugins/autopairs',
+  require 'plugins/base16',
+  require 'plugins/codecompanion',
+  require 'plugins/cmp',
   require 'plugins/conform',
   require 'plugins/comment',
-  require 'plugins/todo-comments',
-  require 'plugins/cmp',
-  require 'plugins/mini',
-  require 'plugins/codecompanion',
   require 'plugins/dap',
+  require 'plugins/gitsigns',
+  require 'plugins/lspconfig',
+  require 'plugins/mini',
+  require 'plugins/telescope',
+  require 'plugins/treesitter',
+  require 'plugins/vim-sleuth',
+  require 'plugins/vim-tmux-navigator',
+  require 'plugins/which-key',
 
   -- TODO: Check out these plugins from kickstart.nvim:
   -- require 'plugins/indent_line',
