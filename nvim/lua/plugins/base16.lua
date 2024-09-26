@@ -1,5 +1,4 @@
--- Base16 colorscheme plugin.
--- See `:help base16`.
+-- Base16 colorschemes
 
 return {
   {
