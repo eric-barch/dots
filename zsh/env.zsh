@@ -31,6 +31,7 @@ export IDF_TOOLS_PATH="${IDF_TOOLS_PATH:=$XDG_DATA_HOME/espressif}"
 
 # Add XDG and Homebrew executables to $PATH
 # Equivalent to `export PATH="$BIN_HOME:/opt/homebrew/bin:$PATH"`, but de-duped
+typeset -U path
 path=(
   $BIN_HOME
   /opt/homebrew/bin
