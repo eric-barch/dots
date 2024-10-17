@@ -3,7 +3,8 @@
 
 -- Enable line wrapping for certain filetypes
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
+  desc = 'Enable line wrapping for text files',
+  pattern = { '*.md', '*.txt', '*.log' },
   callback = function()
     vim.opt_local.wrap = true -- Enable line wrapping
     vim.opt_local.linebreak = true -- Break lines on word boundaries
