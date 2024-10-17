@@ -4,7 +4,6 @@ final_space = true
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
-  newline = true
 
   [[blocks.segments]]
     type = 'os'
