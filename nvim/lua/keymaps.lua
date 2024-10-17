@@ -18,9 +18,17 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostic [q]uickfix list',
 })
 
--- Directional navigation
-vim.keymap.set('n', 'j', 'gj', { silent = true })
-vim.keymap.set('n', 'k', 'gk', { silent = true })
+-- Directional cursor navigation
+vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', {
+  silent = true,
+  expr = true,
+})
+vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', {
+  silent = true,
+  expr = true,
+})
+
+-- Direction split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
   desc = 'Focus split to left',
 })
