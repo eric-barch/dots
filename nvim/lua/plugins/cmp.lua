@@ -1,5 +1,6 @@
 -- Autocompletion.
 -- See `:help cmp`.
+
 return {
   {
     'hrsh7th/nvim-cmp',
