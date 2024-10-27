@@ -5,8 +5,8 @@
 vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Make line numbers relative
 vim.opt.wrap = false -- Disable line wrapping
-vim.opt.showmode = false -- Don't show mode since it's already in statusline
-vim.opt.signcolumn = 'yes' -- Always show sign column
+vim.opt.showmode = false -- Don't show mode (already in statusline)
+vim.opt.signcolumn = 'yes' -- Always show sign column, even when empty
 vim.opt.list = true -- Identify whitespace characters
 vim.opt.scrolloff = 10 -- Minimum visible lines above and below cursor
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Identifiers

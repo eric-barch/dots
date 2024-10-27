@@ -1,4 +1,4 @@
--- Automatic commands
+-- Autocommands
 -- See `:help nvim_create_autocmd`
 
 -- Enable line wrapping for certain filetypes

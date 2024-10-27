@@ -11,14 +11,14 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {
   desc = 'Go to next [d]iagnostic message',
 })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
-  desc = 'Show diagnostic [e]rror messages',
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {
+  desc = 'Show [d]iagnostic messages',
 })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostic [q]uickfix list',
 })
 
--- Directional cursor navigation
+-- Cursor navigation in wrapped files
 vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', {
   silent = true,
   expr = true,
@@ -28,7 +28,7 @@ vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', {
   expr = true,
 })
 
--- Direction split navigation
+-- Split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
   desc = 'Focus split to left',
 })

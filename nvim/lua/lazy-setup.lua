@@ -24,9 +24,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
-require('lazy').setup('plugins', {
-  checker = { enabled = true }, -- automatically check for plugin updates
-})
+require('lazy').setup {
+  spec = {
+    { import = 'plugins' },
+  },
+  checker = { enabled = true }, -- Check for updates on startup
+}
 
 -- vim: ts=2 sts=2 sw=2 et
