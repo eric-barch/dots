@@ -1,14 +1,13 @@
--- Debugger.
+-- DAP client
+-- See `:help nvim-dap`
 
 return {
   {
     'mfussenegger/nvim-dap',
     dependencies = {
-      'rcarriga/nvim-dap-ui',
-      -- Required for nvim-dap-ui
-      'nvim-neotest/nvim-nio',
-      -- Adapter for Microsoft JavaScript debugger
-      'mxsdev/nvim-dap-vscode-js',
+      'rcarriga/nvim-dap-ui', -- Debugger UI
+      'nvim-neotest/nvim-nio', -- Async I/O library, required for nvim-dap-ui
+      'mxsdev/nvim-dap-vscode-js', -- Microsoft JavaScript debugger adapter
     },
     config = function()
       local dap = require 'dap'
@@ -85,3 +84,5 @@ return {
     end,
   },
 }
+
+-- vim: ts=2 sts=2 sw=2 et
