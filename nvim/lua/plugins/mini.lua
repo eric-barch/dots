@@ -1,31 +1,29 @@
--- Collection of small, independent plugins.
--- See `:help mini.nvim`.
+-- Collection of small plugins
+-- See `:help mini.nvim`
+
 return {
   {
     'echasnovski/mini.nvim',
     config = function()
-      -- Better navigation around and inside textobjects, e.g.:
-      -- va)  - [v]isually select [a]round [)]paren.
-      -- yin' - [y]ank [i]nside [n]ext [']quote.
-      -- ci'  - [c]hange [i]nside [']quote.
       require('mini.ai').setup { n_lines = 500 }
 
-      -- Add/delete/replace surroundings, e.g.:
-      -- saiw) - [s]urround [a]dd [i]nner [w]ord [)]paren.
-      -- sd'   - [s]urround [d]elete [']quotes.
-      -- sr)'  - [s]urround [r]eplace [)] ['].
       require('mini.surround').setup()
 
-      local statusline = require 'mini.statusline'
-      statusline.setup {
+      require('mini.statusline').setup {
         content = {
           active = function()
-            local mode, mode_hl = statusline.section_mode { trunc_width = 120 }
-            local filename = statusline.section_filename { trunc_width = 140 }
-            local search = statusline.section_searchcount { trunc_width = 75 }
-            local location = statusline.section_location()
+            local mode, mode_hl = require('mini.statusline').section_mode {
+              trunc_width = 120,
+            }
+            local filename = require('mini.statusline').section_filename {
+              trunc_width = 140,
+            }
+            local search = require('mini.statusline').section_searchcount {
+              trunc_width = 75,
+            }
+            local location = '%2l:%-2v' -- Define location directly here
 
-            return statusline.combine_groups {
+            return require('mini.statusline').combine_groups {
               { hl = mode_hl, strings = { mode } },
               '%<', -- Mark truncate point
               { hl = 'statuslineFilename', strings = { filename } },
@@ -34,21 +32,12 @@ return {
             }
           end,
           inactive = function()
-            return statusline.section_filename { trunc_width = 140 }
+            return require('mini.statusline').section_filename {
+              trunc_width = 140,
+            }
           end,
         },
         use_icons = vim.g.have_nerd_font,
-      }
-
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-
-      require('mini.hipatterns').setup {
-        highlighters = {
-          hex_color = require('mini.hipatterns').gen_highlighter.hex_color(),
-        },
       }
     end,
   },
