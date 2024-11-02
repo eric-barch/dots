@@ -1,5 +1,5 @@
 -- Automatically close brackets, quotes, etc.
--- See `:help autopairs`.
+-- See `:help autopairs`
 
 return {
   {

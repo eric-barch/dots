@@ -1,5 +1,5 @@
--- Fuzzy finder.
--- See `:help telescope`.
+-- Fuzzy finder
+-- See `:help telescope`
 
 return {
   {

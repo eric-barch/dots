@@ -1,5 +1,6 @@
--- Same keybindings to move from tmux to nvim and vice versa.
--- See `:help tmux-navigator`.
+-- Same keybindings to move from tmux to nvim and vice versa
+-- See `:help tmux-navigator`
+
 return {
   {
     'christoomey/vim-tmux-navigator',

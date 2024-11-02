@@ -4,9 +4,7 @@
 return {
   {
     'folke/which-key.nvim',
-    -- Load WhichKey before all UI elements
     event = 'VimEnter',
-    -- Runs AFTER WhichKey has loaded
     config = function()
       require('which-key').setup()
     end,

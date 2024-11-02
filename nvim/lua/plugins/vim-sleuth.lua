@@ -1,5 +1,5 @@
--- Automatically detect tabstop and shiftwidth.
--- See `:help sleuth`.
+-- Automatically detect tabstop and shiftwidth
+-- See `:help sleuth`
 
 return {
   {
