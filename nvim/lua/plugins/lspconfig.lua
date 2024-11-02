@@ -1,87 +1,62 @@
--- LSP.
--- See `:help lsp` and `:help lsp-vs-treesitter`.
+-- Neovim LSP client configurations for various LSP servers
+-- See `:help lspconfig`
+
+local function handle_lsp_attach(event)
+  local map = function(keys, func, desc)
+    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+  end
+
+  map('gd', require('telescope.builtin').lsp_definitions, 'Go to [d]efinition')
+  map('gD', vim.lsp.buf.declaration, 'Go to [D]eclaration')
+  map('gr', require('telescope.builtin').lsp_references, 'Go to [r]eferences')
+  map('gI', require('telescope.builtin').lsp_implementations, 'Go to [I]mplementation')
+  map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Go to type [D]efinition')
+  map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
+  map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
+  map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
+
+  local client = vim.lsp.get_client_by_id(event.data.client_id)
+  if client and client.server_capabilities.documentHighlightProvider then
+    -- Highlight word references upon cursor rest
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      buffer = event.buf,
+      callback = vim.lsp.buf.document_highlight,
+    })
+
+    -- Clear highlights when cursor moves
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      buffer = event.buf,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
 
 return {
   {
-    -- User-contributed convenience configs for nvim LSP client.
-    -- See `:help lspconfig`.
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Language server manager.
-      'williamboman/mason.nvim',
-
-      -- Bridge between mason.nvim and nvim-lspconfig.
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Use Mason to keep third party tools up to date.
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-      -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
-
-      -- Configure LSP for nvim config, runtime and plugins.
-      -- Used for completion, annotations and signatures of nvim APIs.
-      { 'folke/neodev.nvim', opts = {} },
+      'williamboman/mason.nvim', -- LSP server management
+      'williamboman/mason-lspconfig.nvim', -- Integration between Mason and lspconfig
+      'WhoIsSethDaniel/mason-tool-installer.nvim', -- Tool installer for Mason
     },
     config = function()
-      --  Runs when an LSP attaches to a buffer.
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          -- Helper function to define LSP-specific keymaps in normal mode.
-          local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          map('gd', require('telescope.builtin').lsp_definitions, 'Go to [d]efinition')
-          map('gD', vim.lsp.buf.declaration, 'Go to [D]eclaration')
-          map('gr', require('telescope.builtin').lsp_references, 'Go to [r]eferences')
-          map('gI', require('telescope.builtin').lsp_implementations, 'Go to [I]mplementation')
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Go to type [D]efinition')
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
-          map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
-          -- Execute a code action. Usually requires cursor to be on top of an
-          -- error or LSP suggestion.
-          map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
-          -- Display documentation about the word under the cursor.
-          -- See `:help K`.
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
-
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
-            -- Highlight word references upon cursor rest.
-            -- See `:help CursorHold`.
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            -- Clear highlights when cursor moves.
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.clear_references,
-            })
-          end
-        end,
+        group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
+        callback = handle_lsp_attach,
       })
 
-      --  Broadcast new, non-default nvim capabilities to language servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-      -- Define servers table.
       local servers = {
-        -- See `:help lspconfig-all` for a list of all the pre-configured LSPs.
-        astro = {},
         clangd = {
           cmd = {
             -- ESP-IDF-compliant clangdd binary.
             string.format('%s/espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd', os.getenv 'XDG_DATA_HOME'),
           },
         },
-        html = {},
         lua_ls = {
+          filetypes = { 'lua' },
           settings = {
             Lua = {
               completion = {
@@ -90,30 +65,26 @@ return {
             },
           },
         },
-        prismals = {},
-        svelte = {},
+        prismals = { 'prisma' },
         tailwindcss = { filetypes = { 'css' } },
-        -- NOTE: Try https://github.com/pmizio/typescript-tools.nvim
         ts_ls = {
-          filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'javascript.jsx',
+            'typescript',
+            'typescriptreact',
+            'typescript.tsx',
+          },
         },
       }
 
-      -- Ensure the servers and tools above are installed.
-      -- To check status or install manually: `:Mason`.
       require('mason').setup()
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
+      require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- Override values explicitly passed by the server configuration
-            -- above. Useful to disable certain LSP features (e.g. to turn off
-            -- tsserver formatting).
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
