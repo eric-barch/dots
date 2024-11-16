@@ -18,6 +18,14 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostic [q]uickfix list',
 })
 
+-- Autoformat
+vim.keymap.set('n', '<leader>f', function()
+  local conform = require 'conform'
+  conform.format()
+end, {
+  desc = 'Format',
+})
+
 -- Cursor navigation in wrapped files
 vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', {
   silent = true,

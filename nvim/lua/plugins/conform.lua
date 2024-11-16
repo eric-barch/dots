@@ -4,34 +4,43 @@
 return {
   {
     'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {
+    opts = function()
+      local formatters_by_ft = {
         astro = { 'prettierd' },
         c = { 'clang-format' },
         cpp = { 'clang-format' },
+        htmldjango = { 'djlint' },
         lua = { 'stylua' },
-        python = {
-          'isort',
-          'black',
-        },
+        python = { 'isort', 'black' },
         html = { 'prettierd' },
         css = { 'prettierd' },
         javascript = { 'prettierd' },
         javascriptreact = { 'prettierd' },
         typescript = { 'prettierd' },
         typescriptreact = { 'prettierd' },
-      },
-      format_on_save = {
-        lsp_format = 'fallback',
-        timeout_ms = 500,
-      },
-      default_format_opts = {
-        lsp_format = 'fallback',
-        timeout_ms = 500,
-      },
-      notify_on_error = true,
-      notify_no_formatters = true,
-    },
+      }
+
+      local unique_formatters = {}
+      for _, formatters in pairs(formatters_by_ft) do
+        for _, formatter in ipairs(formatters) do
+          unique_formatters[formatter] = true
+        end
+      end
+
+      require('mason-tool-installer').setup {
+        ensure_installed = vim.tbl_keys(unique_formatters),
+      }
+
+      return {
+        formatters_by_ft = formatters_by_ft,
+        default_format_opts = {
+          lsp_format = 'fallback',
+          timeout_ms = 500,
+        },
+        notify_on_error = true,
+        notify_no_formatters = true,
+      }
+    end,
   },
 }
 

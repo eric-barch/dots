@@ -66,7 +66,8 @@ return {
           },
         },
         prismals = { 'prisma' },
-        tailwindcss = { filetypes = { 'css' } },
+        pyright = { 'python' },
+        tailwindcss = { 'css' },
         ts_ls = {
           filetypes = {
             'javascript',
