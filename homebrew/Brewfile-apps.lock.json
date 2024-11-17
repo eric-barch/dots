@@ -2,13 +2,13 @@
   "entries": {
     "cask": {
       "1password": {
-        "version": "8.10.44",
+        "version": "8.10.52",
         "options": {
           "full_name": "1password"
         }
       },
       "alacritty": {
-        "version": "0.13.2",
+        "version": "0.14.0",
         "options": {
           "full_name": "alacritty"
         }
@@ -20,7 +20,7 @@
         }
       },
       "arc": {
-        "version": "1.60.0,53678",
+        "version": "1.69.0,55816",
         "options": {
           "full_name": "arc"
         }
@@ -32,25 +32,25 @@
         }
       },
       "displaylink": {
-        "version": "1.10.3,2024-08",
+        "version": "1.11,2024-10",
         "options": {
           "full_name": "displaylink"
         }
       },
       "docker": {
-        "version": "4.34.2,167172",
+        "version": "4.35.1,173168",
         "options": {
           "full_name": "docker"
         }
       },
       "firefox": {
-        "version": "130.0",
+        "version": "132.0.2",
         "options": {
           "full_name": "firefox"
         }
       },
       "google-chrome": {
-        "version": "128.0.6613.138",
+        "version": "131.0.6778.70",
         "options": {
           "full_name": "google-chrome"
         }
@@ -68,19 +68,19 @@
         }
       },
       "obsidian": {
-        "version": "1.6.7",
+        "version": "1.7.6",
         "options": {
           "full_name": "obsidian"
         }
       },
       "pgadmin4": {
-        "version": "8.11",
+        "version": "8.13",
         "options": {
           "full_name": "pgadmin4"
         }
       },
       "raycast": {
-        "version": "1.82.5",
+        "version": "1.85.2",
         "options": {
           "full_name": "raycast"
         }
@@ -104,7 +104,7 @@
         }
       },
       "arduino-ide": {
-        "version": "2.3.2",
+        "version": "2.3.3",
         "options": {
           "full_name": "arduino-ide"
         }
@@ -116,25 +116,25 @@
         }
       },
       "chatgpt": {
-        "version": "1.2024.247,1725665409",
+        "version": "1.2024.310,1731435581",
         "options": {
           "full_name": "chatgpt"
         }
       },
       "db-browser-for-sqlite": {
-        "version": "3.13.0",
+        "version": "3.13.1",
         "options": {
           "full_name": "db-browser-for-sqlite"
         }
       },
       "discord": {
-        "version": "0.0.319",
+        "version": "0.0.325",
         "options": {
           "full_name": "discord"
         }
       },
       "figma": {
-        "version": "124.3.2",
+        "version": "124.5.7",
         "options": {
           "full_name": "figma"
         }
@@ -146,19 +146,19 @@
         }
       },
       "lunar": {
-        "version": "6.8.2",
+        "version": "6.8.4",
         "options": {
           "full_name": "lunar"
         }
       },
       "makemkv": {
-        "version": "1.17.7",
+        "version": "1.17.8",
         "options": {
           "full_name": "makemkv"
         }
       },
       "mkvtoolnix": {
-        "version": "87.0",
+        "version": "88.0",
         "options": {
           "full_name": "mkvtoolnix"
         }
@@ -170,13 +170,13 @@
         }
       },
       "notion": {
-        "version": "3.14.1",
+        "version": "4.0.0",
         "options": {
           "full_name": "notion"
         }
       },
       "qbittorrent": {
-        "version": "4.6.6",
+        "version": "5.0.1",
         "options": {
           "full_name": "qbittorrent"
         }
@@ -200,7 +200,7 @@
         }
       },
       "spotify": {
-        "version": "1.2.45.454",
+        "version": "1.2.50.335",
         "options": {
           "full_name": "spotify"
         }
@@ -218,7 +218,7 @@
         }
       },
       "visual-studio-code": {
-        "version": "1.93.1",
+        "version": "1.95.3",
         "options": {
           "full_name": "visual-studio-code"
         }
@@ -230,7 +230,7 @@
         }
       },
       "zoom": {
-        "version": "6.1.11.39163",
+        "version": "6.2.6.41824",
         "options": {
           "full_name": "zoom"
         }
@@ -242,13 +242,13 @@
         }
       },
       "aerospace": {
-        "version": "0.14.2-Beta",
+        "version": "0.15.2-Beta",
         "options": {
           "full_name": "aerospace"
         }
       },
       "cursor": {
-        "version": "0.40.4,2409052yfcjagw2",
+        "version": "0.42.5,24111460bf2loz1",
         "options": {
           "full_name": "cursor"
         }
@@ -260,43 +260,43 @@
         }
       },
       "gather": {
-        "version": "1.11.11",
+        "version": "1.18.0",
         "options": {
           "full_name": "gather"
         }
       },
       "github": {
-        "version": "3.4.5-0b64c23c",
+        "version": "3.4.9-5be94b37",
         "options": {
           "full_name": "github"
         }
       },
       "slack": {
-        "version": "4.40.128",
+        "version": "4.41.97",
         "options": {
           "full_name": "slack"
         }
       },
       "microsoft-auto-update": {
-        "version": "4.75.24090815",
+        "version": "4.76.24101387",
         "options": {
           "full_name": "microsoft-auto-update"
         }
       },
       "microsoft-excel": {
-        "version": "16.89.24090815",
+        "version": "16.91.24111020",
         "options": {
           "full_name": "microsoft-excel"
         }
       },
       "microsoft-teams": {
-        "version": "24231.507.3099.9636",
+        "version": "24277.3502.3161.3007",
         "options": {
           "full_name": "microsoft-teams"
         }
       },
       "microsoft-word": {
-        "version": "16.89.24090815",
+        "version": "16.91.24111020",
         "options": {
           "full_name": "microsoft-word"
         }
@@ -306,10 +306,10 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.21",
+        "HOMEBREW_VERSION": "4.4.5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "15.3.0.0.1.1708646388",
+        "CLT": "16.1.0.0.1.1729049160",
         "Xcode": "15.4",
         "macOS": "14.6.1"
       }
