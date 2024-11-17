@@ -16,6 +16,7 @@ return {
         css = { 'prettierd' },
         javascript = { 'prettierd' },
         javascriptreact = { 'prettierd' },
+        svg = { 'prettierd' },
         typescript = { 'prettierd' },
         typescriptreact = { 'prettierd' },
       }
@@ -33,6 +34,7 @@ return {
 
       return {
         formatters_by_ft = formatters_by_ft,
+        format_on_save = {},
         default_format_opts = {
           lsp_format = 'fallback',
           timeout_ms = 500,
