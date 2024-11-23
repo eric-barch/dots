@@ -1,6 +1,9 @@
 # clear
 alias c="clear"
 
+# current
+alias current="ts-node /Users/ericbarch/Developer/currentsoftwareapp/utility-billing/packages/cli/src/index.ts"
+
 # ESP-IDF
 # https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html#step-4-set-up-the-environment-variables
 alias esp-env=". $HOME/esp/esp-idf/export.sh"
