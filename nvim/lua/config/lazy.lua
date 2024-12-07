@@ -29,6 +29,7 @@ require('lazy').setup {
     { import = 'plugins' },
   },
   checker = { enabled = true }, -- Check for updates on startup
+  dev = { path = '~/Developer' },
 }
 
 -- vim: ts=2 sts=2 sw=2 et

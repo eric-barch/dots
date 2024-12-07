@@ -3,6 +3,7 @@
 return {
   {
     'RRethy/base16-nvim',
+    dev = true,
     config = function()
       require('base16-colorscheme').setup {
         base00 = '',
