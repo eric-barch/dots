@@ -12,7 +12,7 @@ vim.opt.scrolloff = 10 -- Minimum visible lines above and below cursor
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Identifiers
 vim.opt.fillchars = { eob = ' ' } -- Remove tildes on empty lines
 -- Set buffer filetype if configured in .editorconfig
-require("editorconfig").properties.filetype = function(buf, val)
+require('editorconfig').properties.filetype = function(buf, val)
   vim.api.nvim_set_option_value('filetype', val, { buf = buf })
 end
 
