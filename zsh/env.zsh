@@ -26,7 +26,7 @@ export BASE16_THEME="catppuccin-mocha"
 # Specify ESP-IDF install location
 # https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/tools/idf-tools.html#tools-installation-directory
 # TODO: Kind of annoying I need a whole environment variable for one rarely-
-# used application. Consider refactoring somehow.
+# used application.
 export IDF_TOOLS_PATH="${IDF_TOOLS_PATH:-$XDG_DATA_HOME/espressif}"
 
 # Add XDG and Homebrew executables to $PATH
