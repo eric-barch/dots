@@ -6,7 +6,8 @@ return {
     'folke/lazydev.nvim',
     opts = {
       library = {
-        '~/.dots/nvim',
+        -- Load luvit types
+        { path = '${3rd}/luv/library' },
       },
     },
   },
