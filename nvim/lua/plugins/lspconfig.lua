@@ -69,6 +69,7 @@ return {
           filetypes = { 'prisma' },
         },
         pyright = { filetypes = { 'python' } },
+        rust_analyzer = { filetypes = { 'rust' } },
         tailwindcss = { filetypes = { 'css' } },
         ts_ls = {
           filetypes = {
