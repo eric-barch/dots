@@ -16,20 +16,25 @@ return {
         css = { 'prettierd' },
         javascript = { 'prettierd' },
         javascriptreact = { 'prettierd' },
+        rust = { 'rustfmt' },
         svg = { 'prettierd' },
         typescript = { 'prettierd' },
         typescriptreact = { 'prettierd' },
       }
 
-      local unique_formatters = {}
+      local formatters_to_install = {}
       for _, formatters in pairs(formatters_by_ft) do
         for _, formatter in ipairs(formatters) do
-          unique_formatters[formatter] = true
+          -- Use system `rustfmt` installed via rustup. Mason registry version
+          -- is deprecated.
+          if formatter ~= 'rustfmt' then
+            formatters_to_install[formatter] = true
+          end
         end
       end
 
       require('mason-tool-installer').setup {
-        ensure_installed = vim.tbl_keys(unique_formatters),
+        ensure_installed = vim.tbl_keys(formatters_to_install),
       }
 
       return {
