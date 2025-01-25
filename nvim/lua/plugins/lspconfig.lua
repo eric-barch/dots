@@ -51,7 +51,7 @@ return {
       local servers = {
         clangd = {
           cmd = {
-            -- ESP-IDF-compliant clangdd binary.
+            -- ESP-IDF-compliant clangd binary.
             string.format('%s/espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd', os.getenv 'XDG_DATA_HOME'),
           },
         },
@@ -65,24 +65,25 @@ return {
             },
           },
         },
-        prismals = { 'prisma' },
-        pyright = { 'python' },
-        tailwindcss = { 'css' },
+        prismals = {
+          filetypes = { 'prisma' },
+        },
+        pyright = { filetypes = { 'python' } },
+        tailwindcss = { filetypes = { 'css' } },
         ts_ls = {
           filetypes = {
             'javascript',
             'javascriptreact',
-            'javascript.jsx',
             'typescript',
             'typescriptreact',
-            'typescript.tsx',
           },
         },
       }
 
       require('mason').setup()
-      require('mason-tool-installer').setup { ensure_installed = vim.tbl_keys(servers) }
       require('mason-lspconfig').setup {
+        automatic_installation = true,
+        ensure_installed = vim.tbl_keys(servers),
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
