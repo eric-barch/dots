@@ -28,7 +28,6 @@ require('lazy').setup {
   spec = {
     { import = 'plugins' },
   },
-  checker = { enabled = true }, -- Check for updates on startup
   dev = { path = '~/Developer' },
 }
 
