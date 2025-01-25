@@ -8,6 +8,8 @@ return {
       library = {
         -- Load luvit types
         { path = '${3rd}/luv/library' },
+        -- Load `lazy.nvim` types
+        { path = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim/lua' },
       },
     },
   },
