@@ -35,5 +35,6 @@ typeset -U path
 path=(
   $BIN_HOME
   /opt/homebrew/bin
+  $HOME/.cargo/bin
   $path
 )
