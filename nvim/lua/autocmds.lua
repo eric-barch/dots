@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
   pattern = '*',
   callback = function()
     if vim.fn.filereadable(vim.fn.expand '%:p') == 1 and vim.bo.buftype == '' then
-      vim.cmd 'loadview'
+      vim.cmd 'silent! loadview'
     end
   end,
 })
