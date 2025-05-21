@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd('FileType', {
   desc = 'Enable line wrapping for text files',
   pattern = { 'markdown', 'text', 'log' },
   callback = function()
-    vim.opt_local.wrap = true -- Enable line wrapping
+    vim.opt_local.wrap = true
     vim.opt_local.linebreak = true -- Break lines on word boundaries
   end,
 })
@@ -33,10 +33,10 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight on yank',
   group = vim.api.nvim_create_augroup('highlight_on_yank', {
-    clear = true, -- Clear any existing highlight group
+    clear = true,
   }),
   callback = function()
-    vim.highlight.on_yank() -- Highlight yanked text
+    vim.highlight.on_yank()
   end,
 })
 
