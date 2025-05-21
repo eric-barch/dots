@@ -11,6 +11,11 @@ vim.opt.list = true -- Identify whitespace characters
 vim.opt.scrolloff = 10 -- Minimum visible lines above and below cursor
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Identifiers
 vim.opt.fillchars = { eob = ' ' } -- Remove tildes on empty lines
+vim.opt.foldenable = true -- Enable folding by default
+vim.opt.foldmethod = 'expr' -- Default to expression-based folding
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- Use Tree-sitter folds
+vim.opt.foldtext = '' -- Syntax highlight the fold line
+vim.opt.foldlevelstart = 99 -- Default folds to open
 vim.opt.viewoptions:append 'folds' -- Include folds in view files
 -- Set buffer filetype if configured in .editorconfig
 require('editorconfig').properties.filetype = function(buf, val)

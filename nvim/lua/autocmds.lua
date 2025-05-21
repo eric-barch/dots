@@ -10,35 +10,22 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'FileType', 'BufReadPost' }, {
-  desc = 'Enable folding in YAML files',
-  pattern = 'yaml',
-  callback = function()
-    vim.opt_local.foldmethod = 'indent'
-    vim.opt_local.foldenable = true
-    -- If no saved view exists, open all folds
-    if vim.fn.empty(vim.fn.glob(vim.fn.stdpath 'state' .. '/view/' .. vim.fn.expand('%:p'):gsub('/', '='))) == 1 then
-      vim.cmd 'normal! zR'
-    end
-  end,
-})
-
 vim.api.nvim_create_autocmd('BufWinLeave', {
-  desc = 'Save view on buffer leave',
-  pattern = '*',
+  desc = 'Save view',
   callback = function()
-    if vim.fn.filereadable(vim.fn.expand '%:p') == 1 and vim.bo.buftype == '' then
-      vim.cmd 'mkview'
+    if vim.fn.empty(vim.fn.expand '%:p') == 0 and vim.bo.buftype == '' then
+      vim.cmd 'silent! mkview'
     end
   end,
 })
 
 vim.api.nvim_create_autocmd('BufWinEnter', {
-  desc = 'Load view on buffer enter',
-  pattern = '*',
+  desc = 'Restore view',
   callback = function()
-    if vim.fn.filereadable(vim.fn.expand '%:p') == 1 and vim.bo.buftype == '' then
-      vim.cmd 'silent! loadview'
+    if vim.fn.empty(vim.fn.expand '%:p') == 0 and vim.bo.buftype == '' then
+      vim.schedule(function()
+        vim.cmd 'silent! loadview'
+      end)
     end
   end,
 })
