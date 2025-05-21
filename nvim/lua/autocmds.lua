@@ -10,15 +10,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd('BufWinLeave', {
-  desc = 'Save view',
-  callback = function()
-    if vim.fn.empty(vim.fn.expand '%:p') == 0 and vim.bo.buftype == '' then
-      vim.cmd 'silent! mkview'
-    end
-  end,
-})
-
 vim.api.nvim_create_autocmd('BufWinEnter', {
   desc = 'Restore view',
   callback = function()
@@ -37,6 +28,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufWinLeave', {
+  desc = 'Save view',
+  callback = function()
+    if vim.fn.empty(vim.fn.expand '%:p') == 0 and vim.bo.buftype == '' then
+      vim.cmd 'silent! mkview'
+    end
   end,
 })
 
