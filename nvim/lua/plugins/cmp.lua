@@ -43,6 +43,8 @@ return {
           { name = 'path' },
         },
       }
+
+      cmp.setup.filetype('markdown', { enabled = false })
     end,
   },
 }
