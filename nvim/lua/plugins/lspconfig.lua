@@ -35,6 +35,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp', -- LSP completion capabilities for nvim-cmp
       'williamboman/mason.nvim', -- LSP server management
       'williamboman/mason-lspconfig.nvim', -- Integration between Mason and lspconfig
       'WhoIsSethDaniel/mason-tool-installer.nvim', -- Tool installer for Mason
