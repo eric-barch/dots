@@ -45,6 +45,7 @@ return {
       }
 
       cmp.setup.filetype('markdown', { enabled = false })
+      cmp.setup.filetype('codecompanion', { enabled = false })
     end,
   },
 }
