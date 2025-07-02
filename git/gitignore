@@ -20,5 +20,8 @@ npm_modules/
 venv/
 __pycache__
 
+# Python - pyenv
+.python-version
+
 # XCode
 *.xcuserstate

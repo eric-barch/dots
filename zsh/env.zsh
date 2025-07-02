@@ -23,11 +23,8 @@ export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 # https://github.com/chriskempson/base16-shell
 export BASE16_THEME="catppuccin-mocha"
 
-# Specify ESP-IDF install location
-# https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/tools/idf-tools.html#tools-installation-directory
-# TODO: Kind of annoying I need a whole environment variable for one rarely-
-# used application.
-export IDF_TOOLS_PATH="${IDF_TOOLS_PATH:-$XDG_DATA_HOME/espressif}"
+# Pyenv
+export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
 
 # Add XDG and Homebrew executables to $PATH
 # Equivalent to `export PATH="$BIN_HOME:/opt/homebrew/bin:$PATH"`, but de-duped
@@ -36,5 +33,6 @@ path=(
   $BIN_HOME
   /opt/homebrew/bin
   $HOME/.cargo/bin
+  $PYENV_ROOT/bin
   $path
 )
