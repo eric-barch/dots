@@ -1,0 +1,6 @@
+#!/bin/sh
+# Call Current CLI
+
+CLI="/Users/ericbarch/Developer/currentsoftwareapp/utility-billing/packages/cli/src/index.ts"
+
+ts-node $CLI "$@"
