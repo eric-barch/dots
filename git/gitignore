@@ -13,15 +13,9 @@ cmake-build-*/
 # Node - npm modules
 npm_modules/
 
-# NVM
-.nvmrc
-
 # Python - venv
 venv/
 __pycache__
-
-# Python - pyenv
-.python-version
 
 # XCode
 *.xcuserstate
