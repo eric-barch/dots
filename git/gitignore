@@ -11,7 +11,7 @@ cmake-build-*/
 *.orig
 
 # Node - npm modules
-npm_modules/
+node_modules/
 
 # Python - venv
 venv/
