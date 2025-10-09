@@ -1,4 +1,4 @@
--- Autoformat
+-- Formatting
 -- See `:help conform`
 
 return {

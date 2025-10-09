@@ -1,10 +1,10 @@
--- Pass linter output to `vim.diagnostic` module
+-- Linting
 -- See `:help lint`
 
 return {
   {
     'mfussenegger/nvim-lint',
-    event = { 'BufReadPre', 'BufNewFile' },
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
       -- Allow other plugins to add linters to require('lint').linters_by_ft
@@ -25,19 +25,28 @@ return {
       --   text = { "vale" }
       -- }
 
-      -- So disable the unwanted ones by setting filetypes to nil:
+      -- So disable or change as necessary:
       lint.linters_by_ft['clojure'] = nil
       lint.linters_by_ft['inko'] = nil
       lint.linters_by_ft['janet'] = nil
-      lint.linters_by_ft['markdown'] = nil
+      lint.linters_by_ft['markdown'] = { 'markdownlint' }
       lint.linters_by_ft['rst'] = nil
       lint.linters_by_ft['ruby'] = nil
       lint.linters_by_ft['terraform'] = nil
 
-      -- TODO: Make sure necessary tools are installed using mason tools installer
+      local linters_to_install = {}
+      for _, linters in pairs(lint.linters_by_ft) do
+        for _, linter in ipairs(linters) do
+          linters_to_install[linter] = true
+        end
+      end
+
+      require('mason-tool-installer').setup {
+        ensure_installed = vim.tbl_keys(linters_to_install),
+      }
 
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+      vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave', 'TextChanged' }, {
         group = lint_augroup,
         callback = function()
           require('lint').try_lint()

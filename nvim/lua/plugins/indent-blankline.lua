@@ -1,4 +1,4 @@
--- Indentation guide lines
+-- Indentation guidelines
 -- See `:help ibl`
 
 return {
