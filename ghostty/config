@@ -1,2 +1,5 @@
+bell-features = no-attention, no-title
 confirm-close-surface = false
+font-size = 15
+mouse-hide-while-typing = true
 title = " "
