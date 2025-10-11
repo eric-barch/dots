@@ -19,10 +19,6 @@ export BIN_HOME="${BIN_HOME:-$HOME/.local/bin}"
 # Move zsh config location from default (home) to XDG
 export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 
-# Base16 theme
-# https://github.com/chriskempson/base16-shell
-export BASE16_THEME="catppuccin-mocha"
-
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME}/pnpm"
 
