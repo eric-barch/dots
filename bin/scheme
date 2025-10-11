@@ -15,9 +15,23 @@ set_state() {
 }
 
 get_state() {
-  if [ -f "$STATE_FILE" ]; then
-    grep -E "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
-  fi
+  [ -f "$STATE_FILE" ] && grep -E "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
+}
+
+name_of() { bn=${1##*/}; printf '%s\n' "${bn%.*}"; }
+
+resolve_scheme() {
+  tok=$1
+  case "$tok" in
+    */* ) [ -r "$tok" ] && { printf '%s\n' "$tok"; return 0; } ;;
+    * )
+      for ext in '' .yml .yaml; do
+        f="$SCHEMES_DIR/$tok$ext"
+        [ -r "$f" ] && { printf '%s\n' "$f"; return 0; }
+      done
+      ;;
+  esac
+  return 1
 }
 
 pick_random() {
@@ -50,9 +64,8 @@ osc_set_12() { printf '\033]12;#%s\033\\' "$1"; }  # cursor color
 
 apply() {
   set --
-  i=0
-  while IFS= read -r line; do set -- "$@" "$line"; i=$((i+1)); done
-  [ $# -ge 16 ] || { echo "Scheme parse yielded fewer than 16 colors" >&2; return 1; }
+  while IFS= read -r line; do set -- "$@" "$line"; done
+  [ $# -ge 16 ] || { echo "scheme parse yielded fewer than 16 colors" >&2; return 1; }
 
   osc_set_color 0  "$1"
   osc_set_color 1  "$9"
@@ -72,9 +85,9 @@ apply() {
   osc_set_color 15 "$8"
 
   # fg/bg/cursor
-  osc_set_10 "$6"  # base05
-  osc_set_11 "$1"  # base00
-  osc_set_12 "${14}" # base0D
+  osc_set_10 "$6"
+  osc_set_11 "$1"
+  osc_set_12 "${14}"
 }
 
 usage() {
@@ -94,6 +107,7 @@ use_last=0
 use_random=0
 set_default=0
 arg_scheme=""
+show_help=0
 
 while [ $# -gt 0 ]; do
   case "${1:-}" in
@@ -116,51 +130,34 @@ choose_scheme() {
   fi
 
   if [ -n "$arg_scheme" ]; then
-    if [ -f "$arg_scheme" ]; then
-      printf '%s\n' "$arg_scheme"
-      return
+    if path="$(resolve_scheme "$arg_scheme")"; then
+      printf '%s\n' "$path"; return
     fi
-    # try name -> file in SCHEMES_DIR (accept .yml or .yaml, with or without extension)
-    base="$SCHEMES_DIR/$arg_scheme"
-    if [ -f "$base" ]; then printf '%s\n' "$base"; return; fi
-    if [ -f "$base.yml" ]; then printf '%s\n' "$base.yml"; return; fi
-    if [ -f "$base.yaml" ]; then printf '%s\n' "$base.yaml"; return; fi
-    echo "Scheme not found: $arg_scheme" >&2; return 1
+    echo "scheme not found: $arg_scheme" >&2
+    return 1
   fi
 
   if [ "$use_last" -eq 1 ] || [ -z "$arg_scheme" ]; then
     last="$(get_state last || true)"
-    [ -n "${last:-}" ] || { echo "No last scheme in state. Provide a scheme or use --random" >&2; return 1; }
-    printf '%s\n' "$last"
-    return
+    [ -n "${last:-}" ] || { echo "no last scheme in state. provide a scheme or use --random" >&2; return 1; }
+    if path="$(resolve_scheme "$last")"; then
+      printf '%s\n' "$path"; return
+    fi
+    echo "last scheme not found under \$SCHEMES_DIR: $last" >&2
+    return 1
   fi
 }
 
 scheme_file="$(choose_scheme)" || exit 1
 
-head -n 40 -- "$scheme_file" >&2
 
 # Apply palette
 parse "$scheme_file" | apply || exit 1
 
-# Save last
-# Store canonical path to enable --last even if you moved CWD
-case "$scheme_file" in
-  /*) set_state last "$scheme_file" ;;
-  *)  set_state last "$(cd "$(dirname "$scheme_file")" && pwd)/$(basename "$scheme_file")" ;;
-esac
+set_state last "$(name_of "$scheme_file")"
 
-# Handle --default
 if [ "$set_default" -eq 1 ]; then
-  if [ -n "$arg_scheme" ]; then
-    # default = the chosen arg-resolved scheme
-    set_state default "$(get_state last)"
-  else
-    # no <scheme> provided -> default = last (per your spec)
-    set_state default "$(get_state last)"
-  fi
+  set_state default "$(get_state last)"
 fi
 
-# Echo the active scheme name
-bn="$(basename "$scheme_file")"
-echo "Applied scheme: ${bn%.*}"
+echo "Applied scheme: $(name_of "$scheme_file")"
