@@ -148,6 +148,38 @@ EOF
   exit 0
 }
 
+determine_scheme_filepath() {
+  arg_scheme=$1
+  use_last=$2
+  use_random=$3
+
+  if [ -n "$arg_scheme" ]; then
+    get_scheme_filepath "$arg_scheme" && return 0
+    echo "error: scheme not found: $arg_scheme" >&2
+    return 1
+  fi
+
+  if [ "$use_last" -eq 1 ]; then
+    last_scheme=$(get_state last)
+    [ -n "$last_scheme" ] || { echo "error: no 'last' scheme in $STATE_FILE" >&2; return 1; }
+    get_scheme_filepath "$last_scheme" && return 0
+    echo "error: scheme not found: $last_scheme" >&2
+    return 1
+  fi
+
+  if [ "$use_random" -eq 1 ]; then
+    get_random_scheme_filepath && return 0
+    echo "error: no scheme files found in $SCHEMES_DIR" >&2
+    return 1
+  fi
+
+  default_scheme=$(get_state default)
+  [ -n "$default_scheme" ] || { echo "error: no 'default' scheme in $STATE_FILE" >&2; return 1; }
+  get_scheme_filepath "$default_scheme" && return 0
+  echo "error: scheme not found: $default_scheme" >&2
+  return 1
+}
+
 # Parse args
 show_help=0
 use_last=0
@@ -168,42 +200,14 @@ while [ $# -gt 0 ]; do
   shift || true
 done
 
-# Resolve scheme path/name
-choose_scheme() {
-  if [ "$use_random" -eq 1 ]; then
-    get_random_scheme_filepath
-    return
-  fi
-
-  if [ -n "$arg_scheme" ]; then
-    if path="$(get_scheme_filepath "$arg_scheme")"; then
-      printf '%s\n' "$path"; return
-    fi
-    echo "scheme not found: $arg_scheme" >&2
-    return 1
-  fi
-
-  if [ "$use_last" -eq 1 ] || [ -z "$arg_scheme" ]; then
-    last="$(get_state last || true)"
-    [ -n "${last:-}" ] || { echo "no last scheme in state. provide a scheme or use --random" >&2; return 1; }
-    if path="$(get_scheme_filepath "$last")"; then
-      printf '%s\n' "$path"; return
-    fi
-    echo "last scheme not found under \$SCHEMES_DIR: $last" >&2
-    return 1
-  fi
-}
-
-scheme_file="$(choose_scheme)" || exit 1
-
-
-# Apply palette
-parse "$scheme_file" | apply_scheme || exit 1
-
-set_state last "$(get_filepath_stem "$scheme_file")"
-
-if [ "$set_default" -eq 1 ]; then
-  set_state default "$(get_state last)"
+# Core logic
+if [ "$show_help" -eq 1 ]; then
+  show_usage
+  exit 0
 fi
 
-echo "Applied scheme: $(get_filepath_stem "$scheme_file")"
+filepath=$(determine_scheme_filepath "$arg_scheme" "$use_last" "$use_random") || exit 1
+printf 'filepath: %s\n' "$filepath" >&2
+
+echo "finish implementing" >&2
+exit 1
