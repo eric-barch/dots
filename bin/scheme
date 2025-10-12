@@ -75,6 +75,7 @@ apply() {
   osc_set_color 5  "${15}"
   osc_set_color 6  "${13}"
   osc_set_color 7  "$6"
+
   osc_set_color 8  "$4"
   osc_set_color 9  "$9"
   osc_set_color 10 "${12}"
@@ -83,6 +84,13 @@ apply() {
   osc_set_color 13 "${15}"
   osc_set_color 14 "${13}"
   osc_set_color 15 "$8"
+
+  osc_set_color 16 "${10}"
+  osc_set_color 17 "${16}"
+  osc_set_color 18 "$2"
+  osc_set_color 19 "$3"
+  osc_set_color 20 "$5"
+  osc_set_color 21 "$7"
 
   # fg/bg/cursor
   osc_set_10 "$6"
