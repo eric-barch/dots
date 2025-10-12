@@ -205,8 +205,24 @@ if [ "$show_help" -eq 1 ]; then
   exit 0
 fi
 
-filepath=$(determine_scheme_filepath "$arg_scheme" "$use_last" "$use_random") || exit 1
-printf 'filepath: %s\n' "$filepath" >&2
+filepath=$(determine_scheme_filepath "$use_last" "$use_random" "$set_default" "$arg_scheme") || {
+  echo "error: failed to get filepath" >&2
+  exit 1
+}
 
-echo "finish implementing" >&2
-exit 1
+parse_scheme_file "$filepath" | apply_scheme || {
+  echo "error: failed to apply scheme" >&2
+  exit 1
+}
+
+scheme=$(get_filepath_stem "$filepath")
+
+echo "applied scheme: $scheme"
+
+set_state last "$scheme"
+
+if [ "$set_default" -eq 1 ]; then
+  set_state default "$scheme"
+fi
+
+exit 0
