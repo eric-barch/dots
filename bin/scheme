@@ -72,11 +72,15 @@ get_random_scheme_filepath() {
   done
 }
 
-parse() {
-  file="$1"
-  for key in base00 base01 base02 base03 base04 base05 base06 base07 base08 base09 base0A base0B base0C base0D base0E base0F; do
-    hex=$(sed -nE 's/^[[:space:]]*'"$key"':[[:space:]]*"[#]?([0-9A-Fa-f]{6}).*$/\1/p' "$file" | head -n1)
-    [ -n "$hex" ] || { echo "parse error: missing $key" >&2; return 1; }
+parse_scheme_file() {
+  filepath="$1"
+  for i in $(seq 0 15); do
+    key=$(printf 'base%02X' "$i")
+    hex=$(sed -nE 's/^[[:space:]]*'"$key"':[[:space:]]*"[#]?([0-9A-Fa-f]{6}).*$/\1/p' "$filepath" | head -n1)
+    [ -n "$hex" ] || {
+      echo "parse error: missing $key" >&2
+      return 1
+    }
     printf '%s\n' "$hex"
   done
 }
