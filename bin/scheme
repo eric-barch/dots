@@ -37,17 +37,38 @@ get_scheme_filepath() {
   [ -r "$1" ] && printf '%s\n' "$1" || return 1
 }
 
-pick_random() {
-  set -- "$SCHEMES_DIR"/*.y*ml
-  [ -e "$1" ] || { echo "no scheme files found in $SCHEMES_DIR" >&2; return 1; }
+get_random_scheme_filepath() {
+  set -- "$SCHEMES_DIR/"*.y*ml
+
+  [ -r "$1" ] || {
+    echo "no scheme files found in $SCHEMES_DIR" >&2
+    return 1
+  }
+
   count=$#
-  num=$(od -An -N2 -tu2 /dev/urandom 2>/dev/null | tr -d ' ')
-  [ -n "$num" ] || num=$$$(date +%s 2>/dev/null || echo 1)
-  n=$(( (num % count) + 1 ))
-  i=1
-  for f in "$@"; do
-    [ $i -eq $n ] && { printf '%s\n' "$f"; return; }
-    i=$((i+1))
+
+  # Read two bytes from `/dev/urandom` and print as a 16-bit integer (0–65535)
+  # `od`: octal dump (from `coreutils`)
+  # `-An`: no address — suppress offset column
+  # `-N2`: read 2 bytes
+  # `-tu2`: output as unsigned 2-byte integer
+  # `tr`: translate/delete characters
+  # `-d`: delete
+  random_num=$(od -An -N2 -tu2 /dev/urandom 2>/dev/null | tr -d ' ')
+
+  # If `$random_num` is empty, generate pseudo-random number by concatenating process
+  # ID (`$$`) and current timestamp (or 1 if `date` fails).
+  [ -n "$random_num" ] || random_num=$$$(date +%s 2>/dev/null || echo 1)
+
+  target_index=$(( random_num % count ))
+
+  index=0
+  for filepath in "$@"; do
+    [ $index -eq $target_index ] && {
+      printf '%s\n' "$filepath"
+      return
+    }
+    index=$(( index + 1 ))
   done
 }
 
@@ -136,7 +157,7 @@ done
 # Resolve scheme path/name
 choose_scheme() {
   if [ "$use_random" -eq 1 ]; then
-    pick_random
+    get_random_scheme_filepath
     return
   fi
 
