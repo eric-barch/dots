@@ -136,7 +136,7 @@ apply_scheme() {
   emit_osc_4 21 "$7"
 }
 
-usage() {
+show_usage() {
   cat <<EOF
 usage: scheme [-l|--last] [-r|--random] [-d|--default] [<scheme>]
 
@@ -148,22 +148,22 @@ EOF
   exit 0
 }
 
-# Parse flags
+# Parse args
+show_help=0
 use_last=0
 use_random=0
 set_default=0
-show_help=0
 arg_scheme=""
 
 while [ $# -gt 0 ]; do
   case "${1:-}" in
+    -h|--help) show_help=1 ;;
     -l|--last) use_last=1 ;;
     -r|--random) use_random=1 ;;
     -d|--default) set_default=1 ;;
-    -h|--help) usage ;;
     --) shift; break ;;
-    -* ) echo "Unknown flag: $1" >&2; usage ;;
-    * ) arg_scheme="$1" ;;
+    -*) echo "Unknown flag: $1" >&2; show_usage ;;
+    *) arg_scheme="$1" ;;
   esac
   shift || true
 done
