@@ -148,9 +148,10 @@ EOF
 }
 
 determine_scheme_filepath() {
-  arg_scheme=$1
-  use_last=$2
-  use_random=$3
+  use_last=$1
+  use_random=$2
+  set_default=$3
+  arg_scheme=$4
 
   if [ -n "$arg_scheme" ]; then
     get_scheme_filepath "$arg_scheme" && return 0
@@ -172,10 +173,16 @@ determine_scheme_filepath() {
     return 1
   fi
 
-  default_scheme=$(get_state default)
-  [ -n "$default_scheme" ] || { echo "error: no 'default' scheme in $STATE_FILE" >&2; return 1; }
-  get_scheme_filepath "$default_scheme" && return 0
-  echo "error: scheme not found: $default_scheme" >&2
+  if [ "${set_default:-0}" -eq 1 ]; then
+    name=$(get_state last)
+    [ -n "$name" ] || { echo "error: no 'last' scheme in $STATE_FILE" >&2; return 1; }
+  else
+    name=$(get_state default)
+    [ -n "$name" ] || { echo "error: no 'default' scheme in $STATE_FILE" >&2; return 1; }
+  fi
+
+  get_scheme_filepath "$name" && return 0
+  echo "error: scheme not found: $name" >&2
   return 1
 }
 
