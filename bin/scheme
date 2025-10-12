@@ -7,15 +7,22 @@ STATE_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/scheme"
 
 # Helpers
 set_state() {
-  key="$1"; val="$2"
-  tmp="$STATE_FILE.tmp"
-  [ -f "$STATE_FILE" ] && grep -vE "^$key=" "$STATE_FILE" > "$tmp" || :
-  printf '%s=%s\n' "$key" "$val" >> "$tmp"
+  key=$1; val=$2
+  tmp="${STATE_FILE}.tmp.$$"
+
+  [ -r "$STATE_FILE" ] && cp "$STATE_FILE" "$tmp" || : > "$tmp"
+
+  if grep -q "^$key=" "$tmp"; then
+    sed "s/^$key=.*/$key=$val/" "$tmp" > "$tmp.new" && mv "$tmp.new" "$tmp"
+  else
+    printf '%s=%s\n' "$key" "$val" >> "$tmp"
+  fi
+
   mv "$tmp" "$STATE_FILE"
 }
 
 get_state() {
-  [ -f "$STATE_FILE" ] && grep -E "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
+  [ -r "$STATE_FILE" ] && grep "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
 }
 
 name_of() { bn=${1##*/}; printf '%s\n' "${bn%.*}"; }
@@ -114,8 +121,8 @@ EOF
 use_last=0
 use_random=0
 set_default=0
-arg_scheme=""
 show_help=0
+arg_scheme=""
 
 while [ $# -gt 0 ]; do
   case "${1:-}" in
