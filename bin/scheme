@@ -25,7 +25,11 @@ get_state() {
   [ -r "$STATE_FILE" ] && grep "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
 }
 
-name_of() { bn=${1##*/}; printf '%s\n' "${bn%.*}"; }
+get_filepath_stem() {
+  base_name="${1##*/}"
+  stem="${file%.*}"
+  printf '%s\n' "$stem"
+}
 
 resolve_scheme() {
   tok=$1
@@ -169,10 +173,10 @@ scheme_file="$(choose_scheme)" || exit 1
 # Apply palette
 parse "$scheme_file" | apply || exit 1
 
-set_state last "$(name_of "$scheme_file")"
+set_state last "$(get_filepath_stem "$scheme_file")"
 
 if [ "$set_default" -eq 1 ]; then
   set_state default "$(get_state last)"
 fi
 
-echo "Applied scheme: $(name_of "$scheme_file")"
+echo "Applied scheme: $(get_filepath_stem "$scheme_file")"
