@@ -31,18 +31,10 @@ get_filepath_stem() {
   printf '%s\n' "$stem"
 }
 
-resolve_scheme() {
-  tok=$1
-  case "$tok" in
-    */* ) [ -r "$tok" ] && { printf '%s\n' "$tok"; return 0; } ;;
-    * )
-      for ext in '' .yml .yaml; do
-        f="$SCHEMES_DIR/$tok$ext"
-        [ -r "$f" ] && { printf '%s\n' "$f"; return 0; }
-      done
-      ;;
-  esac
-  return 1
+get_scheme_filepath() {
+  filepath="$SCHEMES_DIR/$1.y*ml"
+  set -- $filepath
+  [ -r "$1" ] && printf '%s\n' "$1" || return 1
 }
 
 pick_random() {
@@ -149,7 +141,7 @@ choose_scheme() {
   fi
 
   if [ -n "$arg_scheme" ]; then
-    if path="$(resolve_scheme "$arg_scheme")"; then
+    if path="$(get_scheme_filepath "$arg_scheme")"; then
       printf '%s\n' "$path"; return
     fi
     echo "scheme not found: $arg_scheme" >&2
@@ -159,7 +151,7 @@ choose_scheme() {
   if [ "$use_last" -eq 1 ] || [ -z "$arg_scheme" ]; then
     last="$(get_state last || true)"
     [ -n "${last:-}" ] || { echo "no last scheme in state. provide a scheme or use --random" >&2; return 1; }
-    if path="$(resolve_scheme "$last")"; then
+    if path="$(get_scheme_filepath "$last")"; then
       printf '%s\n' "$path"; return
     fi
     echo "last scheme not found under \$SCHEMES_DIR: $last" >&2
