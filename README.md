@@ -22,6 +22,8 @@ make setup
    script, when I would paste in a function, the function and all its inner
    blocks would be automatically folded.
 5. Code Companion is not actually connected to an LLM API anymore lol.
+6. Collapsing an ordered list item at root level causes the whole section under
+   that header to collapse. I want it to only collapse the ordered item.
 
 ## Wishlist
 
