@@ -24,6 +24,8 @@ make setup
 5. Code Companion is not actually connected to an LLM API anymore lol.
 6. Collapsing an ordered list item at root level causes the whole section under
    that header to collapse. I want it to only collapse the ordered item.
+7. In my shell, when I type a full word I can't seem to backspace it, even in
+   insert mode. Some vim mode zsh extension I have installed?
 
 ## Wishlist
 
