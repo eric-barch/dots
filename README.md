@@ -25,6 +25,8 @@ make setup
    that header to collapse. I want it to only collapse the ordered item.
 6. In my shell, when I type a full word I can't seem to backspace it, even in
    insert mode. Some vim mode zsh extension I have installed?
+7. `.env` and probably other filetypes are not included in telescope file
+   search.
 
 ## Wishlist
 
