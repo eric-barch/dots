@@ -12,19 +12,18 @@ make setup
 
 ## Issues
 
-1. Cursor escapes Telescope after creating/renaming/deleting file.
-2. vim.lsp.util.jump_to_location is deprecated. Run ":checkhealth
+1. vim.lsp.util.jump_to_location is deprecated. Run ":checkhealth
    vim.deprecated" for more information.
-3. When you open a new buffer by jumping using language server linking, can end
+2. When you open a new buffer by jumping using language server linking, can end
    up in the wrong spot if file was open before because of how I've implemented
    remebering the last place in the file.
-4. Folds behave weirdly in some cases. When I was working on the `scheme` shell
+3. Folds behave weirdly in some cases. When I was working on the `scheme` shell
    script, when I would paste in a function, the function and all its inner
    blocks would be automatically folded.
-5. Code Companion is not actually connected to an LLM API anymore lol.
-6. Collapsing an ordered list item at root level causes the whole section under
+4. Code Companion is not actually connected to an LLM API anymore lol.
+5. Collapsing an ordered list item at root level causes the whole section under
    that header to collapse. I want it to only collapse the ordered item.
-7. In my shell, when I type a full word I can't seem to backspace it, even in
+6. In my shell, when I type a full word I can't seem to backspace it, even in
    insert mode. Some vim mode zsh extension I have installed?
 
 ## Wishlist
