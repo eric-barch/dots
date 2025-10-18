@@ -27,6 +27,8 @@ make setup
    insert mode. Some vim mode zsh extension I have installed?
 7. `.env` and probably other filetypes are not included in telescope file
    search.
+8. Formatter 'black' timeout (and other formatters). Make it async and give it
+   more time or figure out why it's taking so long.
 
 ## Wishlist
 
