@@ -29,6 +29,8 @@ make setup
    search.
 8. Formatter 'black' timeout (and other formatters). Make it async and give it
    more time or figure out why it's taking so long.
+9. Linting large JSON files takes forever and blocks other execution. Make it
+   async.
 
 ## Wishlist
 
