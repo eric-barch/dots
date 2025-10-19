@@ -2,13 +2,12 @@
 # Set terminal colors
 
 # Paths
-SCHEMES_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/theme/schemes/base16"
+SCHEMES_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/schemes/base16"
 STATE_FILE="${XDG_STATE_HOME:-$HOME/.local/state}/scheme"
 
 # Helpers
-set_state() {
-  key=$1
-  val=$2
+set_scheme_state() {
+  key="$1"; val="$2"
 
   tmp="${STATE_FILE}.tmp.$$"
 
@@ -23,18 +22,27 @@ set_state() {
   mv "$tmp" "$STATE_FILE"
 }
 
-get_state() {
-  [ -r "$STATE_FILE" ] && grep "^$1=" "$STATE_FILE" | sed 's/^[^=]*=//'
+get_scheme_state() {
+  key="$1"
+
+  [ -r "$STATE_FILE" ] && grep "^$key=" "$STATE_FILE" | sed 's/^[^=]*=//'
 }
 
 get_filepath_stem() {
-  basename=${1##*/}
-  printf '%s\n' "${basename%.*}"
+  filepath="$1"
+
+  filename=${filepath##*/} # strip directories
+  stem=${filename%.*}      # strip extension
+
+  printf '%s\n' "$stem"
 }
 
-get_scheme_filepath() {
+get_stem_filepath() {
+  stem="$1"
+
   filepath="$SCHEMES_DIR/$1.y*ml"
   set -- $filepath
+
   [ -r "$1" ] && printf '%s\n' "$1" || return 1
 }
 
@@ -78,22 +86,30 @@ parse_scheme_file() {
 
   for i in $(seq 0 15); do
     key=$(printf 'base%02X' "$i")
-    hex=$(sed -nE 's/^[[:space:]]*'"$key"':[[:space:]]*"[#]?([0-9A-Fa-f]{6}).*$/\1/p' "$filepath" | head -n1)
-    [ -n "$hex" ] || {
+
+    line=$(grep -m1 -E "^  $key: \"#[0-9A-Fa-f]{6}\"" "$filepath") || line=
+
+    [ -n "$line" ] || {
       echo "error: scheme file missing $key" >&2
       return 1
     }
+
+    hex=${line#*\"#} # drop everything up to and including the opening "#"
+    hex=${hex%\"*}   # drop the trailing quote and anything after
+
     printf '%s\n' "$hex"
   done
 }
 
 emit_osc()  {
   code="$1"; hex="$2"
+
   printf '\033]%s;#%s\033\\' "$code" "$hex"
 }
 
 emit_osc_4() {
   index="$1"; hex="$2"
+
   printf '\033]4;%s;#%s\033\\' "$index" "$hex"
 }
 
@@ -104,14 +120,15 @@ apply_scheme() {
   done
 
   [ $# -ge 16 ] || {
-    echo "error: scheme parse yielded fewer than 16 colors" >&2
+    echo "error: fewer than 16 colors provided" >&2
     return 1
   }
 
-  emit_osc 10 "$6"
-  emit_osc 11 "$1"
-  emit_osc 12 "${14}"
+  emit_osc 10 "$6"    # foreground
+  emit_osc 11 "$1"    # background
+  emit_osc 12 "${14}" # cursor
 
+  # palette
   emit_osc_4 0  "$1"
   emit_osc_4 1  "$9"
   emit_osc_4 2  "${12}"
@@ -138,103 +155,133 @@ apply_scheme() {
   emit_osc_4 21 "$7"
 }
 
-show_usage() {
+show_help() {
   cat <<EOF
-usage: scheme [-l|--last] [-r|--random] [-d|--default] [<scheme-name>]
+usage: scheme [-l|--last] [-r|--random] [-d|--default] [-s|--save] [<scheme-name>]
 
 Flags:
-  -l, --last      use last scheme
-  -r, --random    use random scheme
-  -d, --default   if scheme is provided, set default=scheme; else set default=last
+  -d, --default   apply default scheme
+  -l, --last      apply last scheme
+  -r, --random    apply random scheme
+  -s, --save      save provided or last scheme as default
 EOF
   exit 0
 }
 
 determine_scheme_filepath() {
-  use_last=$1
-  use_random=$2
-  set_default=$3
-  arg_scheme_name=$4
+  arg_scheme_name=$1; random=$2; last=$3; default=$4; save=$5
 
+  # 1. named
   if [ -n "$arg_scheme_name" ]; then
-    get_scheme_filepath "$arg_scheme_name" && return 0
+    echo "named scheme selected: $arg_scheme_name" >&2
+    get_stem_filepath "$arg_scheme_name" && return 0
     echo "error: scheme not found: $arg_scheme_name" >&2
     return 1
   fi
 
-  if [ "$use_last" -eq 1 ]; then
-    last_scheme=$(get_state last)
-    [ -n "$last_scheme" ] || { echo "error: no 'last' scheme in $STATE_FILE" >&2; return 1; }
-    get_scheme_filepath "$last_scheme" && return 0
-    echo "error: scheme not found: $last_scheme" >&2
-    return 1
-  fi
-
-  if [ "$use_random" -eq 1 ]; then
-    get_random_scheme_filepath && return 0
+  # 2. random
+  if [ "$random" = "1" ]; then
+    filepath="$(get_random_scheme_filepath)"
+    if [ -n "$filepath" ]; then
+      random_scheme_name="$(get_filepath_stem "$filepath")"
+      echo "random scheme selected: $random_scheme_name" >&2
+      printf '%s\n' "$filepath"
+      return 0
+    fi
     echo "error: no scheme files found in $SCHEMES_DIR" >&2
     return 1
   fi
 
-  if [ "$set_default" -eq 1 ]; then
-    name=$(get_state last)
-    [ -n "$name" ] || { echo "error: no 'last' scheme in $STATE_FILE" >&2; return 1; }
+  # 3. last explicitly
+  if [ "$last" = "1" ]; then
+    selected="$(get_scheme_state last)"
+    echo "last scheme selected explicitly: $selected" >&2
+
+  # 4. default explicitly
+  elif [ "$default" = "1" ]; then
+    selected="$(get_scheme_state default)"
+    echo "default scheme selected explicitly: $selected" >&2
+
+  # 5. save → interpret as "use last" when no selector
+  elif [ "$save" = "1" ]; then
+    selected="$(get_scheme_state last)"
+    echo "last scheme selected implicitly: $selected" >&2
+
+  # 6. fallback default
   else
-    name=$(get_state default)
-    [ -n "$name" ] || { echo "error: no 'default' scheme in $STATE_FILE" >&2; return 1; }
+    selected="$(get_scheme_state default)"
+    echo "default scheme selected implicitly: $selected" >&2
   fi
 
-  get_scheme_filepath "$name" && return 0
-  echo "error: scheme not found: $name" >&2
+  [ -n "$selected" ] || {
+    echo "error: no matching scheme in $STATE_FILE" >&2
+    return 1
+  }
+
+  get_stem_filepath "$selected" && return 0
+  echo "error: scheme not found: $selected" >&2
   return 1
 }
 
 # Parse args
-show_help=0
-use_last=0
-use_random=0
-set_default=0
+help=0
+last=0
+random=0
+default=0
+save=0
 arg_scheme_name=""
 
 while [ $# -gt 0 ]; do
   case "${1:-}" in
-    -h|--help) show_help=1 ;;
-    -l|--last) use_last=1 ;;
-    -r|--random) use_random=1 ;;
-    -d|--default) set_default=1 ;;
+    -h|--help) help=1 ;;
+    -l|--last) last=1 ;;
+    -r|--random) random=1 ;;
+    -d|--default) default=1 ;;
+    -s|--save) save=1 ;;
     --) shift; break ;;
-    -*) echo "Unknown flag: $1" >&2; show_usage ;;
+    -*) echo "unknown flag: $1" >&2; show_help ;;
     *) arg_scheme_name="$1" ;;
   esac
   shift || true
 done
 
 # Core logic
-if [ "$show_help" -eq 1 ]; then
-  show_usage
+if [ "$help" -eq 1 ]; then
+  show_help
   exit 0
 fi
 
-filepath=$(determine_scheme_filepath "$use_last" "$use_random" "$set_default" "$arg_scheme_name") || {
-  echo "error: failed to get filepath" >&2
+filepath=$(determine_scheme_filepath \
+  "$arg_scheme_name" "$random" "$last" "$default" "$save" ) || {
+  echo "error: failed to get scheme filepath" >&2
   exit 1
 }
+# echo "selected scheme filepath: $filepath" >&2
 
-parse_scheme_file "$filepath" | apply_scheme || {
+parsed=$(parse_scheme_file "$filepath") || {
+  echo "error: failed to parse scheme" >&2
+  exit 1
+}
+# printf '%s\n' "$parsed" >&2
+
+printf '%s\n' "$parsed" | apply_scheme || {
   echo "error: failed to apply scheme" >&2
   exit 1
 }
 
-scheme_name=$(get_filepath_stem "$filepath")
-echo "applied scheme: $scheme_name" >&2
+applied_scheme_name=$(get_filepath_stem "$filepath")
+# echo "applied scheme: $applied_scheme_name" >&2
 
-default_name=$(get_state default)
-if [ "$scheme_name" != "$default_name" ]; then
-  set_state last "$scheme_name"
+if [ -n "$arg_scheme_name" ] || \
+   [ "$last" -eq 1 ] || \
+   [ "$random" -eq 1 ] || \
+   [ "$default" -eq 1 ] || \
+   [ "$save" -eq 1 ]; then
+  set_scheme_state last "$applied_scheme_name"
 fi
 
-if [ "$set_default" -eq 1 ]; then
-  set_state default "$scheme_name"
+if [ "$save" -eq 1 ]; then
+  set_scheme_state default "$applied_scheme_name"
 fi
 
 exit 0
