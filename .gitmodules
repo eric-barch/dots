@@ -1,3 +1,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule "schemes"]
+	path = schemes
+	url = https://github.com/tinted-theming/schemes.git
