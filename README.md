@@ -31,6 +31,7 @@ make setup
    more time or figure out why it's taking so long.
 9. Linting large JSON files takes forever and blocks other execution. Make it
    async.
+10. Sometimes when I paste a multiline function in it starts in a folded state.
 
 ## Wishlist
 
