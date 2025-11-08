@@ -37,8 +37,6 @@ make setup
 
 ## Wishlist
 
-1. Install
-   [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim?tab=readme-ov-file).
 1. Set up better CSV display in nvim, probably
    [csvviem.nvim](https://github.com/hat0uma/csvview.nvim).
    [olimorris uses it](https://github.com/hat0uma/csvview.nvim/issues/50).
