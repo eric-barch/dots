@@ -43,3 +43,5 @@ make setup
 1. Dark/light selection for `scheme` bin
 1. Set up vertical line at col 80, probably
    [virt-column.nvim](https://github.com/lukas-reineke/virt-column.nvim).
+1. Put tmux windows on the right so they don't shift when the session name (and
+   so its length) changes.
