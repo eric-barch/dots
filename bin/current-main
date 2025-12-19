@@ -3,4 +3,4 @@
 
 CLI="/Users/ericbarch/Developer/currentsoftwareapp/utility-billing-main/packages/cli/src/index.ts"
 
-ts-node $CLI "$@"
+tsx $CLI "$@"
