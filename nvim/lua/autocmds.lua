@@ -6,8 +6,6 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'markdown', 'text', 'log' },
   callback = function()
     vim.opt_local.expandtab = true -- Use spaces instead of tabs
-    vim.opt_local.linebreak = true -- Break lines on word boundaries
-    vim.opt_local.wrap = true -- Wrap lines
   end,
 })
 
