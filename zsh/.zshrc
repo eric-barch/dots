@@ -1,11 +1,11 @@
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
 ZDOTDIR="${ZDOTDIR:=$XDG_CONFIG_HOME/zsh}"
 
+source "$ZDOTDIR/plugins.zsh"
 source "$ZDOTDIR/env.zsh"
 source "$ZDOTDIR/secrets.zsh"
 source "$ZDOTDIR/options.zsh"
 source "$ZDOTDIR/functions.zsh"
 source "$ZDOTDIR/commands.zsh"
 source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/plugins.zsh"
 source "$ZDOTDIR/prompt.zsh"
