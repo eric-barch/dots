@@ -22,9 +22,6 @@ export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME}/pnpm"
 
-# Pyenv
-export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
-
 # Add XDG and Homebrew executables to $PATH
 # Equivalent to `export PATH="$BIN_HOME:/opt/homebrew/bin:$PATH"`, but de-duped
 typeset -U path
@@ -33,6 +30,5 @@ path=(
   /opt/homebrew/bin
   $HOME/.cargo/bin
   $PNPM_HOME
-  $PYENV_ROOT/bin
   $path
 )
