@@ -39,4 +39,9 @@ vim.opt.splitright = true -- Focus new pane on right split
 vim.opt.splitbelow = true -- Focus new pane on down split
 vim.opt.inccommand = 'nosplit' -- Preview substitutions in buffer
 
+-- Diagnostics
+vim.diagnostic.config {
+  float = { source = true },
+}
+
 -- vim: ts=2 sts=2 sw=2 et
