@@ -10,6 +10,8 @@ return {
         c = { 'clang-format' },
         cpp = { 'clang-format' },
         htmldjango = { 'djlint' },
+        json = { 'prettier_dev_dep' },
+        jsonc = { 'prettier_dev_dep' },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         html = { 'prettier_dev_dep' },
@@ -78,6 +80,7 @@ return {
         default_format_opts = {
           timeout_ms = 2000,
         },
+        -- log_level = vim.log.levels.DEBUG,
         notify_on_error = true,
         notify_no_formatters = true,
       }
