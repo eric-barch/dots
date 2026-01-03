@@ -5,35 +5,27 @@ return {
   {
     'olimorris/codecompanion.nvim',
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      -- https://github.com/olimorris/codecompanion.nvim/issues/377
+      { 'nvim-lua/plenary.nvim', branch = 'master' },
       'nvim-treesitter/nvim-treesitter',
-      'hrsh7th/nvim-cmp',
-      'nvim-telescope/telescope.nvim',
     },
-    config = function()
-      require('codecompanion').setup {
-        -- adapters = {
-        --   openai = function()
-        --     return require('codecompanion.adapters').extend('openai', {
-        --       env = {
-        --         api_key = os.getenv 'OPENAI_API_KEY',
-        --       },
-        --     })
-        --   end,
-        -- },
-        strategies = {
-          chat = {
-            adapter = 'openai',
-          },
-          inline = {
-            adapter = 'openai',
-          },
-          agent = {
-            adapter = 'openai',
-          },
+    opts = {
+      interactions = {
+        chat = {
+          adapter = 'openai',
         },
-      }
-    end,
+        inline = {
+          adapter = 'openai',
+        },
+        cmd = {
+          adapter = 'openai',
+        },
+        background = {
+          adapter = 'openai',
+        },
+      },
+    },
+    version = '^18.0.0',
   },
 }
 
