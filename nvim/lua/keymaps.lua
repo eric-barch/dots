@@ -1,8 +1,8 @@
 -- Keymaps
 -- See `:help vim.keymap`
 
--- <Esc>
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>') -- Un-highlight any search
+-- Search
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
@@ -27,14 +27,8 @@ end, {
 })
 
 -- Cursor navigation in wrapped files
-vim.keymap.set('n', 'j', 'v:count == 0 ? "gj" : "j"', {
-  silent = true,
-  expr = true,
-})
-vim.keymap.set('n', 'k', 'v:count == 0 ? "gk" : "k"', {
-  silent = true,
-  expr = true,
-})
+vim.keymap.set('n', 'j', 'gj', { silent = true })
+vim.keymap.set('n', 'k', 'gk', { silent = true })
 
 -- Split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
