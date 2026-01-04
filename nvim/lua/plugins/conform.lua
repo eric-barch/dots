@@ -76,9 +76,9 @@ return {
       return {
         formatters_by_ft = formatters_by_ft,
         formatters = formatters,
-        format_on_save = {},
-        default_format_opts = {
-          timeout_ms = 2000,
+        format_on_save = {
+          async = true,
+          timeout_ms = 10000,
         },
         -- log_level = vim.log.levels.DEBUG,
         notify_on_error = true,
