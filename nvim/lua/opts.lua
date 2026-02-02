@@ -17,6 +17,7 @@ vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()' -- Use Tree-sitter folds
 vim.opt.foldtext = '' -- Syntax highlight the fold line
 vim.opt.foldlevelstart = 99 -- Default folds to open
 vim.opt.viewoptions:append 'folds' -- Include folds in view files
+
 -- Set buffer filetype if configured in .editorconfig
 require('editorconfig').properties.filetype = function(buf, val)
   vim.api.nvim_set_option_value('filetype', val, { buf = buf })
@@ -43,5 +44,8 @@ vim.opt.inccommand = 'nosplit' -- Preview substitutions in buffer
 vim.diagnostic.config {
   float = { source = true },
 }
+
+-- Tooling
+vim.opt.exrc = true
 
 -- vim: ts=2 sts=2 sw=2 et

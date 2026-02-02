@@ -2,73 +2,71 @@
 -- See `:help lspconfig`
 
 local function handle_lsp_attach(event)
-  local map = function(keys, func, desc)
+  local telescope = require 'telescope.builtin'
+
+  local set_keymap = function(keys, func, desc)
     vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
   end
 
-  map('gd', require('telescope.builtin').lsp_definitions, 'Go to [d]efinition')
-  map('gD', vim.lsp.buf.declaration, 'Go to [D]eclaration')
-  map('gr', require('telescope.builtin').lsp_references, 'Go to [r]eferences')
-  map('gI', require('telescope.builtin').lsp_implementations, 'Go to [I]mplementation')
-  map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Go to type [D]efinition')
-  map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[d]ocument [s]ymbols')
-  map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
-  map('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
+  set_keymap('gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
+  set_keymap('gd', telescope.lsp_definitions, '[g]o to [d]efinitions')
+  set_keymap('gtd', telescope.lsp_type_definitions, '[g]o to [t]ype [d]efinitions')
+  set_keymap('gi', telescope.lsp_implementations, '[g]o to [i]mplementations')
+  set_keymap('gr', telescope.lsp_references, '[g]o to [r]eferences')
+  set_keymap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
+end
 
-  local client = vim.lsp.get_client_by_id(event.data.client_id)
-  if client and client.server_capabilities.documentHighlightProvider then
-    -- Highlight word references upon cursor rest
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-      buffer = event.buf,
-      callback = vim.lsp.buf.document_highlight,
-    })
+local function assign_filetype_to_server(servers, server_name, filetype)
+  local server_config = servers[server_name] or {}
+  server_config.filetypes = { filetype }
+  servers[server_name] = server_config
+end
 
-    -- Clear highlights when cursor moves
-    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-      buffer = event.buf,
-      callback = vim.lsp.buf.clear_references,
-    })
+local function use_project_language_servers(servers)
+  local project = vim.g.project or {}
+  for filetype, config in pairs(project) do
+    if type(config) == 'table' and config.lsp ~= nil then
+      local lsps = config.lsp
+      if type(lsps) == 'string' then
+        lsps = { lsps }
+      end
+      if type(lsps) == 'table' then
+        for _, server_name in ipairs(lsps) do
+          if type(server_name) == 'string' then
+            assign_filetype_to_server(servers, server_name, filetype)
+          end
+        end
+      end
+    end
   end
 end
 
 return {
   {
     'neovim/nvim-lspconfig',
+    event = { 'BufReadPost', 'BufNewFile' },
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp', -- LSP completion capabilities for nvim-cmp
-      'williamboman/mason.nvim', -- LSP server management
-      'williamboman/mason-lspconfig.nvim', -- Integration between Mason and lspconfig
-      'WhoIsSethDaniel/mason-tool-installer.nvim', -- Tool installer for Mason
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
+      local lspconfig = require 'lspconfig'
+      local mason = require 'mason'
+      local mason_lspconfig = require 'mason-lspconfig'
+      local cmp_nvim_lsp = require 'cmp_nvim_lsp'
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
         callback = handle_lsp_attach,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = cmp_nvim_lsp.default_capabilities()
 
       local servers = {
-        clangd = {
-          cmd = {
-            -- ESP-IDF-compliant clangd binary.
-            string.format('%s/espressif/tools/esp-clang/16.0.1-fe4f10a809/esp-clang/bin/clangd', os.getenv 'XDG_DATA_HOME'),
-          },
-        },
-        lua_ls = {
-          filetypes = { 'lua' },
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
-        },
-        prismals = {
-          filetypes = { 'prisma' },
-        },
+        lua_ls = { filetypes = { 'lua' } },
+        prismals = { filetypes = { 'prisma' } },
         pyright = { filetypes = { 'python' } },
         rust_analyzer = { filetypes = { 'rust' } },
         tailwindcss = { filetypes = { 'css' } },
@@ -82,15 +80,22 @@ return {
         },
       }
 
-      require('mason').setup()
-      require('mason-lspconfig').setup {
+      use_project_language_servers(servers)
+      print(vim.inspect(servers))
+
+      mason.setup()
+
+      local servers_to_install = vim.tbl_keys(servers)
+      table.sort(servers_to_install)
+
+      mason_lspconfig.setup {
         automatic_installation = true,
-        ensure_installed = vim.tbl_keys(servers),
+        ensure_installed = servers_to_install,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            lspconfig[server_name].setup(server)
           end,
         },
       }
