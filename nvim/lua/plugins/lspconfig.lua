@@ -1,21 +1,6 @@
 -- Neovim LSP client configurations for various LSP servers
 -- See `:help lspconfig`
 
-local function handle_lsp_attach(event)
-  local telescope = require 'telescope.builtin'
-
-  local set_keymap = function(keys, func, desc)
-    vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-  end
-
-  set_keymap('gD', vim.lsp.buf.declaration, '[g]o to [D]eclaration')
-  set_keymap('gd', telescope.lsp_definitions, '[g]o to [d]efinitions')
-  set_keymap('gtd', telescope.lsp_type_definitions, '[g]o to [t]ype [d]efinitions')
-  set_keymap('gi', telescope.lsp_implementations, '[g]o to [i]mplementations')
-  set_keymap('gr', telescope.lsp_references, '[g]o to [r]eferences')
-  set_keymap('<leader>rn', vim.lsp.buf.rename, '[r]e[n]ame')
-end
-
 local function assign_filetype_to_server(servers, server_name, filetype)
   local server_config = servers[server_name] or {}
   server_config.filetypes = { filetype }
