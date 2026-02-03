@@ -74,7 +74,7 @@ return {
       table.sort(servers_to_install)
 
       mason_lspconfig.setup {
-        automatic_installation = true,
+        automatic_installation = false,
         ensure_installed = servers_to_install,
         handlers = {
           function(server_name)
