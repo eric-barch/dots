@@ -5,6 +5,10 @@ return {
   {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPost', 'BufNewFile' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+    },
     config = function()
       local lint = require 'lint'
 
