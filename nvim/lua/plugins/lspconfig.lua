@@ -30,18 +30,18 @@ local function load_project_config()
 end
 
 local function get_servers()
-  local in_project = load_project_config()
-
-  if not in_project or not vim.g.project or not vim.g.project.lsp then
-    return default_servers
+  -- Use vim.g.project if exrc already set it (e.g. opened from project root)
+  if vim.g.project and vim.g.project.lsp then
+    local lsp = vim.g.project.lsp
+    return type(lsp) == 'table' and lsp or { lsp }
   end
-
-  local lsp = vim.g.project.lsp
-
-  if type(lsp) == 'table' then
-    return lsp
+  -- Otherwise find .nvim.lua from buffer path or cwd
+  load_project_config()
+  if vim.g.project and vim.g.project.lsp then
+    local lsp = vim.g.project.lsp
+    return type(lsp) == 'table' and lsp or { lsp }
   end
-  return { lsp }
+  return default_servers
 end
 
 return {
@@ -68,10 +68,13 @@ return {
         end
       end
 
-      -- Defer so we can load .nvim.lua from project root (buffer path or cwd)
+      -- Defer so exrc can run first when opening from project root (cwd);
+      -- then we use vim.g.project from exrc or load from buffer path/cwd.
       vim.api.nvim_create_autocmd('VimEnter', {
         once = true,
-        callback = set_up_lsp,
+        callback = function()
+          vim.schedule(set_up_lsp)
+        end,
       })
     end,
   },
