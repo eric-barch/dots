@@ -60,8 +60,12 @@ return {
         require('mason-lspconfig').setup {
           automatic_installation = true,
           ensure_installed = servers,
-          automatic_enable = true,
+          automatic_enable = false,
         }
+
+        for _, server in ipairs(servers) do
+          vim.lsp.enable(server)
+        end
       end
 
       -- Defer so we can load .nvim.lua from project root (buffer path or cwd)
