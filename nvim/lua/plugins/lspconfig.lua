@@ -1,40 +1,16 @@
 -- Neovim LSP client configurations for various LSP servers
 -- See `:help lspconfig`
 
+local project = require 'utils.project'
+
 local default_servers = {
   'lua_ls',
   'ts_ls',
   'ty',
 }
 
-local function load_project_config()
-  local name = vim.api.nvim_buf_get_name(0)
-
-  local start
-
-  if name == '' then
-    start = vim.fn.getcwd()
-  else
-    if vim.fn.isdirectory(name) then
-      start = name
-    else
-      start = vim.fs.dirname(name)
-    end
-  end
-
-  local found = vim.fs.find('.nvim.lua', {
-    path = start,
-    upward = true,
-    type = 'file',
-  })[1]
-
-  if found then
-    pcall(vim.cmd.source, found)
-  end
-end
-
 local function get_servers()
-  load_project_config()
+  project.load_config()
 
   if vim.g.project and vim.g.project.lsp then
     local servers = vim.g.project.lsp
