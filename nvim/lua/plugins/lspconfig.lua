@@ -2,45 +2,50 @@
 -- See `:help lspconfig`
 
 local default_servers = {
-  'clangd',
   'lua_ls',
-  'prismals',
-  'pyright',
-  'rust_analyzer',
-  'tailwindcss',
   'ts_ls',
   'ty',
 }
 
 local function load_project_config()
-  local start_dir = vim.fn.getcwd()
-  local buf = vim.api.nvim_get_current_buf()
-  local fname = vim.api.nvim_buf_get_name(buf)
-  if fname and fname ~= '' then
-    start_dir = vim.fs.dirname(fname)
+  local name = vim.api.nvim_buf_get_name(0)
+
+  local start
+
+  if name == '' then
+    start = vim.fn.getcwd()
+  else
+    if vim.fn.isdirectory(name) then
+      start = name
+    else
+      start = vim.fs.dirname(name)
+    end
   end
 
-  local found = vim.fs.find('.nvim.lua', { path = start_dir, upward = true, type = 'file' })[1]
+  local found = vim.fs.find('.nvim.lua', {
+    path = start,
+    upward = true,
+    type = 'file',
+  })[1]
 
   if found then
     pcall(vim.cmd.source, found)
-    return true
   end
-  return false
 end
 
 local function get_servers()
-  -- Use vim.g.project if exrc already set it (e.g. opened from project root)
-  if vim.g.project and vim.g.project.lsp then
-    local lsp = vim.g.project.lsp
-    return type(lsp) == 'table' and lsp or { lsp }
-  end
-  -- Otherwise find .nvim.lua from buffer path or cwd
   load_project_config()
+
   if vim.g.project and vim.g.project.lsp then
-    local lsp = vim.g.project.lsp
-    return type(lsp) == 'table' and lsp or { lsp }
+    local servers = vim.g.project.lsp
+
+    if type(servers) == 'table' then
+      return servers
+    end
+
+    return { servers }
   end
+
   return default_servers
 end
 
@@ -54,28 +59,19 @@ return {
     config = function()
       require('mason').setup()
 
-      local function set_up_lsp()
-        local servers = get_servers()
+      local servers = get_servers()
 
-        require('mason-lspconfig').setup {
-          automatic_installation = true,
-          ensure_installed = servers,
-          automatic_enable = false,
-        }
+      require('mason-lspconfig').setup {
+        automatic_installation = true,
+        ensure_installed = servers,
+        -- `automatic_enable` enables all _installed_ servers. We only want to
+        -- enable servers in this project.
+        automatic_enable = false,
+      }
 
-        for _, server in ipairs(servers) do
-          vim.lsp.enable(server)
-        end
+      for _, server in ipairs(servers) do
+        vim.lsp.enable(server)
       end
-
-      -- Defer so exrc can run first when opening from project root (cwd);
-      -- then we use vim.g.project from exrc or load from buffer path/cwd.
-      vim.api.nvim_create_autocmd('VimEnter', {
-        once = true,
-        callback = function()
-          vim.schedule(set_up_lsp)
-        end,
-      })
     end,
   },
 }
