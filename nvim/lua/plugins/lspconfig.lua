@@ -1,4 +1,4 @@
--- Neovim LSP client configurations for various LSP servers
+-- LSP
 -- See `:help lspconfig`
 
 local project = require 'utils.project'
@@ -33,10 +33,9 @@ return {
       'mason-org/mason-lspconfig.nvim',
     },
     config = function()
-      require('mason').setup()
-
       local servers = get_servers()
 
+      require('mason').setup()
       require('mason-lspconfig').setup {
         automatic_installation = true,
         ensure_installed = servers,
