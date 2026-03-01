@@ -12,7 +12,6 @@ return {
     config = function()
       local dap = require 'dap'
       local dapui = require 'dapui'
-      local vscode = require 'dap.ext.vscode'
 
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
@@ -77,10 +76,6 @@ return {
           },
         }
       end
-
-      vscode.load_launchjs(vim.fn.getcwd() .. '/launch.json', {
-        ['pwa-node'] = { 'typescript', 'javascript' },
-      })
     end,
   },
 }
