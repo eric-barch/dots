@@ -1,8 +1,0 @@
-#!/bin/sh
-# Call Current CLI
-
-ROOT="/Users/ericbarch/Developer/currentsoftwareapp/utility-billing-main"
-CLI="$ROOT/packages/cli/src/index.ts"
-TSCONFIG="$ROOT/packages/cli/tsconfig.json"
-
-npx tsx --tsconfig "$TSCONFIG" "$CLI" "$@"

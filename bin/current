@@ -1,0 +1,23 @@
+#!/bin/sh
+# Call Current CLI
+
+ROOT="/Users/ericbarch/Developer/currentsoftwareapp/utility-billing"
+CLI="$ROOT/packages/cli/src/index.ts"
+TSCONFIG="$ROOT/packages/cli/tsconfig.json"
+
+# Use the node version pinned by the `utility-billing` .nvmrc. We can't call
+# `nvm use` here: nvm is a shell function from nvm.sh, which only gets sourced
+# in interactive shells (.zshrc), not in this script's /bin/sh.
+NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+NODE_VERSION="$(cat "$ROOT/.nvmrc")"
+NODE_BIN="$NVM_DIR/versions/node/v${NODE_VERSION#v}/bin"
+
+if [ -d "$NODE_BIN" ]; then
+  PATH="$NODE_BIN:$PATH"
+else
+  echo "current: node v$NODE_VERSION not found in $NVM_DIR/versions/node." >&2
+  echo "current: run 'cd $ROOT && nvm install' first." >&2
+  exit 1
+fi
+
+npx tsx --tsconfig "$TSCONFIG" "$CLI" "$@"
