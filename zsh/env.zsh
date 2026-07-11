@@ -29,6 +29,6 @@ path=(
   $BIN_HOME
   /opt/homebrew/bin
   $HOME/.cargo/bin
-  $PNPM_HOME
+  $PNPM_HOME/bin
   $path
 )
