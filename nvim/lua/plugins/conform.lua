@@ -6,8 +6,8 @@ local project = require 'utils.project'
 local default_formatters = {
   css = { 'prettierd' },
   html = { 'prettierd' },
-  javascript = { 'prettierd' },
-  javascriptreact = { 'prettierd' },
+  javascript = { 'prettierd', 'eslint_d' },
+  javascriptreact = { 'prettierd', 'eslint_d' },
   json = { 'prettierd' },
   jsonc = { 'prettierd' },
   lua = { 'stylua' },
@@ -15,8 +15,8 @@ local default_formatters = {
   python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
   rust = { 'rustfmt' },
   svg = { 'prettierd' },
-  typescript = { 'prettierd' },
-  typescriptreact = { 'prettierd' },
+  typescript = { 'prettierd', 'eslint_d' },
+  typescriptreact = { 'prettierd', 'eslint_d' },
 }
 
 local function get_formatters()
