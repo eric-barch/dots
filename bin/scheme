@@ -84,8 +84,10 @@ get_random_scheme_filepath() {
 parse_scheme_file() {
   filepath="$1"
 
-  for i in $(seq 0 15); do
+  i=0
+  while [ "$i" -lt 16 ]; do
     key=$(printf 'base%02X' "$i")
+    i=$(( i + 1 ))
 
     line=$(grep -m1 -E "^  $key: \"#[0-9A-Fa-f]{6}\"" "$filepath") || line=
 
