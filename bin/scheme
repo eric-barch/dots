@@ -250,7 +250,6 @@ done
 # Core logic
 if [ "$help" -eq 1 ]; then
   show_help
-  exit 0
 fi
 
 filepath=$(determine_scheme_filepath \
