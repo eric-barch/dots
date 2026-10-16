@@ -167,7 +167,7 @@ Flags:
   -r, --random    apply random scheme
   -s, --save      save provided or last scheme as default
 EOF
-  exit 0
+  exit "${1:-0}"
 }
 
 determine_scheme_filepath() {
@@ -241,7 +241,7 @@ while [ $# -gt 0 ]; do
     -d|--default) default=1 ;;
     -s|--save) save=1 ;;
     --) shift; break ;;
-    -*) echo "unknown flag: $1" >&2; show_help ;;
+    -*) echo "unknown flag: $1" >&2; show_help 1 >&2 ;;
     *) arg_scheme_name="$1" ;;
   esac
   shift || true
