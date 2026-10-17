@@ -103,6 +103,20 @@ parse_scheme_file() {
   done
 }
 
+get_shell_ttys() {
+  # List the ttys of this user's processes and keep the ones running a shell.
+  # `-o tty=,comm=`: tty name and command, no header (`??` means no tty)
+  # Login shells show up as `-zsh` or `-/bin/zsh`, so strip `-` and the path.
+  ps -U "$USER" -o tty=,comm= | awk '
+    $1 != "??" {
+      name = $2
+      sub(/^-/, "", name)
+      sub(/.*\//, "", name)
+      if (name ~ /^(zsh|bash|sh|fish|dash|ksh)$/) print "/dev/" $1
+    }
+  ' | sort -u
+}
+
 emit_osc()  {
   code="$1"; hex="$2"
 
@@ -163,7 +177,7 @@ usage: scheme [-l|--last] [-r|--random] [-d|--default] [-s|--save] [-g|--global]
 
 Flags:
   -d, --default   apply default scheme
-  -g, --global    also apply to all tmux panes
+  -g, --global    also apply to all open shells
   -l, --last      apply last scheme
   -r, --random    apply random scheme
   -s, --save      save provided or last scheme as default
@@ -282,14 +296,15 @@ seqs=$(printf '%s\n' "$parsed" | apply_scheme) || {
 printf '%s' "$seqs"
 
 if [ "$global" -eq 1 ]; then
-  ttys=$(tmux list-panes -a -F '#{pane_tty}' 2>/dev/null)
+  ttys=$(get_shell_ttys)
 
   if [ -n "$ttys" ]; then
     for tty in $ttys; do
+      [ -w "$tty" ] || continue
       printf '%s' "$seqs" > "$tty" || echo "warning: failed to write to $tty" >&2
     done
   else
-    echo "warning: no tmux server; applied to current terminal only" >&2
+    echo "warning: no other shells found" >&2
   fi
 fi
 
