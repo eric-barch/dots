@@ -159,10 +159,11 @@ apply_scheme() {
 
 show_help() {
   cat <<EOF
-usage: scheme [-l|--last] [-r|--random] [-d|--default] [-s|--save] [<scheme-name>]
+usage: scheme [-l|--last] [-r|--random] [-d|--default] [-s|--save] [-g|--global] [<scheme-name>]
 
 Flags:
   -d, --default   apply default scheme
+  -g, --global    also apply to all tmux panes
   -l, --last      apply last scheme
   -r, --random    apply random scheme
   -s, --save      save provided or last scheme as default
@@ -231,6 +232,7 @@ last=0
 random=0
 default=0
 save=0
+global=0
 arg_scheme_name=""
 
 while [ $# -gt 0 ]; do
@@ -240,6 +242,7 @@ while [ $# -gt 0 ]; do
     -r|--random) random=1 ;;
     -d|--default) default=1 ;;
     -s|--save) save=1 ;;
+    -g|--global) global=1 ;;
     --) shift; break ;;
     -*) echo "unknown flag: $1" >&2; show_help 1 >&2 ;;
     *)
@@ -271,10 +274,24 @@ parsed=$(parse_scheme_file "$filepath") || {
 }
 # printf '%s\n' "$parsed" >&2
 
-printf '%s\n' "$parsed" | apply_scheme || {
+seqs=$(printf '%s\n' "$parsed" | apply_scheme) || {
   echo "error: failed to apply scheme" >&2
   exit 1
 }
+
+printf '%s' "$seqs"
+
+if [ "$global" -eq 1 ]; then
+  ttys=$(tmux list-panes -a -F '#{pane_tty}' 2>/dev/null)
+
+  if [ -n "$ttys" ]; then
+    for tty in $ttys; do
+      printf '%s' "$seqs" > "$tty" || echo "warning: failed to write to $tty" >&2
+    done
+  else
+    echo "warning: no tmux server; applied to current terminal only" >&2
+  fi
+fi
 
 applied_scheme_name=$(get_filepath_stem "$filepath")
 # echo "applied scheme: $applied_scheme_name" >&2
