@@ -17,9 +17,6 @@ make setup
 1. When you open a new buffer by jumping using language server linking, can end
    up in the wrong spot if file was open before because of how I've implemented
    remebering the last place in the file.
-1. Folds behave weirdly in some cases. When I was working on the `scheme` shell
-   script, when I would paste in a function, the function and all its inner
-   blocks would be automatically folded.
 1. Code Companion is not actually connected to an LLM API anymore lol.
 1. Collapsing an ordered list item at root level causes the whole section under
    that header to collapse. I want it to only collapse the ordered item.
