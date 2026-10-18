@@ -7,8 +7,8 @@ return {
     branch = 'main',
     lazy = false,
     build = ':TSUpdate',
-    opts = {
-      ensure_installed = {
+    config = function()
+      require('nvim-treesitter').install {
         'bash',
         'c',
         'cpp',
@@ -17,13 +17,18 @@ return {
         'prisma',
         'python',
         'typescript',
-      },
-      auto_install = true,
-      highlight = {
-        enable = true,
-      },
-      indent = { enable = true },
-    },
+        'yaml',
+      }
+
+      vim.api.nvim_create_autocmd('FileType', {
+        desc = 'Start Tree-sitter highlighting and indent',
+        callback = function(args)
+          if pcall(vim.treesitter.start, args.buf) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
+    end,
   },
 }
 
