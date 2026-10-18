@@ -309,7 +309,6 @@ if [ "$global" -eq 1 ]; then
 fi
 
 applied_scheme_name=$(get_filepath_stem "$filepath")
-# echo "applied scheme: $applied_scheme_name" >&2
 
 if [ -n "$arg_scheme_name" ] || \
    [ "$last" -eq 1 ] || \
