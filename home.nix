@@ -55,6 +55,27 @@ let
       };
     };
 
+  # Toolbar layout. Only the areas changed from Zen's defaults are listed;
+  # the rest keep their defaults. Changes made in the browser's Customize
+  # Toolbar are reset on restart.
+  toolbarLayout = {
+    placements = {
+      # Removed the compact mode toggle.
+      zen-sidebar-top-buttons = [ ];
+      # Removed the flexible spaces on either side of the address bar.
+      nav-bar = [
+        "back-button"
+        "forward-button"
+        "stop-reload-button"
+        "vertical-spacer"
+        "urlbar-container"
+        "unified-extensions-button"
+      ];
+    };
+    # Format version of this layout, so Firefox doesn't try to migrate it.
+    currentVersion = 28;
+  };
+
   # HACK: on a brand-new profile, Zen's session file doesn't exist yet,
   # and the flake skips writing spaces and pins into a missing file. This
   # seeds an empty one so the first build applies everything.
@@ -125,8 +146,20 @@ in
       settings = {
         "browser.warnOnQuitShortcut" = false;
         "browser.shell.checkDefaultBrowser" = false;
+        "browser.aboutConfig.showWarning" = false;
         "zen.workspaces.container-specific-essentials-enabled" = true;
         "zen.view.show-newtab-button-top" = false;
+        # Address bar and nav buttons in a toolbar above the page, instead of
+        # at the top of the sidebar.
+        "zen.view.use-single-toolbar" = false;
+        "browser.uiCustomization.state" = builtins.toJSON toolbarLayout;
+        # On first run, Zen adds the compact mode toggle to the toolbar
+        # regardless of the layout above, then sets this flag so it only
+        # happens once. Marking it done keeps the toggle out.
+        "zen.ui.migration.compact-mode-button-added" = true;
+        # Gap, in pixels, between the web page and the browser's edges. 0
+        # makes the page fill the window, with no border around it.
+        "zen.theme.content-element-separation" = 0;
         "zen.welcome-screen.seen" = true;
         # Zen opens its privacy policy as a second first-run tab.
         "startup.homepage_welcome_url.additional" = "";
