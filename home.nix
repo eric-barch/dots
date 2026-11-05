@@ -90,6 +90,8 @@ in
       # Skip Zen's first-run and post-update tabs.
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
+      # No Mozilla account sign-in or sync.
+      DisableFirefoxAccounts = true;
 
       ExtensionSettings = {
         "{d634138d-c276-4fc8-924b-40a0ea21d284}" = amo "1password-x-password-manager";
@@ -122,10 +124,20 @@ in
 
       settings = {
         "browser.warnOnQuitShortcut" = false;
+        "browser.shell.checkDefaultBrowser" = false;
         "zen.workspaces.container-specific-essentials-enabled" = true;
+        "zen.view.show-newtab-button-top" = false;
         "zen.welcome-screen.seen" = true;
         # Zen opens its privacy policy as a second first-run tab.
         "startup.homepage_welcome_url.additional" = "";
+        # 1Password handles addresses and cards.
+        "extensions.formautofill.addresses.capture.enabled" = false;
+        "extensions.formautofill.creditCards.enabled" = false;
+      };
+
+      search = {
+        force = true;
+        default = "ddg";
       };
 
       containersForce = true;
