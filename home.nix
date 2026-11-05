@@ -16,6 +16,13 @@
       id = 0;
       path = "default";
       isDefault = true;
+
+      containersForce = true;
+      containers = {
+        blog = { id = 1; color = "orange"; icon = "circle"; };
+        professional = { id = 2; color = "green"; icon = "circle"; };
+        current = { id = 3; color = "blue"; icon = "circle"; };
+      };
     };
   };
 
