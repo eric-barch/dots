@@ -147,19 +147,22 @@ in
         "browser.warnOnQuitShortcut" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.aboutConfig.showWarning" = false;
+        # Enable the Browser Toolbox (Tools > Browser Tools), devtools for
+        # Zen's own interface. Used to inspect it when writing userChrome.
+        "devtools.chrome.enabled" = true;
+        "devtools.debugger.remote-enabled" = true;
         "zen.workspaces.container-specific-essentials-enabled" = true;
         "zen.view.show-newtab-button-top" = false;
         # Address bar and nav buttons in a toolbar above the page, instead of
         # at the top of the sidebar.
         "zen.view.use-single-toolbar" = false;
+        # Compact mode hides the toolbar as well as the sidebar.
+        "zen.view.compact.hide-toolbar" = true;
         "browser.uiCustomization.state" = builtins.toJSON toolbarLayout;
         # On first run, Zen adds the compact mode toggle to the toolbar
         # regardless of the layout above, then sets this flag so it only
         # happens once. Marking it done keeps the toggle out.
         "zen.ui.migration.compact-mode-button-added" = true;
-        # Gap, in pixels, between the web page and the browser's edges. 0
-        # makes the page fill the window, with no border around it.
-        "zen.theme.content-element-separation" = 0;
         "zen.welcome-screen.seen" = true;
         # Zen opens its privacy policy as a second first-run tab.
         "startup.homepage_welcome_url.additional" = "";
@@ -167,6 +170,37 @@ in
         "extensions.formautofill.addresses.capture.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
       };
+
+      # The page fills the window's edges, with no gap or rounding there.
+      # Where it meets the sidebar and toolbar, it keeps Zen's normal gap
+      # and rounded corner. In compact mode, the sidebar and toolbar are
+      # hidden, so the left and top are window edges too. Targets Zen's
+      # internal element names, so a Zen update could stop it working; Zen
+      # would then just look like its default again.
+      userChrome = ''
+        :root:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
+          margin-right: 0 !important;
+          margin-bottom: 0 !important;
+        }
+        :root:not([inDOMFullscreen="true"]) .browserSidebarContainer {
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
+        }
+        :root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
+          margin-left: 0 !important;
+          margin-top: 0 !important;
+        }
+        :root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) .browserSidebarContainer {
+          border-top-left-radius: 0 !important;
+        }
+        /* While hidden in compact mode, the toolbar's container still
+           reserves a strip at the top of the window. */
+        :root[zen-compact-mode="true"] #zen-appcontent-navbar-wrapper:not(:is([zen-has-hover], [has-popup-menu], [zen-compact-mode-active])) {
+          height: 0 !important;
+          min-height: 0 !important;
+        }
+      '';
 
       search = {
         force = true;
