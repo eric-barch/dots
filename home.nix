@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   # Zen needs a fixed UUID for each space and pin. This derives one from a
   # name, so it's stable across builds. Changing the name gives it a new ID,
@@ -15,6 +15,17 @@ let
   # app. Once signed in, it skips straight to the app.
   googleUrl =
     email: target: "https://accounts.google.com/AccountChooser?Email=${email}&continue=${target}";
+
+  # Installs an extension from addons.mozilla.org by its URL slug and keeps
+  # it updated.
+  amo = slug: {
+    install_url = "https://addons.mozilla.org/firefox/downloads/latest/${slug}/latest.xpi";
+    # Allow extension to be disabled in the browser, but not removed. Remove
+    # it by deleting its line in this config.
+    installation_mode = "normal_installed";
+    # Put icon in the extensions menu instead of pinning it to the toolbar.
+    default_area = "menupanel";
+  };
 
   containers = config.programs.zen-browser.profiles.default.containers;
 
@@ -43,6 +54,24 @@ let
         };
       };
     };
+
+  # HACK: on a brand-new profile, Zen's session file doesn't exist yet,
+  # and the flake skips writing spaces and pins into a missing file. This
+  # seeds an empty one so the first build applies everything.
+  # TODO: remove if upstream fixes it:
+  # https://github.com/0xc000022070/zen-browser-flake/pull/401
+  zenProfilePath =
+    "${config.programs.zen-browser.profilesPath}/${config.programs.zen-browser.profiles.default.path}";
+  emptySession = pkgs.writeText "zen-empty-session.json" (
+    builtins.toJSON {
+      lastCollected = 0;
+      spaces = [ ];
+      tabs = [ ];
+      folders = [ ];
+      groups = [ ];
+      splitViewData = [ ];
+    }
+  );
 in
 {
   imports = [ inputs.zen-browser.homeModules.beta ];
@@ -57,6 +86,35 @@ in
     enable = true;
     darwinDefaultsId = "app.zen-browser.zen";
 
+    policies = {
+      # Skip Zen's first-run and post-update tabs.
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+
+      ExtensionSettings = {
+        "{d634138d-c276-4fc8-924b-40a0ea21d284}" = amo "1password-x-password-manager";
+        "addon@darkreader.org" = amo "darkreader";
+        "uBlock0@raymondhill.net" = amo "ublock-origin";
+        "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = amo "vimium-ff";
+      };
+    };
+
+    # See HACK note above.
+    activationFragments.default = [
+      {
+        priority = 0;
+        requiresLock = true;
+        skipSubject = "initial session";
+        text = ''
+          if [[ ! -e ${lib.escapeShellArg "${zenProfilePath}/zen-sessions.jsonlz4"} ]]; then
+            run mkdir -p ${lib.escapeShellArg zenProfilePath}
+            run ${lib.getExe pkgs.mozlz4a} ${emptySession} \
+              ${lib.escapeShellArg "${zenProfilePath}/zen-sessions.jsonlz4"}
+          fi
+        '';
+      }
+    ];
+
     profiles.default = {
       id = 0;
       path = "default";
@@ -65,6 +123,9 @@ in
       settings = {
         "browser.warnOnQuitShortcut" = false;
         "zen.workspaces.container-specific-essentials-enabled" = true;
+        "zen.welcome-screen.seen" = true;
+        # Zen opens its privacy policy as a second first-run tab.
+        "startup.homepage_welcome_url.additional" = "";
       };
 
       containersForce = true;
