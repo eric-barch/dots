@@ -218,6 +218,13 @@ in
     };
   };
 
+  # Keyboard shortcut overrides, by <key> id; an empty entry turns one off.
+  # ⌘S (Zen's own compact mode toggle) is off because the shortcuts add-on
+  # replaces it. Read-only, so changes made in about:keyboard won't stick.
+  home.file."${zenProfilePath}/customKeys.json".text = builtins.toJSON {
+    zen-compact-mode-toggle = { };
+  };
+
   # home-manager owns profiles.ini, so Zen can't save its profile choice;
   # this makes it use the Default=1 profile.
   launchd.agents.moz-legacy-profiles = {
