@@ -37,33 +37,60 @@ let
     zip -q -r -X $out .
   '';
 
-  containers = config.programs.zen-browser.profiles.default.containers;
+  # One entry per space. Each gets a container of the same name, plus Gmail
+  # and Calendar Essentials signed into its Google account. Keep a
+  # containerId once set; Zen ties the container's tabs to it.
+  spaces = {
+    blog = {
+      position = 1;
+      containerId = 1;
+      color = "orange";
+      icon = "🪵";
+      email = "eric@barch.blog";
+    };
+    professional = {
+      position = 2;
+      containerId = 2;
+      color = "green";
+      icon = "👔";
+      email = "eric.michael.barch@gmail.com";
+    };
+    current = {
+      position = 3;
+      containerId = 3;
+      color = "blue";
+      icon = "🚰";
+      email = "eric@currentsoftware.app";
+    };
+  };
 
-  # A space with its container, plus Gmail and Calendar Essentials signed
-  # into its Google account.
-  mkSpace =
-    { name, position, icon, email }:
-    {
-      id = uuid "zen-space-${name}";
-      inherit position icon;
-      container = containers.${name}.id;
-      pins = {
-        gmail = {
-          id = uuid "zen-pin-${name}-gmail";
-          url = googleUrl email "https://mail.google.com/mail/";
-          position = 1;
-          isEssential = true;
-          container = containers.${name}.id;
-        };
-        googleCalendar = {
-          id = uuid "zen-pin-${name}-calendar";
-          url = googleUrl email "https://calendar.google.com/calendar/";
-          position = 2;
-          isEssential = true;
-          container = containers.${name}.id;
-        };
+  mkContainer = _: space: {
+    id = space.containerId;
+    inherit (space) color;
+    icon = "circle";
+  };
+
+  mkSpace = name: space: {
+    id = uuid "zen-space-${name}";
+    inherit (space) position icon;
+    container = space.containerId;
+    pins = {
+      gmail = {
+        id = uuid "zen-pin-${name}-gmail";
+        url = googleUrl space.email "https://mail.google.com/mail/";
+        position = 1;
+        isEssential = true;
+        container = space.containerId;
+      };
+      googleCalendar = {
+        id = uuid "zen-pin-${name}-calendar";
+        url = googleUrl space.email "https://calendar.google.com/calendar/";
+        position = 2;
+        isEssential = true;
+        container = space.containerId;
       };
     };
+  };
 
   # Toolbar areas changed from Zen's defaults. Edits made in Customize
   # Toolbar reset on restart.
@@ -190,33 +217,10 @@ in
       };
 
       containersForce = true;
-      containers = {
-        blog = { id = 1; color = "orange"; icon = "circle"; };
-        professional = { id = 2; color = "green"; icon = "circle"; };
-        current = { id = 3; color = "blue"; icon = "circle"; };
-      };
+      containers = lib.mapAttrs mkContainer spaces;
 
       spacesForce = true;
-      spaces = {
-        blog = mkSpace {
-          name = "blog";
-          position = 1;
-          icon = "🪵";
-          email = "eric@barch.blog";
-        };
-        professional = mkSpace {
-          name = "professional";
-          position = 2;
-          icon = "👔";
-          email = "eric.michael.barch@gmail.com";
-        };
-        current = mkSpace {
-          name = "current";
-          position = 3;
-          icon = "🚰";
-          email = "eric@currentsoftware.app";
-        };
-      };
+      spaces = lib.mapAttrs mkSpace spaces;
     };
   };
 
