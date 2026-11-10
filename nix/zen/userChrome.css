@@ -1,6 +1,11 @@
 /* Targets Zen's internal elements, so a Zen update can break any rule; a
-   broken rule falls back to Zen's default look. 231px is the sidebar width
-   (Zen's default is 230px); the measured offsets below assume it. */
+   broken rule falls back to Zen's default look. */
+
+/* The sidebar's width, which Zen keeps out of the toolbar's reach. Update
+   it if the sidebar is resized; Zen's default is 230px. */
+:root {
+  --dots-sidebar-width: 231px;
+}
 
 /* Edge-to-edge page: no gap or rounding at the window's right and bottom
    edges, and in compact mode on every side. */
@@ -29,16 +34,17 @@
 
 /* Toolbar stays put when the sidebar hides. Compact mode moves the window
    buttons and the sidebar's empty top row into the toolbar: the buttons
-   leave the layout (staying in place) and the empty row becomes a spacer.
-   226px is measured. The buttons can't be the spacer because Zen draws
-   their dots as a background that repeats across their width. */
+   leave the layout (staying in place) and the empty row becomes a spacer,
+   5px narrower than the sidebar (measured). The buttons can't be the spacer
+   because Zen draws their dots as a background that repeats across their
+   width. */
 :root[zen-compact-mode="true"] #nav-bar > .titlebar-buttonbox-container {
   position: absolute !important;
 }
 :root[zen-compact-mode="true"] #nav-bar > #zen-sidebar-top-buttons {
   box-sizing: border-box !important;
-  width: 226px !important;
-  min-width: 226px !important;
+  width: calc(var(--dots-sidebar-width) - 5px) !important;
+  min-width: calc(var(--dots-sidebar-width) - 5px) !important;
   padding: 0 !important;
   margin: 0 !important;
   flex-shrink: 0 !important;
@@ -50,8 +56,8 @@
   translate: 6px 0 !important;
 }
 :root[zen-compact-mode="true"][zen-compact-animating] #nav-bar > #zen-sidebar-top-buttons {
-  width: 231px !important;
-  min-width: 231px !important;
+  width: var(--dots-sidebar-width) !important;
+  min-width: var(--dots-sidebar-width) !important;
 }
 /* Zen slides the sidebar by animating its margin, which drags the toolbar
    along. Float it over the page, below the toolbar, while it slides. */
@@ -65,12 +71,12 @@
 /* Slide the page alongside it instead. Zen clips #browser only when
    sliding in, which tells the two directions apart. */
 @keyframes zen-page-slide-out {
-  from { translate: 231px 0; }
+  from { translate: var(--dots-sidebar-width) 0; }
   to { translate: 0 0; }
 }
 @keyframes zen-page-slide-in {
   from { translate: 0 0; }
-  to { translate: 231px 0; }
+  to { translate: var(--dots-sidebar-width) 0; }
 }
 :root[zen-compact-mode="true"][zen-compact-animating] #browser:not([style*="clip"]) #zen-tabbox-wrapper {
   animation: zen-page-slide-out 0.1s ease-out forwards;
