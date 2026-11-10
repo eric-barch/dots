@@ -3,7 +3,7 @@
    (Zen's default is 230px); the measured offsets below assume it. */
 
 /* Edge-to-edge page: no gap or rounding at the window's right and bottom
-   edges, and in compact mode at the left and top too. */
+   edges, and in compact mode on every side. */
 :root:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
   margin-right: 0 !important;
   margin-bottom: 0 !important;
@@ -14,11 +14,10 @@
   border-bottom-left-radius: 0 !important;
 }
 :root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
-  margin-left: 0 !important;
-  margin-top: 0 !important;
+  margin: 0 !important;
 }
 :root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) .browserSidebarContainer {
-  border-top-left-radius: 0 !important;
+  border-radius: 0 !important;
 }
 /* A hidden compact-mode toolbar still reserves a strip at the top. */
 @media -moz-pref("zen.view.compact.hide-toolbar") {
