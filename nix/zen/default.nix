@@ -187,8 +187,6 @@ in
         "zen.view.show-newtab-button-top" = false;
         # Address bar in its own toolbar above the page, not in the sidebar.
         "zen.view.use-single-toolbar" = false;
-        # Compact mode starts out hiding both; the shortcuts change this.
-        "zen.view.compact.hide-toolbar" = true;
         "browser.uiCustomization.state" = builtins.toJSON toolbarLayout;
         # Zen adds a compact mode toggle on first run regardless of the
         # layout; marking that done keeps it out.
