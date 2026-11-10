@@ -183,10 +183,6 @@ in
         "browser.warnOnQuitShortcut" = false;
         "browser.shell.checkDefaultBrowser" = false;
         "browser.aboutConfig.showWarning" = false;
-        # Browser Toolbox (Tools > Browser Tools), for inspecting Zen's own
-        # interface when writing userChrome.
-        "devtools.chrome.enabled" = true;
-        "devtools.debugger.remote-enabled" = true;
         "zen.workspaces.container-specific-essentials-enabled" = true;
         "zen.view.show-newtab-button-top" = false;
         # Address bar in its own toolbar above the page, not in the sidebar.
