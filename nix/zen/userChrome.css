@@ -29,6 +29,13 @@
 #PanelUI-button {
   display: none !important;
 }
+/* Line up the address bar: centered in the toolbar (it sat half a point
+   high), its left edge on the page's, and its right gap equal to its top
+   gap so its corner nests inside the window's. All measured. */
+#urlbar-container {
+  translate: 0 0.5px !important;
+  margin-inline: -1px -2px !important;
+}
 /* A hidden compact-mode toolbar still reserves a strip at the top. */
 @media -moz-pref("zen.view.compact.hide-toolbar") {
   :root[zen-compact-mode="true"] #zen-appcontent-navbar-wrapper:not(:is([zen-has-hover], [has-popup-menu], [zen-compact-mode-active])) {
@@ -100,6 +107,8 @@
   margin-inline: 0 !important;
   padding-inline: 0 !important;
   justify-content: center !important;
+  /* Optical nudge so reload looks flush with the Essentials below. */
+  translate: -0.5px 0 !important;
 }
 #nav-bar #stop-reload-button > toolbarbutton {
   margin-inline: 0 !important;
