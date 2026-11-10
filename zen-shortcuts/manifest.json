@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Zen layout shortcuts",
+  "description": "Shortcuts to hide the sidebar, the toolbar, or both.",
+  "version": "1.0",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "zen-shortcuts@dots"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "commands": {
+    "sidebar": {
+      "suggested_key": { "default": "MacCtrl+Shift+H" },
+      "description": "Hide or show the sidebar"
+    },
+    "toolbar": {
+      "suggested_key": { "default": "MacCtrl+Shift+K" },
+      "description": "Hide or show the toolbar"
+    },
+    "both": {
+      "suggested_key": { "default": "MacCtrl+Shift+O" },
+      "description": "Hide both, or show both"
+    }
+  },
+  "experiment_apis": {
+    "zenLayout": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "script": "api.js",
+        "paths": [["zenLayout"]]
+      }
+    }
+  }
+}

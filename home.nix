@@ -27,6 +27,21 @@ let
     default_area = "menupanel";
   };
 
+  # Our own unsigned add-on with shortcuts to hide the sidebar and toolbar.
+  # See zen-shortcuts/api.js. Zen keeps its installed copy while the
+  # version stays the same, so each build stamps a newer version from the
+  # build time. Zip stores timestamps from 1980 on, so the store's 1970
+  # ones are moved up first.
+  zenShortcuts = pkgs.runCommand "zen-shortcuts.xpi" { nativeBuildInputs = [ pkgs.zip ]; } ''
+    cp -r ${./zen-shortcuts} src
+    chmod -R u+w src
+    t=$(date +%s)
+    sed -i "s/\"version\": \"1.0\"/\"version\": \"1.$((t / 100000)).$((t % 100000))\"/" src/manifest.json
+    find src -exec touch -d @315532800 {} +
+    cd src
+    zip -q -r -X $out .
+  '';
+
   containers = config.programs.zen-browser.profiles.default.containers;
 
   # One space: its container, plus Gmail and Google Calendar Essentials
@@ -121,6 +136,11 @@ in
         "addon@darkreader.org" = amo "darkreader";
         "uBlock0@raymondhill.net" = amo "ublock-origin";
         "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = amo "vimium-ff";
+        # Reinstalled from the local file on every start, so rebuilds apply.
+        "zen-shortcuts@dots" = {
+          install_url = "file://${zenShortcuts}";
+          installation_mode = "force_installed";
+        };
       };
     };
 
@@ -171,6 +191,10 @@ in
         # 1Password handles addresses and cards.
         "extensions.formautofill.addresses.capture.enabled" = false;
         "extensions.formautofill.creditCards.enabled" = false;
+        # Let the zen-shortcuts add-on install without Mozilla's signature,
+        # and run the privileged part that changes Zen's compact mode.
+        "xpinstall.signatures.required" = false;
+        "extensions.experiments.enabled" = true;
       };
 
       # The page fills the window's edges, with no gap or rounding there.

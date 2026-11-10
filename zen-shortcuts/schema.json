@@ -1,0 +1,19 @@
+[
+  {
+    "namespace": "zenLayout",
+    "functions": [
+      {
+        "name": "toggle",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "part",
+            "type": "string",
+            "enum": ["sidebar", "toolbar", "both"]
+          }
+        ]
+      }
+    ]
+  }
+]
