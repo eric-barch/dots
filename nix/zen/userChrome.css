@@ -4,7 +4,7 @@
 /* The sidebar's width, which Zen keeps out of the toolbar's reach. Update
    it if the sidebar is resized; Zen's default is 230px. */
 :root {
-  --dots-sidebar-width: 231px;
+  --dots-sidebar-width: 230px;
 }
 
 /* Edge-to-edge page: no gap or rounding at the window's right and bottom
