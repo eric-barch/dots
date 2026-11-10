@@ -24,6 +24,11 @@
 :root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) .browserSidebarContainer {
   border-radius: 0 !important;
 }
+/* No app menu (⋯) button; its items are all in the macOS menu bar. It
+   isn't a toolbar item, so the toolbar layout can't remove it. */
+#PanelUI-button {
+  display: none !important;
+}
 /* A hidden compact-mode toolbar still reserves a strip at the top. */
 @media -moz-pref("zen.view.compact.hide-toolbar") {
   :root[zen-compact-mode="true"] #zen-appcontent-navbar-wrapper:not(:is([zen-has-hover], [has-popup-menu], [zen-compact-mode-active])) {
