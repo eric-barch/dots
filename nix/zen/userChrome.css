@@ -1,0 +1,113 @@
+/* The page fills the window's edges, with no gap or rounding there. Where it
+   meets the sidebar and toolbar, it keeps Zen's normal gap and rounded
+   corner. In compact mode, the sidebar and toolbar are hidden, so the left and
+   top are window edges too. Targets Zen's internal element names, so a Zen
+   update could stop it working; Zen would then just look like its default
+   again. */
+:root:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+}
+:root:not([inDOMFullscreen="true"]) .browserSidebarContainer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+:root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) #zen-tabbox-wrapper {
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+:root[zen-compact-mode="true"]:not([inDOMFullscreen="true"]) .browserSidebarContainer {
+  border-top-left-radius: 0 !important;
+}
+/* While hidden in compact mode, the toolbar's container still
+   reserves a strip at the top of the window. Only applies when
+   compact mode is set to hide the toolbar. */
+@media -moz-pref("zen.view.compact.hide-toolbar") {
+  :root[zen-compact-mode="true"] #zen-appcontent-navbar-wrapper:not(:is([zen-has-hover], [has-popup-menu], [zen-compact-mode-active])) {
+    height: 0 !important;
+    min-height: 0 !important;
+  }
+}
+/* In compact mode, Zen moves the window buttons, and the now-empty
+   top row of the sidebar, into the toolbar. The window buttons are
+   taken out of the layout, staying where they are, and the empty
+   row is sized to keep the nav buttons and address bar where they
+   are when the sidebar is shown. 226px was measured from a screen
+   recording against the sidebar's 231px width. Zen keeps that width
+   on the sidebar itself, out of the toolbar's reach, so it is
+   repeated here and goes stale if the sidebar is resized. The
+   window buttons aren't sized directly because Zen draws their dots
+   as a pattern that repeats across their full width. */
+:root[zen-compact-mode="true"] #nav-bar > .titlebar-buttonbox-container {
+  position: absolute !important;
+}
+:root[zen-compact-mode="true"] #nav-bar > #zen-sidebar-top-buttons {
+  box-sizing: border-box !important;
+  width: 226px !important;
+  min-width: 226px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+/* While the sidebar slides, Zen drops some of its compact mode
+   spacing, which pulls the window buttons 6px left and the nav
+   buttons and address bar 12px left for the length of the slide.
+   These undo that; both offsets were measured from a screen
+   recording. */
+:root[zen-compact-mode="true"][zen-compact-animating] #nav-bar > .titlebar-buttonbox-container {
+  translate: 6px 0 !important;
+}
+:root[zen-compact-mode="true"][zen-compact-animating] #nav-bar > #zen-sidebar-top-buttons {
+  width: 231px !important;
+  min-width: 231px !important;
+}
+/* Zen slides the sidebar in and out of compact mode by animating
+   its margin, which drags the page and toolbar along with it. While
+   it animates, it's taken out of the layout and slides over the
+   page, below the toolbar, so nothing else moves. */
+:root[zen-compact-mode="true"] #navigator-toolbox[animate="true"] {
+  position: fixed !important;
+  z-index: 10 !important;
+  top: var(--zen-toolbar-height-with-bookmarks) !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+/* The page alone then slides alongside the sidebar, by the
+   sidebar's 231px width, over the same 0.1s Zen gives the sidebar.
+   Zen marks only the slide in, by clipping #browser, which is how
+   the two directions are told apart. */
+@keyframes zen-page-slide-out {
+  from { translate: 231px 0; }
+  to { translate: 0 0; }
+}
+@keyframes zen-page-slide-in {
+  from { translate: 0 0; }
+  to { translate: 231px 0; }
+}
+:root[zen-compact-mode="true"][zen-compact-animating] #browser:not([style*="clip"]) #zen-tabbox-wrapper {
+  animation: zen-page-slide-out 0.1s ease-out forwards;
+}
+:root[zen-compact-mode="true"][zen-compact-animating] #browser[style*="clip"] #zen-tabbox-wrapper {
+  animation: zen-page-slide-in 0.1s ease-out forwards;
+}
+/* Back, forward and reload stay in the toolbar but are drawn at the
+   end of the sidebar's top row, so the address bar starts where the
+   sidebar ends. Each is fixed at 32px, and the first is pulled left
+   by all three (96px). */
+#nav-bar :is(#back-button, #forward-button, #stop-reload-button) {
+  width: 32px !important;
+  min-width: 32px !important;
+  max-width: 32px !important;
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+  justify-content: center !important;
+}
+#nav-bar #stop-reload-button > toolbarbutton {
+  margin-inline: 0 !important;
+  padding-inline: 0 !important;
+}
+#nav-bar #back-button {
+  margin-inline-start: -96px !important;
+}

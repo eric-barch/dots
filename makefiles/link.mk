@@ -22,7 +22,7 @@ export BIN_HOME
 
 # List directories excluding specific folders
 DIRS := $(notdir $(patsubst %/,%,$(wildcard */)))
-PACKAGES := $(filter-out bin .git makefiles, $(DIRS))
+PACKAGES := $(filter-out bin .git makefiles nix, $(DIRS))
 
 .PHONY: link
 link: link-bin link-configs
